@@ -3863,14 +3863,12 @@ return runtimeUsername;
 let response;
 
 try {
-response = await fetch(
-new URL("forum", CONFIG.workerProxy).toString(),
-{
+response = await fetch(`${CONFIG.forum.origin}/`, {
 method: "GET",
-credentials: "omit",
+credentials: "include",
+redirect: "follow",
 cache: "no-store"
-}
-);
+});
 } catch {
 throw new Error("Não foi possível consultar sua sessão no fórum.");
 }
@@ -3880,6 +3878,15 @@ throw new Error("Não foi possível confirmar seu login no fórum.");
 }
 
 const forumHtml = await response.text();
+
+if (forumLoginRequired(parseForumDocument(forumHtml), response.url)) {
+const error = new Error(
+"Você precisa estar conectado ao fórum para continuar."
+);
+error.code = "AUTH_DENIED";
+throw error;
+}
+
 const match = forumHtml.match(
 /_userdata\[['"]username['"]\]\s*=\s*['"]([^'"]+)['"]/i
 );
