@@ -1,4 +1,3 @@
-
 (() => {
 "use strict";
 
@@ -160,7 +159,6 @@ const CONFIG = Object.freeze({
 workerProxy: "https://rondlist.rondeiros2023.workers.dev/",
 cacheDurationMs: 5 * 60 * 1000,
 auth: Object.freeze({
-temporaryUser: ".Brendon",
 databaseName: "RondListAuth",
 storeName: "session",
 cacheKey: "current",
@@ -2412,17 +2410,8 @@ publishing &&
 );
 }
 
-async function publishRequirementStamp(topicId, bbcode, transport) {
-if (transport.sameForumOrigin) {
+async function publishRequirementStamp(topicId, bbcode) {
 return replyForumTopic(topicId, bbcode);
-}
-return publishThroughForumBridge(transport.popup, {
-type: "RONDLIST_FORUM_ACTION",
-requestId: createPublishingRequestId(),
-action: "reply",
-topicId,
-bbcode
-});
 }
 
 function requirementTagInputs() {
@@ -2498,6 +2487,9 @@ input.value = "";
 });
 document.getElementById("requirements-status").textContent =
 "Informe a TAG de três caracteres para publicar o carimbo.";
+const openLink = document.getElementById("requirements-open-link");
+openLink.hidden = true;
+openLink.removeAttribute("href");
 document.getElementById("requirements-dialog").showModal();
 requirementTagInputs()[0].focus();
 updateRequirementStampControls();
@@ -2531,22 +2523,22 @@ appState.publishing?.requirementsTopicId,
 const bbcode = String(
 appState.publishing?.requirementsStampBbcode || ""
 ).replace(/\{TAG\}/gi, tag);
-const transport = createPublishingTransport(
-{ topicId },
-`rondlist-requirements-${topicId}`
-);
-if (!transport) return;
 
 appState.requirementsBusy = true;
 document.getElementById("requirements-status").textContent =
 "Publicando carimbo…";
+const openLink = document.getElementById("requirements-open-link");
+openLink.hidden = true;
+openLink.removeAttribute("href");
 updateRequirementStampControls();
 updateMemberEditControls();
 
 try {
-await publishRequirementStamp(topicId, bbcode, transport);
+await publishRequirementStamp(topicId, bbcode);
 document.getElementById("requirements-status").textContent =
-"Carimbo publicado com sucesso.";
+"Carimbo publicado com sucesso. Se quiser conferir, abra a guia do tópico.";
+openLink.href = forumTopicUrl(topicId);
+openLink.hidden = false;
 showToast("Carimbo publicado com sucesso.", "success");
 } catch (error) {
 document.getElementById("requirements-status").textContent =
@@ -3967,8 +3959,7 @@ typeof access.canManageAccess === "boolean"
 }
 
 async function validateForumAccess() {
-const username =
-CONFIG.auth.temporaryUser || (await fetchForumUsername());
+const username = await fetchForumUsername();
 const response = await requestRondList("access", { username });
 const access = response.access || {};
 
