@@ -1,1 +1,4500 @@
-(()=>{let storageKey=`RONDLIST_THEME`,theme=`dark`;try{let savedTheme=localStorage.getItem(`RONDLIST_THEME`);theme=savedTheme===`light`||savedTheme===`dark`?savedTheme:window.matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`}catch{theme=window.matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`}document.documentElement.dataset.theme=theme,document.querySelector(`meta[name="theme-color"]`).setAttribute(`content`,`#ED7A1E`);try{let visionSettings=JSON.parse(localStorage.getItem(`RONDLIST_VISION_SETTINGS`)||`{}`),scale=[`normal`,`large`,`larger`].includes(visionSettings.scale)?visionSettings.scale:`normal`;document.documentElement.dataset.visionScale=scale,document.documentElement.dataset.visionContrast=visionSettings.highContrast===!0?`high`:`standard`}catch{document.documentElement.dataset.visionScale=`normal`,document.documentElement.dataset.visionContrast=`standard`}})();</script><style>:root{color-scheme:light;--orange:#ed7a1e;--orange-dark:#d9690f;--orange-darker:#b85709;--ink:#1f2229;--ink-soft:#5b606b;--bg:#f3f2f0;--card:#fff;--line:#e7e4df;--page:var(--bg);--surface:var(--card);--surface-muted:#edebe7;--content-stage:#f7f6f4;--border:var(--line);--border-strong:#d3cec5;--accent:var(--orange);--accent-soft:#f3985a;--accent-contrast:var(--ink);--chrome:var(--orange);--chrome-text:#fff;--chrome-muted:#ffffffb8;--chrome-border:#ffffff47;--chrome-control:#ffffff24;--chrome-control-hover:#ffffff38;--theme-button-background:var(--card);--theme-button-hover:var(--bg);--theme-button-text:var(--orange-darker);--text:var(--ink);--text-subtle:var(--ink-soft);--text-faint:#8b8f99;--muted:var(--ink-soft);--placeholder:#8b8f99;--overlay:#1f222975;--backdrop:#1f2229a8;--row-hover:#ed7a1e0f;--row-saved:#318e520e;--row-dirty:#ed7a1e17;--row-selected:#c4414814;--swatch-border:#1f22292e;--success:#318e52;--warning:#a66f00;--danger:#c44148;--panel-elevated:var(--card);--panel-soft:#f8f7f5;--control-background:#fff;--control-background-hover:var(--bg);--control-border:var(--line);--control-border-strong:var(--orange);--accent-bright:var(--orange);--component-font:"Space Grotesk",sans-serif}:root[data-theme=dark]{color-scheme:dark;--orange:#ed7a1e;--orange-dark:#d9690f;--orange-darker:#b85709;--ink:#1f2229;--ink-soft:#5b606b;--bg:#17191f;--card:#1f2229;--line:#343841;--page:var(--bg);--surface:var(--card);--surface-muted:#262a32;--content-stage:#1b1d23;--border:var(--line);--border-strong:#4a4f5a;--accent:var(--orange);--accent-soft:#f5a05c;--accent-contrast:var(--ink);--chrome:var(--orange);--chrome-text:var(--ink);--chrome-muted:#1f22299e;--chrome-border:#1f22292e;--chrome-control:#1f222914;--chrome-control-hover:#1f222929;--theme-button-background:#d96e1a;--theme-button-hover:#f3ede6;--theme-button-text:#1b1d23;--text:#f5f3f0;--text-subtle:#c7c9ce;--text-faint:#6e7280;--muted:#9a9da6;--placeholder:#6e7280;--overlay:#0a0b0dc2;--backdrop:#0a0b0dd6;--row-hover:#ed7a1e1f;--row-saved:#65b9820f;--row-dirty:#ed7a1e2e;--row-selected:#df70691f;--swatch-border:#fff3;--success:#65b982;--warning:#d6a94f;--danger:#df7069;--panel-elevated:var(--card);--panel-soft:#191b20;--control-background:#14161b;--control-background-hover:#23262d;--control-border:var(--line);--control-border-strong:#f3985a;--accent-bright:#f3985a}:root[data-vision-contrast=high]{--content-stage:#fff;--border:#4a4f5a;--border-strong:var(--ink);--text-subtle:var(--ink);--text-faint:#3a3e47;--muted:#3a3e47;--placeholder:#3a3e47;--control-border:#4a4f5a;--control-border-strong:var(--ink)}:root[data-theme=dark][data-vision-contrast=high]{--content-stage:#101216;--border:#6e7280;--border-strong:#f5f3f0;--text:#fff;--text-subtle:#fff;--text-faint:#c7c9ce;--muted:#e5e6e9;--placeholder:#c7c9ce;--control-border:#6e7280;--control-border-strong:#f5f3f0}:root[data-vision-contrast=high] :focus-visible{outline-offset:3px!important;outline-width:3px!important}:root[data-vision-scale=large] .app-shell{transform-origin:0 0;width:89.2857%;height:89.2857vh;transform:scale(1.12)}:root[data-vision-scale=larger] .app-shell{transform-origin:0 0;width:80%;height:80vh;transform:scale(1.25)}*{box-sizing:border-box;scrollbar-color:var(--border-strong)var(--page);scrollbar-width:thin}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--page)}::-webkit-scrollbar-thumb{border:2px solid var(--page);background:var(--border-strong);border-radius:999px;min-height:34px}::-webkit-scrollbar-thumb:hover{background:var(--accent)}::-webkit-scrollbar-corner{background:var(--page)}html{background:var(--page);min-width:320px}body{background:var(--page);height:100vh;color:var(--text);-webkit-font-smoothing:antialiased;margin:0;font-family:Montserrat,sans-serif;overflow:hidden}button,input{font:inherit}button{border:0}.app-shell{width:100%;height:100vh;display:flex;overflow:hidden}.sidebar{z-index:50;background:var(--chrome);flex-direction:column;flex:0 0 90px;align-items:center;width:90px;padding:24px 0;display:flex;position:relative}.sidebar__logo{place-items:center;width:48px;height:48px;margin-bottom:30px;text-decoration:none;display:grid}.sidebar__logo img{object-fit:contain;width:100%;height:100%}.sidebar__nav{border-radius:14px;flex-direction:column;align-items:center;gap:4px;width:48px;padding:3px;display:flex}.nav-item{width:42px;height:42px;color:var(--chrome-muted);cursor:pointer;background:0 0;border:0;border-radius:12px;place-items:center;transition:color .18s,background-color .18s,transform .18s cubic-bezier(.16,1,.3,1);display:grid;position:relative}.nav-item:before,.nav-item:after{content:none}.nav-item:hover{background:var(--chrome-control);color:var(--chrome-text)}.nav-item.is-active{background:var(--chrome-control-hover);color:var(--chrome-text)}.nav-item svg{fill:none;stroke:currentColor;stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;width:21px;height:21px;transition:transform .26s cubic-bezier(.16,1,.3,1)}.nav-item:hover svg{transform:scale(1.03)}.nav-item.is-pulsing{animation:.42s cubic-bezier(.16,1,.3,1) sidebar-tile-press}.nav-item.is-pulsing svg{animation:.38s cubic-bezier(.34,1.56,.64,1) sidebar-icon-bounce}.nav-item:focus-visible{outline:2px solid var(--chrome-text);outline-offset:3px}@keyframes sidebar-tile-press{0%{transform:scale(1)}42%{transform:scale(.95)}to{transform:scale(1)}}@keyframes sidebar-icon-bounce{0%{transform:scale(1)}48%{transform:scale(.9)}to{transform:scale(1)}}.sidebar__footer{flex-direction:column;align-items:center;gap:10px;margin-top:auto;padding:0 7px 4px;display:flex}.sidebar__wordmark{writing-mode:vertical-rl;color:var(--chrome-muted);letter-spacing:.32em;user-select:none;font-size:10px;font-weight:800;transform:rotate(180deg)}.sidebar__credit{width:60px;color:var(--chrome-muted);letter-spacing:.07em;text-align:center;text-transform:uppercase;user-select:none;white-space:nowrap;padding-top:7px;font-size:5px;font-weight:700;line-height:1.25;display:block;position:relative}.sidebar__credit:before{content:"";background:var(--chrome-muted);border-radius:999px;width:12px;height:1px;position:absolute;top:0;left:50%;transform:translate(-50%)}.sidebar__credit strong{color:var(--chrome-text);letter-spacing:.015em;text-transform:none;margin-top:2px;font-family:Syne,sans-serif;font-size:7px;font-weight:700;display:block}.sidebar-overlay{z-index:40;background:var(--overlay);opacity:0;visibility:hidden;transition:opacity .18s,visibility .18s;position:fixed;inset:0}.main-column{background:var(--chrome);flex-direction:column;flex:1;min-width:0;display:flex}.topbar{background:var(--chrome);justify-content:space-between;align-items:center;gap:24px;min-height:96px;padding:0 38px;display:flex}.topbar__left,.topbar__right{align-items:center;gap:14px;display:flex}.topbar__right{position:relative}.mobile-menu-button{border:1px solid var(--chrome-border);width:40px;height:40px;color:var(--chrome-text);cursor:pointer;background:0 0;border-radius:11px;place-items:center;display:none}.theme-toggle,.vision-toggle{background:var(--theme-button-background);width:42px;height:42px;color:var(--theme-button-text);cursor:pointer;border-radius:12px;flex:0 0 42px;place-items:center;transition:border-color .16s,background-color .16s,color .16s,transform .16s;display:grid;position:relative}.theme-toggle{border:0}.theme-toggle:hover,.vision-toggle:hover{border-color:var(--chrome-text);background:var(--theme-button-hover);color:var(--theme-button-text);transform:translateY(-1px)}.theme-toggle:focus-visible,.vision-toggle:focus-visible{outline:2px solid var(--theme-button-text);outline-offset:3px}.vision-toggle__label{letter-spacing:-.04em;font-family:Syne,sans-serif;font-size:12px;font-weight:800}.theme-toggle svg{fill:none;stroke:currentColor;stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;width:19px;height:19px;transition:opacity .18s,transform .24s cubic-bezier(.16,1,.3,1);position:absolute}.theme-toggle__sun{opacity:1;transform:rotate(0)scale(1)}.theme-toggle__moon{opacity:0;transform:rotate(-18deg)scale(.72)}:root[data-theme=light] .theme-toggle__sun{opacity:0;transform:rotate(18deg)scale(.72)}:root[data-theme=light] .theme-toggle__moon{opacity:1;transform:rotate(0)scale(1)}.vision-panel{z-index:80;border:1px solid var(--border-strong);background:var(--surface);width:min(330px,100vw - 32px);color:var(--text);border-radius:14px;padding:18px;position:absolute;top:calc(100% + 12px);right:0}.vision-panel[hidden]{display:none}.vision-panel__title{margin:0;font-family:Syne,sans-serif;font-size:16px}.vision-panel__description{color:var(--muted);margin:7px 0 18px;font-size:10px;line-height:1.6}.vision-panel__label{color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-size:9px;font-weight:800;display:block}.vision-scale-group{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;display:grid}.vision-scale-button,.vision-contrast-button,.vision-reset-button{border:1px solid var(--border);color:var(--text);cursor:pointer;background:0 0;border-radius:9px;font-size:9px;font-weight:800}.vision-scale-button{min-height:36px;padding:0 8px}.vision-scale-button:hover,.vision-contrast-button:hover,.vision-reset-button:hover{border-color:var(--accent);color:var(--accent-soft)}.vision-scale-button[aria-pressed=true]{border-color:var(--accent);background:var(--accent);color:var(--accent-contrast)}.vision-contrast-button{text-align:left;justify-content:space-between;align-items:center;gap:16px;width:100%;min-height:42px;margin-top:14px;padding:0 12px;display:flex}.vision-contrast-button strong{color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-size:8px}.vision-contrast-button[aria-pressed=true]{border-color:var(--accent)}.vision-contrast-button[aria-pressed=true] strong{color:var(--accent-soft)}.vision-reset-button{min-height:34px;color:var(--muted);margin-top:10px;padding:0 11px}.vision-scale-button:focus-visible,.vision-contrast-button:focus-visible,.vision-reset-button:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px}.mobile-menu-button svg{fill:none;stroke:currentColor;stroke-width:1.8px;stroke-linecap:round;width:20px;height:20px}.topbar__eyebrow{color:var(--chrome-muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;font-family:Syne,sans-serif;font-size:9px;font-weight:700;display:block}.topbar__title{color:var(--chrome-text);letter-spacing:-.02em;margin:0;font-size:14px;font-weight:800}.topbar-user{align-items:center;gap:11px;display:none}.topbar-user.is-visible{display:flex}.topbar-user__details{text-align:right;min-width:0}.topbar-user__name,.topbar-user__role{text-overflow:ellipsis;white-space:nowrap;max-width:190px;display:block;overflow:hidden}.topbar-user__name{color:var(--chrome-text);letter-spacing:.03em;text-transform:uppercase;font-size:11px;font-weight:800}.topbar-user__role{color:var(--chrome-muted);text-transform:uppercase;margin-top:3px;font-size:9px;font-weight:700}.topbar-user__head{object-fit:contain}.auth-screen{z-index:2000;background:var(--page);opacity:1;visibility:visible;place-items:center;padding:24px;transition:opacity .22s,visibility .22s;display:grid;position:fixed;inset:0}.auth-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none}.auth-copy{text-align:center;width:min(520px,100%)}.auth-title{color:var(--text);letter-spacing:-.03em;margin:0;font-size:clamp(24px,5vw,34px)}.auth-message{color:var(--muted);margin:12px auto 0;font-size:13px;line-height:1.7}.auth-login-link{color:var(--accent-soft);text-underline-offset:4px;margin-top:18px;font-size:12px;font-weight:700;display:none}.auth-login-link:hover,.auth-login-link:focus-visible{color:var(--text)}.auth-login-link:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px}.auth-screen.is-denied .auth-title{color:var(--danger)}.auth-screen.is-denied .auth-login-link{display:inline-block}.content-stage{background:var(--content-stage);border-top-left-radius:30px;flex:1;min-height:0;overflow:hidden}.page{width:100%;height:100%;padding:52px 40px 88px;overflow-y:auto}.page__inner{width:min(1120px,100%);margin:0 auto}.app-view[hidden]{display:none}.hero{max-width:760px;margin-bottom:36px}.eyebrow{color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin:0 0 14px;font-size:11px;font-weight:800}h1{max-width:700px;color:var(--text);letter-spacing:-.055em;margin:0;font-size:clamp(38px,6vw,68px);line-height:1.02}.hero__description{max-width:650px;color:var(--muted);margin:22px 0 0;font-size:15px;line-height:1.75}.workspace{border:1px solid var(--border);background:var(--surface);border-radius:18px;overflow:hidden}.workspace__header{border-bottom:1px solid var(--border);justify-content:space-between;align-items:center;gap:20px;min-height:68px;padding:16px 20px;display:flex}.workspace__title{margin:0;font-size:14px;font-weight:700}.workspace__state{color:var(--muted);letter-spacing:.07em;text-transform:uppercase;align-items:center;gap:8px;font-size:10px;font-weight:700;display:inline-flex}.workspace__state:before{content:"";border:1px solid var(--warning);border-radius:50%;width:7px;height:7px}.empty-state{text-align:center;justify-items:center;padding:68px 24px 58px;display:grid}.empty-state__mark{border:1px solid var(--border-strong);background:var(--surface-muted);border-radius:22px;width:68px;height:68px;margin-bottom:24px;position:relative}.empty-state__mark:before,.empty-state__mark:after{content:"";border:1px solid var(--accent);border-radius:50%;position:absolute}.empty-state__mark:before{width:17px;height:17px;top:14px;left:24px}.empty-state__mark:after{border-radius:18px 18px 8px 8px;width:34px;height:17px;bottom:13px;left:15px}.empty-state h2{letter-spacing:-.03em;margin:0;font-size:22px}.empty-state p{max-width:510px;color:var(--muted);margin:12px 0 0;font-size:13px;line-height:1.7}.primary-button{border:1px solid var(--accent);min-height:42px;color:var(--accent-soft);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;background:0 0;border-radius:11px;margin-top:24px;padding:0 18px;font-size:11px;font-weight:800;transition:background-color .16s,color .16s}.primary-button:hover{background:var(--accent);color:var(--page)}.primary-button:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px}.primary-button:disabled{border-color:var(--border);color:var(--muted);cursor:wait}.integrations{border-top:1px solid var(--border);grid-template-columns:repeat(3,minmax(0,1fr));display:grid}.integration{border-right:1px solid var(--border);min-width:0;padding:18px 20px}.integration:last-child{border-right:0}.integration__label{color:var(--text);margin-bottom:6px;font-size:11px;font-weight:700;display:block}.integration__state{color:var(--muted);font-size:10px}.integration.is-ready .integration__state{color:var(--success)}.integration.is-error .integration__state{color:var(--danger)}.site-footer{color:var(--muted);text-align:center;margin-top:20px;font-size:10px}.hero--members{max-width:none;margin-bottom:26px}.hero--members h1{max-width:820px;font-size:clamp(34px,5vw,58px)}.workspace__heading{min-width:0}.workspace__subtitle{color:var(--muted);margin:5px 0 0;font-size:10px}.workspace__actions{align-items:center;gap:9px;display:flex}.workspace__state.is-ready{color:var(--success)}.workspace__state.is-ready:before{border-color:var(--success);background:var(--success)}.workspace__state.is-error{color:var(--danger)}.workspace__state.is-error:before{border-color:var(--danger)}.icon-button,.text-button,.secondary-button{border:1px solid var(--border);color:var(--muted);cursor:pointer;background:0 0;border-radius:10px;justify-content:center;align-items:center;transition:border-color .16s,background-color .16s,color .16s;display:inline-flex}.icon-button{width:38px;height:38px;padding:0}.icon-button svg{fill:none;stroke:currentColor;stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;width:17px;height:17px}.icon-button.is-accent{border-color:var(--accent);color:var(--accent)}.icon-button.is-accent:hover{border-color:var(--accent-soft);background:color-mix(in srgb,var(--accent)9%,transparent);color:var(--accent-soft)}.icon-button.is-danger{border-color:color-mix(in srgb,var(--danger)55%,var(--border));color:var(--danger)}.icon-button.is-danger:hover{border-color:var(--danger);background:color-mix(in srgb,var(--danger)10%,transparent);color:color-mix(in srgb,var(--danger)72%,var(--text))}.icon-button.is-loading svg{animation:.85s linear infinite action-icon-spin}@keyframes action-icon-spin{to{transform:rotate(360deg)}}.text-button,.secondary-button{letter-spacing:.04em;text-transform:uppercase;min-height:36px;padding:0 13px;font-size:10px;font-weight:800}.text-button.is-accent{border-color:var(--accent);background:var(--accent);color:var(--accent-contrast)}.text-button.is-accent:hover{border-color:var(--accent-soft);background:var(--accent-soft);color:var(--accent-contrast)}.text-button.is-danger{border-color:color-mix(in srgb,var(--danger)55%,var(--border));color:var(--danger)}.text-button.is-danger:hover{border-color:var(--danger);background:color-mix(in srgb,var(--danger)10%,transparent);color:color-mix(in srgb,var(--danger)72%,var(--text))}.member-edit-actions{flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px;display:inline-flex}.member-edit-actions .icon-button svg{stroke-width:1.7px;width:18px;height:18px}.member-edit-actions [hidden]{display:none}.icon-button:hover,.text-button:hover,.secondary-button:hover{border-color:var(--border-strong);background:var(--surface-muted);color:var(--text)}.icon-button:focus-visible,.text-button:focus-visible,.secondary-button:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px}.icon-button:disabled,.text-button:disabled,.secondary-button:disabled{opacity:.55;cursor:wait}.workspace-toolbar{border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--surface-muted)38%,transparent);justify-content:space-between;align-items:center;gap:14px;padding:14px 20px;display:flex}.search-field{width:min(420px,100%);position:relative}.search-field svg{fill:none;width:16px;height:16px;stroke:var(--muted);stroke-width:1.8px;stroke-linecap:round;pointer-events:none;position:absolute;top:50%;left:13px;transform:translateY(-50%)}.search-field input{border:1px solid var(--border);background:var(--page);width:100%;height:40px;color:var(--text);border-radius:10px;outline:0;padding:0 14px 0 40px;font-size:11px;transition:border-color .16s}.search-field input::placeholder{color:var(--placeholder)}.search-field input:focus{border-color:var(--accent)}.table-result{color:var(--muted);flex:none;font-size:10px;font-weight:700}.members-table-wrap{min-height:310px;max-height:none;position:relative;overflow:auto}.members-table{border-collapse:collapse;table-layout:fixed;width:100%;min-width:980px}.members-table th,.members-table td{border-right:1px solid color-mix(in srgb,var(--border)58%,transparent);border-bottom:1px solid var(--border);text-align:left;vertical-align:middle;height:52px;padding:10px 14px}.members-table th{z-index:2;background:var(--surface);height:42px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-size:9px;font-weight:800;position:sticky;top:0}.members-table th:last-child,.members-table td:last-child{border-right:0}.members-table tbody tr{transition:background-color .15s}.members-table tbody tr:hover{background:var(--row-hover)}.members-table tbody tr.is-saved{background:var(--row-saved)}.members-table tbody tr.is-dirty{background:var(--row-dirty)}.members-table tbody tr.is-selected{background:var(--row-selected)}.members-table .member-selection-cell{text-align:center;width:52px;padding-inline:10px}.member-select{appearance:none;border:1px solid var(--border-strong);background:var(--page);width:17px;height:17px;color:var(--accent-contrast);cursor:pointer;border-radius:5px;place-content:center;margin:0;transition:border-color .16s,background-color .16s;display:inline-grid}.member-select:before{content:"";opacity:0;border-bottom:2px solid;border-left:2px solid;width:8px;height:5px;transition:opacity .14s,transform .16s;transform:translateY(-1px)rotate(-45deg)scale(.65)}.member-select:checked:before{opacity:1;transform:translateY(-1px)rotate(-45deg)scale(1)}.member-select:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px}.member-select:disabled{cursor:wait;opacity:.6}.table-cell{color:var(--text-subtle);text-overflow:ellipsis;white-space:nowrap;font-size:10px;line-height:1.4;display:block;overflow:hidden}.table-cell.is-empty{color:var(--text-faint)}.table-input,.table-select{border:1px solid var(--border);background:var(--page);width:100%;height:34px;color:var(--text);border-radius:8px;outline:0;padding:0 10px;font-size:10px;transition:border-color .16s,background-color .16s}.table-select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted)50%),linear-gradient(135deg,var(--muted)50%,transparent 50%);cursor:pointer;background-position:calc(100% - 14px),calc(100% - 10px);background-repeat:no-repeat;background-size:4px 4px;padding-right:26px}.table-input:hover,.table-select:hover{border-color:var(--border-strong)}.table-input:focus,.table-select:focus{border-color:var(--accent);background-color:color-mix(in srgb,var(--accent)5%,var(--page))}.date-control{border:1px solid var(--border);background:var(--page);border-radius:8px;align-items:center;width:100%;height:34px;padding:0 32px 0 10px;transition:border-color .16s,background-color .16s;display:flex;position:relative;overflow:hidden}.date-control:hover{border-color:var(--border-strong)}.date-control:focus-within{border-color:var(--accent);background:color-mix(in srgb,var(--accent)5%,var(--page))}.date-control__value{color:var(--text);text-overflow:ellipsis;white-space:nowrap;font-size:10px;overflow:hidden}.date-control.is-empty .date-control__value{color:var(--text-faint)}.date-control__calendar{border:1px solid var(--muted);pointer-events:none;border-radius:2px;width:12px;height:11px;position:absolute;top:50%;right:10px;transform:translateY(-45%)}.date-control__calendar:before{content:"";border-top:1px solid var(--muted);width:12px;position:absolute;top:2px;left:-1px}.date-control__calendar:after{content:"";border-right:1px solid var(--muted);border-left:1px solid var(--muted);width:6px;height:3px;position:absolute;top:-3px;left:2px}.date-control__native{opacity:0;cursor:pointer;width:100%;height:100%;position:absolute;inset:0}.date-control__native:disabled{cursor:wait}.date-control.is-calculated{background:color-mix(in srgb,var(--accent)6%,var(--page))}.date-control.is-calculated .date-control__native:disabled{cursor:default}.boolean-toggle{border:1px solid var(--border);width:30px;min-width:30px;height:30px;color:var(--muted);cursor:pointer;background:0 0;border-radius:50%;justify-content:center;align-items:center;padding:0;transition:border-color .16s,background-color .16s,color .16s,transform .16s;display:inline-flex}.boolean-toggle:before{content:"";background:0 0;border:1px solid;border-radius:50%;flex:0 0 8px;width:8px;height:8px;transition:background-color .16s,transform .16s}.boolean-toggle[data-state=true]{border-color:color-mix(in srgb,var(--success)72%,var(--border));background:color-mix(in srgb,var(--success)13%,transparent);color:var(--success)}.boolean-toggle[data-state=true]:before{background:currentColor;transform:scale(1.08)}.boolean-toggle[data-state=empty]{color:var(--text-faint)}.boolean-toggle:not(:disabled):hover{border-color:var(--accent);color:var(--accent-soft);transform:translateY(-1px)}.boolean-toggle:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px}.boolean-toggle:disabled{cursor:default;opacity:1}.members-table th.is-boolean-column,.members-table td.is-boolean-column{text-align:center;width:54px;padding-inline:8px}.table-state{min-height:310px;color:var(--muted);text-align:center;place-items:center;padding:48px 24px;font-size:11px;line-height:1.7;display:grid}.table-state[hidden],.members-table[hidden]{display:none}.workspace__footer{min-height:48px;color:var(--muted);justify-content:space-between;align-items:center;gap:14px;padding:10px 20px;font-size:9px;display:flex}.settings-section{border:1px solid var(--border);background:var(--surface);border-radius:16px;margin-top:18px;overflow:hidden}.settings-section__header{border-bottom:1px solid var(--border);justify-content:space-between;align-items:center;gap:18px;min-height:62px;padding:14px 20px;display:flex}.settings-section__title{margin:0;font-size:13px}.settings-section__description{color:var(--muted);margin:5px 0 0;font-size:9px}.role-list{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));display:grid}.role-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);min-width:0;padding:17px 18px}.role-card__top{justify-content:space-between;align-items:center;gap:12px;display:flex}.role-card__name{min-width:0;color:var(--text);text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:700;overflow:hidden}.role-card__meta{justify-content:space-between;align-items:center;gap:10px;margin-top:12px;display:flex}.role-card__vacancies{color:var(--muted);font-size:9px}.role-list__empty{color:var(--muted);text-align:center;grid-column:1/-1;padding:34px 20px;font-size:10px}.layout-resources{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));display:grid}.layout-resource{border-right:1px solid var(--border);min-width:0;min-height:132px;padding:18px 20px}.layout-resource__label{color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-bottom:13px;font-size:9px;font-weight:800;display:block}.layout-resource__value{color:var(--text);text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:700;line-height:1.45;display:block;overflow:hidden}.layout-resource__meta{color:var(--muted);text-overflow:ellipsis;white-space:nowrap;margin-top:7px;font-size:9px;line-height:1.5;display:block;overflow:hidden}.layout-palette{flex-wrap:wrap;align-items:center;gap:7px;min-height:24px;display:flex}.layout-palette__swatch{border:1px solid var(--swatch-border);background:var(--layout-color,var(--border-strong));border-radius:7px;width:22px;height:22px}.layout-resources__empty{color:var(--muted);text-align:center;grid-column:1/-1;padding:34px 20px;font-size:10px}.additional-access-form{border-bottom:1px solid var(--border);grid-template-columns:minmax(160px,.55fr) minmax(240px,1.45fr) auto;align-items:end;gap:12px;padding:18px 20px;display:grid}.additional-access-form__submit{white-space:nowrap;min-height:42px;margin:0}.additional-access-choice[hidden]{display:none}.additional-access-list{flex-wrap:wrap;gap:8px;padding:16px 20px 20px;display:flex}.additional-access-chip{border:1px solid var(--control-border);background:var(--control-background);max-width:100%;min-height:30px;color:var(--text-subtle);border-radius:999px;align-items:center;gap:7px;padding:5px 6px 5px 10px;font-size:10px;font-weight:700;display:inline-flex}.additional-access-chip__text{text-overflow:ellipsis;white-space:nowrap;min-width:0;overflow:hidden}.additional-access-chip__remove{width:22px;height:22px;color:var(--muted);cursor:pointer;background:0 0;border-radius:50%;flex:0 0 22px;place-items:center;font-size:14px;line-height:1;display:grid}.additional-access-chip__remove:hover:not(:disabled){background:color-mix(in srgb,var(--danger)13%,transparent);color:var(--danger)}.editor-dialog{border:1px solid var(--border-strong);background:var(--surface);width:min(720px,100vw - 32px);max-height:min(760px,100vh - 32px);color:var(--text);border-radius:18px;padding:0;overflow:hidden}.editor-dialog::backdrop{background:var(--backdrop)}.editor-dialog__form{flex-direction:column;max-height:min(760px,100vh - 32px);display:flex}.editor-dialog__header{border-bottom:1px solid var(--border);justify-content:space-between;align-items:flex-start;gap:20px;padding:20px 22px 17px;display:flex}.editor-dialog__eyebrow{color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-size:9px;font-weight:800;display:block}.editor-dialog__title{margin:0;font-family:Syne,sans-serif;font-size:20px}.editor-dialog__body{padding:20px 22px 24px;overflow-y:auto}#layout-editor{width:min(1320px,100vw - 32px)}.layout-editor-shell{grid-template-columns:minmax(360px,.82fr) minmax(520px,1.18fr);align-items:start;gap:24px;display:grid}#layout-editor-fields{min-width:0}.bbcode-live-preview{border:1px solid var(--border);background:var(--page);border-radius:14px;min-width:0;position:sticky;top:0;overflow:hidden}.bbcode-live-preview__header{border-bottom:1px solid var(--border);justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;display:flex}.bbcode-live-preview__title{letter-spacing:.06em;text-transform:uppercase;margin:0;font-size:10px;font-weight:800}.bbcode-live-preview__status{color:var(--muted);letter-spacing:.08em;text-transform:uppercase;align-items:center;gap:6px;font-size:8px;font-weight:800;display:inline-flex}.bbcode-live-preview__status:before{content:"";background:var(--success);border-radius:50%;width:6px;height:6px}.bbcode-live-preview__canvas{--directory-purple:#821f88;--directory-purple-dark:#57125b;--directory-purple-deep:#500b59;--directory-purple-bright:#a22ca9;--directory-purple-role:#8a188c;--directory-lilac:#dacbdb;--directory-lilac-soft:#f0f0f0;--directory-lilac-muted:#c8b9c9;--directory-ink:#352838;--directory-white:#fff;--directory-green:#1ca14e;--directory-discord:#5865f2;--directory-project:orchid;--directory-pending:#b38171;--directory-danger:#b83243;--directory-danger-soft:#b832432e;--directory-shadow:0 2px 5px #14000024;background:#e7e5e8;padding:12px}.bbcode-live-preview__palette{grid-template-rows:repeat(3,minmax(30px,auto));grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;gap:6px 7px;margin-bottom:12px;display:grid}.bbcode-preview-color{background:var(--preview-swatch,var(--surface-muted));min-width:0;min-height:30px;color:var(--preview-chip-text,#fff);font-family:var(--component-font);text-align:center;text-transform:uppercase;border:0;border-radius:8px;place-items:center;padding:6px 8px;font-size:8px;font-weight:800;line-height:1.1;display:grid}.bbcode-preview-color.is-invalid{border:1px dashed var(--danger);background:var(--surface-muted);color:var(--danger)}.bbcode-forum-preview{border:3px solid var(--preview-color-1);background:var(--preview-color-2);border-radius:14px;padding:7px;overflow:hidden}.bbcode-live-preview__banner{aspect-ratio:4.25;border:1px solid var(--preview-color-5);background:color-mix(in srgb,var(--preview-color-2)76%,#000);border-radius:9px;place-items:center;width:100%;min-height:104px;display:grid;position:relative;overflow:hidden}.bbcode-live-preview__banner img{object-fit:cover;width:100%;height:100%}.bbcode-live-preview__banner img[hidden],.bbcode-live-preview__placeholder[hidden]{display:none}.bbcode-live-preview__placeholder{color:#fff;text-align:center;max-width:220px;padding:16px;font-size:9px;line-height:1.55}.bbcode-live-preview__mock{background:var(--preview-color-4);color:#171717;border:2px solid #ffffffe6;border-radius:12px;margin-top:8px;padding:28px 10px 12px;position:relative}.bbcode-live-preview__heading{background:var(--preview-color-1);color:#fff;min-width:190px;font-family:var(--component-font);text-align:center;text-transform:uppercase;border-radius:999px;margin:0;padding:10px 18px;font-size:9px;font-weight:800;line-height:1;position:absolute;top:-17px;left:50%;transform:translate(-50%)}.bbcode-preview-role{border:1px solid var(--preview-color-3);border-radius:10px;margin-top:20px;padding:18px 9px 10px;position:relative}.bbcode-preview-role:first-of-type{margin-top:12px}.bbcode-preview-role__title{background:var(--preview-color-4);max-width:calc(100% - 92px);color:var(--preview-color-1);font-family:var(--component-font);text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap;padding:0 7px;font-size:8px;font-weight:800;line-height:14px;position:absolute;top:-7px;left:13px;overflow:hidden}.bbcode-preview-role__capacity{background:var(--preview-color-1);color:#fff;min-width:44px;min-height:30px;font-family:var(--component-font);border-radius:999px;place-items:center;padding:5px 9px;font-size:8px;font-weight:800;display:grid;position:absolute;top:-16px;right:12px}.bbcode-preview-leaders{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;display:grid}.bbcode-preview-member-card{background:var(--preview-color-1);color:#fff;border-radius:10px;grid-template-columns:38px minmax(0,1fr);align-items:center;gap:7px;min-width:0;min-height:62px;padding:7px;display:grid}.bbcode-preview-member-card__avatar{background:color-mix(in srgb,var(--preview-color-4)88%,transparent);width:38px;height:48px;color:var(--preview-color-2);border-radius:8px 8px 3px 3px;align-self:end;place-items:center;font-size:22px;display:grid}.bbcode-preview-member-card__copy{min-width:0}.bbcode-preview-member-card__copy strong{font-family:var(--component-font);text-overflow:ellipsis;white-space:nowrap;font-size:8px;font-weight:800;display:block;overflow:hidden}.bbcode-preview-member-card__copy small{background:var(--preview-color-5);color:#fff;text-overflow:ellipsis;white-space:nowrap;border-radius:5px;max-width:100%;margin-top:7px;padding:5px 6px;font-size:7px;font-weight:700;display:inline-block;overflow:hidden}.bbcode-preview-simple-member{min-width:0;color:var(--preview-color-1);font-family:var(--component-font);align-items:center;gap:6px;font-size:8px;font-weight:800;display:flex}.bbcode-preview-simple-member:before{content:"●";color:var(--preview-color-5);font-size:9px}.bbcode-preview-ministry-list{gap:7px;display:grid}.bbcode-preview-ministry-member{color:#171717;min-width:0;font-family:var(--component-font);align-items:center;gap:6px;font-size:8px;font-weight:700;display:flex}.bbcode-preview-ministry-member>span:nth-child(2){text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.bbcode-preview-role-icon{background:var(--preview-color-5);color:#fff;border-radius:7px;flex:0 0 24px;place-items:center;width:24px;height:24px;font-size:11px;display:grid}.bbcode-preview-subgroup{background:var(--preview-subgroup-color);border-radius:6px;flex:0 0 34px;width:34px;height:22px}.bbcode-preview-subgroup--main{--preview-subgroup-color:var(--preview-subgroups)}.bbcode-preview-subgroup--lrl{--preview-subgroup-color:var(--preview-lrl)}.bbcode-preview-subgroup--pa{--preview-subgroup-color:var(--preview-pa)}.bbcode-preview-subgroup--g{--preview-subgroup-color:var(--preview-g)}.bbcode-preview-ministry-member time{color:color-mix(in srgb,#171717 72%,var(--preview-color-5));white-space:nowrap;margin-left:auto;font-size:7px}.directory-site-preview{width:100%;color:var(--directory-ink);font-family:Poppins,Arial,Helvetica,sans-serif;font-size:7px}.directory-preview-shell{background:var(--directory-purple);box-shadow:var(--directory-shadow);border-radius:10px;padding:4px;overflow:hidden}.directory-preview-inner{background:var(--directory-purple-dark);border-radius:8px;padding:5px;overflow:hidden}.directory-preview-hero{background:var(--directory-purple-dark);border-radius:6px;place-items:center;min-height:74px;display:grid;position:relative;overflow:hidden}.directory-preview-hero img{object-fit:cover;width:100%;height:74px}.directory-preview-hero img[hidden],.directory-preview-placeholder[hidden]{display:none}.directory-preview-placeholder{max-width:220px;color:color-mix(in srgb,var(--directory-white)86%,transparent);text-align:center;padding:14px;font-size:8px;line-height:1.45}.directory-preview-title{z-index:3;background:var(--directory-purple-bright);width:max-content;max-width:calc(100% - 24px);box-shadow:var(--directory-shadow);color:var(--directory-white);letter-spacing:.03em;text-align:center;border-radius:999px;margin:-5px auto 0;padding:8px 27px;font-size:8px;font-weight:700;line-height:1;position:relative}.directory-preview-frame{z-index:2;background:var(--directory-lilac-soft);border-radius:10px;margin-top:-14px;padding:2px;position:relative}.directory-preview-content{background:var(--directory-lilac);border-radius:8px;padding:25px 12px 11px}.directory-preview-communities{justify-content:center;gap:7px;margin-bottom:12px;display:flex}.directory-preview-community{min-width:78px;color:var(--directory-white);text-align:center;border-radius:6px;padding:6px 9px;font-weight:700;box-shadow:0 2px 4px #00000029}.directory-preview-community--whatsapp{background:var(--directory-green)}.directory-preview-community--discord{background:var(--directory-discord)}.directory-preview-controls{grid-template-columns:minmax(0,1fr) minmax(115px,.42fr);gap:6px;width:min(100%,390px);margin:0 auto 17px;display:grid}.directory-preview-control{border:1px solid color-mix(in srgb,var(--directory-purple)18%,transparent);color:color-mix(in srgb,var(--directory-ink)75%,transparent);text-overflow:ellipsis;white-space:nowrap;background:#ffffff47;border-radius:7px;padding:7px 9px;font-weight:500;overflow:hidden}.directory-preview-rank{border:1px solid var(--directory-purple);background:var(--directory-lilac);border-radius:10px;margin:0 0 17px;padding:18px 9px 9px;position:relative}.directory-preview-rank__title{z-index:2;background:var(--directory-lilac);max-width:calc(100% - 88px);min-height:20px;color:var(--directory-purple);border-radius:10px;align-items:center;gap:4px;margin:0;padding:2px 7px;font-size:8px;font-weight:700;line-height:1.2;display:flex;position:absolute;top:-10px;left:14px}.directory-preview-count{z-index:2;background:var(--directory-purple);min-width:51px;min-height:20px;color:var(--directory-white);border-radius:999px;place-items:center;padding:3px 7px;font-size:7px;font-weight:700;display:grid;position:absolute;top:-10px;right:14px}.directory-preview-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;display:grid}.directory-preview-featured{background:var(--directory-purple);min-height:57px;color:var(--directory-white);border-radius:6px;align-items:flex-end;padding:5px 5px 5px 62px;display:flex;position:relative}.directory-preview-avatar{object-fit:contain;object-position:center bottom;pointer-events:none;width:58px;height:78px;position:absolute;bottom:0;left:2px}.directory-preview-featured__copy{width:100%;min-width:0}.directory-preview-featured__name{text-overflow:ellipsis;white-space:nowrap;margin-bottom:4px;font-size:8px;font-weight:700;display:block;overflow:hidden}.directory-preview-dates{background:var(--directory-purple-deep);text-align:center;text-overflow:ellipsis;white-space:nowrap;border-radius:4px;padding:5px 4px;font-size:6px;font-weight:600;display:block;overflow:hidden}.directory-preview-member-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px;display:grid}.directory-preview-member{border-radius:6px;grid-template-columns:17px minmax(0,1fr) auto;align-items:center;gap:4px;min-width:0;padding:4px;display:grid}.directory-preview-member--danger{border-left:2px solid var(--directory-danger);background:var(--directory-danger-soft)}.directory-preview-member__order{color:var(--directory-purple);text-align:center;font-size:6px;font-weight:800}.directory-preview-member__copy{min-width:0}.directory-preview-member__copy strong,.directory-preview-member__copy small{text-overflow:ellipsis;white-space:nowrap;display:block;overflow:hidden}.directory-preview-member__copy strong{font-size:7px}.directory-preview-member__copy small{color:color-mix(in srgb,var(--directory-ink)72%,transparent);font-size:6px}.directory-preview-badge{background:var(--directory-purple-role);color:var(--directory-white);border-radius:5px;padding:4px 5px;font-size:6px;font-weight:800}.directory-preview-badge--license{background:var(--directory-purple-deep)}.directory-preview-badge--project{background:var(--directory-project)}.directory-preview-badge--pending{background:var(--directory-pending)}.directory-preview-utility{background:var(--directory-purple);color:var(--directory-white);border-radius:6px;justify-content:space-between;align-items:center;margin-top:6px;padding:7px 9px;font-size:7px;font-weight:700;display:flex}.directory-preview-footer{color:color-mix(in srgb,var(--directory-white)88%,transparent);text-align:center;padding:8px 7px 5px;font-size:6px}@media (width<=760px){.directory-preview-featured-grid,.directory-preview-member-list,.directory-preview-controls{grid-template-columns:1fr}}.editor-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;display:grid}.add-member-boolean-group{grid-column:1/-1;grid-template-columns:repeat(3,max-content);justify-content:start;gap:8px;display:grid}.add-member-boolean-group[hidden]{display:none}.add-member-boolean-group .form-field{align-content:start;justify-items:start}.editor-fieldset+.editor-fieldset{border-top:1px solid var(--border);margin-top:24px;padding-top:22px}.editor-fieldset__title{margin:0;font-size:12px}.editor-fieldset__description{color:var(--muted);margin:5px 0 14px;font-size:9px;line-height:1.55}.form-field{gap:7px;display:grid}.form-field--wide{grid-column:1/-1}.form-field label{color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-size:9px;font-weight:800}.form-field>input,.form-field>select{border:1px solid var(--border);background:var(--page);width:100%;height:42px;color:var(--text);border-radius:9px;outline:0;padding:0 12px;font-size:11px;transition:border-color .16s}.form-field>select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted)50%),linear-gradient(135deg,var(--muted)50%,transparent 50%);cursor:pointer;background-position:calc(100% - 16px),calc(100% - 12px);background-repeat:no-repeat;background-size:4px 4px;padding-right:30px}.form-field>input:focus,.form-field>select:focus{border-color:var(--accent)}.form-field .date-control__value{font-size:11px}.editor-dialog__footer{border-top:1px solid var(--border);background:color-mix(in srgb,var(--surface-muted)42%,transparent);justify-content:flex-end;align-items:center;gap:9px;padding:14px 22px;display:flex}.dialog-primary{border:1px solid var(--accent);background:var(--accent);min-height:38px;color:var(--page);cursor:pointer;letter-spacing:.04em;text-transform:uppercase;border-radius:10px;padding:0 15px;font-size:10px;font-weight:800}.dialog-primary:disabled{border-color:var(--border);background:var(--border);color:var(--muted);cursor:wait}.publish-dialog{width:min(900px,100vw - 32px)}.requirements-dialog{width:min(820px,100vw - 32px)}.requirements-summary{border:1px solid var(--border);background:var(--surface-muted);border-radius:12px;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px;padding:16px;display:flex}.requirements-summary__copy{min-width:0}.requirements-summary__copy strong,.requirements-summary__copy span{display:block}.requirements-summary__copy strong{color:var(--text);font-size:12px}.requirements-summary__copy span{color:var(--muted);margin-top:5px;font-size:10px;line-height:1.5}.requirements-list{gap:10px;display:grid}.requirement-card{border:1px solid var(--border);background:var(--page);border-radius:12px;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px 16px;display:grid}.requirement-card.is-invalid{border-color:color-mix(in srgb,var(--danger)58%,var(--border));background:color-mix(in srgb,var(--danger)6%,var(--page))}.requirement-card__title,.requirement-card__meta,.requirement-card__action{margin:0}.requirement-card__title{color:var(--text);font-size:11px;font-weight:800}.requirement-card__meta,.requirement-card__action{color:var(--muted);margin-top:5px;font-size:9px;line-height:1.5}.requirement-card__state{color:var(--success);white-space:nowrap;align-self:start;font-size:9px;font-weight:800}.requirement-card.is-invalid .requirement-card__state{color:var(--danger)}.requirements-empty{border:1px dashed var(--border);color:var(--muted);text-align:center;border-radius:12px;margin:0;padding:24px 16px;font-size:10px;line-height:1.6}.requirements-tag-field{border:0;margin:0;padding:0}.requirements-tag-field legend{color:var(--text);margin-bottom:10px;font-size:10px;font-weight:800}.requirements-tag-inputs{gap:10px;display:flex}.requirements-tag-inputs input{border:2px solid var(--control-border);background:var(--control-background);width:54px;height:54px;color:var(--text);font-family:var(--component-font);text-align:center;text-transform:none;border-radius:12px;font-size:20px;font-weight:800}.requirements-tag-inputs input:focus{border-color:var(--control-border-strong);outline:2px solid var(--accent-soft);outline-offset:2px}.requirements-tag-field small{color:var(--muted);margin-top:7px;font-size:9px;line-height:1.5;display:block}.publish-mode-switch{border:1px solid var(--border);background:var(--page);border-radius:10px;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:18px;padding:3px;display:inline-grid}.publish-mode-button{min-height:34px;color:var(--muted);cursor:pointer;letter-spacing:.04em;text-transform:uppercase;background:0 0;border:0;border-radius:7px;padding:0 16px;font-size:10px;font-weight:800}.publish-mode-button.is-active{background:var(--surface-muted);color:var(--text)}.publish-panel[hidden]{display:none}.publish-manual-list{gap:12px;display:grid}.publish-code-card{border:1px solid var(--border);background:var(--page);border-radius:12px;overflow:hidden}.publish-code-card__header{border-bottom:1px solid var(--border);justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;display:flex}.publish-code-card__title{letter-spacing:.05em;text-transform:uppercase;margin:0;font-size:10px;font-weight:800}.publish-code{resize:vertical;width:100%;min-height:128px;color:var(--muted);background:0 0;border:0;outline:0;padding:13px;font:10px/1.55 Consolas,Courier New,monospace;display:block}.publish-auto-description{color:var(--muted);margin:0 0 14px;font-size:10px;line-height:1.6}.publish-sequence{text-align:left;justify-content:space-between;align-items:center;gap:18px;width:100%;min-height:58px;margin-bottom:12px;padding:12px 15px;display:flex}.publish-sequence__copy{gap:3px;display:grid}.publish-sequence__copy strong{font-size:11px}.publish-sequence__copy span{color:currentColor;opacity:.72;font-size:9px;font-weight:600}.publish-sequence__arrow{flex:none;font-size:17px;line-height:1}.publish-auto-actions{border:1px solid var(--border);border-radius:12px;grid-template-columns:repeat(3,minmax(0,1fr));display:grid;overflow:hidden}.publish-action-card{border-right:1px solid var(--border);background:var(--page);flex-direction:column;min-width:0;transition:background-color .18s;display:flex}.publish-action-card:last-child{border-right:0}.publish-action-card.is-running,.publish-action-card.is-waiting{background:var(--surface-muted)}.publish-action-card.is-success{background:color-mix(in srgb,var(--success)7%,var(--page))}.publish-action-card.is-error{background:color-mix(in srgb,var(--danger)7%,var(--page))}.publish-action{width:100%;min-height:104px;color:var(--text);cursor:pointer;text-align:left;background:0 0;border:0;flex-direction:column;flex:auto;justify-content:center;align-items:flex-start;gap:6px;padding:16px;display:flex}.publish-action:hover{background:var(--surface-muted)}.publish-action:disabled{color:var(--muted);cursor:wait;opacity:.65}.publish-action strong{font-size:11px}.publish-action span{color:var(--muted);font-size:9px;line-height:1.45}.publish-action-card__result{border-top:1px solid var(--border);justify-content:space-between;align-items:center;gap:8px;min-height:42px;padding:9px 12px;display:flex}.publish-action-state{color:var(--muted);letter-spacing:.04em;text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap;font-size:8px;font-weight:800;overflow:hidden}.publish-action-card.is-running .publish-action-state,.publish-action-card.is-waiting .publish-action-state{color:var(--accent)}.publish-action-card.is-success .publish-action-state{color:var(--success)}.publish-action-card.is-error .publish-action-state{color:var(--danger)}.publish-open-link{color:var(--accent);letter-spacing:.03em;text-transform:uppercase;flex:none;align-items:center;gap:4px;font-size:8px;font-weight:800;text-decoration:none;display:inline-flex}.publish-open-link:hover{color:var(--text)}.publish-open-link[hidden]{display:none}.publish-status{min-height:18px;color:var(--muted);text-align:center;margin:14px 0 0;font-size:9px}.toast-container{z-index:1000;pointer-events:none;flex-direction:column;align-items:center;gap:8px;width:min(390px,100% - 24px);display:flex;position:fixed;bottom:16px;left:50%;transform:translate(-50%)}.toast{--toast-color:var(--accent);--toast-background:color-mix(in srgb,var(--accent)12%,var(--surface-muted));border:1px solid color-mix(in srgb,var(--toast-color)60%,var(--border));background:var(--toast-background);width:48px;height:48px;min-height:48px;color:var(--text);opacity:0;transform-origin:bottom;border-radius:999px;align-items:center;padding:0;transition:width .52s cubic-bezier(.16,1,.3,1),opacity .28s,transform .42s cubic-bezier(.16,1,.3,1);display:flex;overflow:hidden;transform:translateY(28px)scale(.82)}.toast.is-visible{opacity:1;transform:translateY(0)scale(1)}.toast.is-leaving{opacity:0;transform:translateY(28px)scale(.88)}.toast__icon{width:46px;height:46px;color:var(--toast-color);flex:0 0 46px;place-items:center;display:grid}.toast__icon svg{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round;width:22px;height:22px}.toast.is-visible .toast__icon svg{animation:.48s cubic-bezier(.34,1.56,.64,1) both toast-icon-pop}.toast.is-visible .toast__icon-shape{stroke-dasharray:48;stroke-dashoffset:48px;animation:.52s .1s forwards toast-icon-draw}.toast__content{opacity:0;flex:1;min-width:0;padding-right:17px;transition:opacity .18s,transform .26s;transform:translate(-8px)}.toast__title{color:var(--text);text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:800;line-height:1.3;display:block;overflow:hidden}.toast__message{color:var(--muted);text-overflow:ellipsis;white-space:nowrap;margin-top:3px;font-size:9px;line-height:1.35;display:block;overflow:hidden}.toast[data-type=success]{--toast-color:var(--success);--toast-background:color-mix(in srgb,var(--success)12%,var(--surface-muted))}.toast[data-type=error]{--toast-color:var(--danger);--toast-background:color-mix(in srgb,var(--danger)12%,var(--surface-muted))}.toast[data-type=warning]{--toast-color:var(--warning);--toast-background:color-mix(in srgb,var(--warning)12%,var(--surface-muted))}.toast[data-type=info]{--toast-color:var(--accent);--toast-background:color-mix(in srgb,var(--accent)12%,var(--surface-muted))}@keyframes toast-icon-pop{0%{opacity:0;transform:scale(.35)rotate(-12deg)}to{opacity:1;transform:scale(1)rotate(0)}}@keyframes toast-icon-draw{to{stroke-dashoffset:0}}@media (width<=767px){.sidebar{width:80px;transition:transform .22s;position:fixed;inset:0 auto 0 0;transform:translate(-100%)}.sidebar.is-open{transform:translate(0)}.sidebar.is-open+.sidebar-overlay{opacity:1;visibility:visible}.topbar{min-height:72px;padding:0 16px}.topbar__left,.topbar__right{gap:10px}.theme-toggle,.vision-toggle{flex-basis:38px;width:38px;height:38px}.mobile-menu-button{display:grid}.topbar-user__role{display:none}.topbar-user__name{max-width:105px}.topbar-user__head{width:40px;height:40px}.content-stage{border-top-left-radius:22px}.page{padding:38px 18px 76px}.workspace__header{flex-direction:column;align-items:flex-start;gap:7px}.integrations{grid-template-columns:1fr}.integration{border-right:0;border-bottom:1px solid var(--border)}.integration:last-child{border-bottom:0}.workspace__actions{flex-wrap:wrap;justify-content:space-between;width:100%}.member-edit-actions{margin-left:auto}.workspace-toolbar{flex-direction:column;align-items:stretch}.search-field{width:100%}.table-result{padding-left:2px}.workspace__footer{flex-direction:column;align-items:flex-start}.role-list{grid-template-columns:1fr}.role-card{border-right:0}.layout-resources,.additional-access-form{grid-template-columns:1fr}.additional-access-form__submit{width:100%}.layout-resource{border-right:0;border-bottom:1px solid var(--border);min-height:0}.editor-grid{grid-template-columns:1fr}.requirements-summary{flex-direction:column;align-items:stretch}.requirement-card{grid-template-columns:1fr}.form-field--wide{grid-column:auto}.layout-editor-shell{grid-template-columns:1fr}.bbcode-live-preview{grid-row:1;position:static}.publish-auto-actions{grid-template-columns:1fr}.publish-action-card{border-right:0;border-bottom:1px solid var(--border)}.publish-action-card:last-child{border-bottom:0}.publish-action{min-height:82px}}@media (width<=420px){.topbar-user__details{display:none}}@media (width>=768px){.sidebar-overlay{display:none}}.content-stage,.editor-dialog,.vision-panel,.toast{font-family:var(--component-font)}.content-stage .workspace,.content-stage .settings-section,.editor-dialog,.vision-panel{border-color:var(--control-border);background:var(--panel-elevated);border-radius:20px}.workspace__header,.workspace-toolbar,.workspace__footer,.settings-section__header,.editor-dialog__header,.editor-dialog__footer,.publish-code-card__header,.publish-action-card__result{border-color:var(--control-border)}.workspace__header,.settings-section__header,.editor-dialog__header{background:color-mix(in srgb,var(--accent)3%,var(--panel-elevated))}.workspace-toolbar,.editor-dialog__footer{background:color-mix(in srgb,var(--panel-soft)88%,transparent)}.integration,.role-card,.layout-resource,.publish-code-card,.publish-action-card{border:1px solid var(--control-border);background:var(--control-background);border-radius:12px;transition:border-color .18s,background-color .18s,transform .18s}.role-card:hover,.layout-resource:hover{border-color:var(--control-border-strong);background:var(--control-background-hover);transform:translateY(-1px)}.layout-resource__label,.editor-dialog__eyebrow{color:var(--accent-bright)}.integrations,.role-list,.layout-resources,.publish-auto-actions{border-color:var(--control-border);gap:10px;padding:10px;overflow:visible}.integration,.role-card,.layout-resource,.publish-action-card{border-right:1px solid var(--control-border);border-bottom:1px solid var(--control-border)}.publish-auto-actions{border:1px solid var(--control-border);background:var(--panel-soft);border-radius:14px}.publish-action-card.is-running,.publish-action-card.is-waiting{border-color:var(--control-border-strong);background:color-mix(in srgb,var(--accent)10%,var(--control-background))}.publish-action:hover:not(:disabled){background:var(--control-background-hover)}.content-stage .icon-button,.content-stage .text-button,.content-stage .secondary-button,.editor-dialog .secondary-button,.dialog-primary,.primary-button,.publish-mode-button,.vision-scale-button,.vision-contrast-button,.vision-reset-button{border:2px solid var(--control-border);background:var(--control-background);color:var(--muted);font-family:var(--component-font);border-radius:12px;font-weight:600;transition:border-color .18s,background-color .18s,color .18s,transform .18s}.content-stage .icon-button:not(.is-danger):hover:not(:disabled),.content-stage .text-button:not(.is-danger):hover:not(:disabled),.content-stage .secondary-button:hover:not(:disabled),.editor-dialog .secondary-button:hover:not(:disabled),.primary-button:hover:not(:disabled),.publish-mode-button:hover:not(:disabled),.vision-scale-button:hover:not(:disabled),.vision-contrast-button:hover:not(:disabled),.vision-reset-button:hover:not(:disabled){border-color:var(--control-border-strong);background:var(--control-background-hover);color:var(--text);transform:translateY(-1px)}.content-stage .icon-button.is-accent,.content-stage .text-button.is-accent,.publish-mode-button.is-active,.vision-scale-button[aria-pressed=true],.vision-contrast-button[aria-pressed=true]{border-color:var(--control-border-strong);background:color-mix(in srgb,var(--accent)15%,var(--control-background));color:var(--accent-bright)}.content-stage .icon-button.is-danger:hover:not(:disabled),.content-stage .text-button.is-danger:hover:not(:disabled){transform:translateY(-1px)}.dialog-primary{border-width:0;border-color:var(--accent);background:var(--accent);color:var(--accent-contrast);border-radius:12px}.primary-button{border-color:var(--control-border-strong);background:color-mix(in srgb,var(--accent)13%,var(--control-background));color:var(--accent-bright);border-radius:12px}.dialog-primary:hover:not(:disabled){border-color:var(--accent-bright);background:var(--accent-bright);color:var(--accent-contrast);transform:translateY(-1px)}.publish-mode-switch{background:0 0;border:0;gap:8px;padding:0}.publish-mode-button{border-radius:12px;min-height:40px}.search-field input,.table-input,.table-select,.date-control,.form-field>input,.form-field>select{border-width:2px;border-color:var(--control-border);background-color:var(--control-background);font-family:var(--component-font);border-radius:12px;transition:border-color .18s,background-color .18s}.search-field input{border-radius:12px;height:46px;padding-right:16px}.form-field>input,.form-field>select{height:52px;padding-inline:16px}.form-field .date-control{border-radius:12px;height:52px}.table-input,.table-select,.date-control{border-width:2px;border-radius:10px}.table-select,.form-field>select{background-image:linear-gradient(45deg,transparent 50%,var(--accent-bright)50%),linear-gradient(135deg,var(--accent-bright)50%,transparent 50%)}.search-field input:hover,.table-input:hover,.table-select:hover,.date-control:hover,.form-field>input:hover,.form-field>select:hover{border-color:color-mix(in srgb,var(--control-border-strong)62%,var(--control-border))}.search-field input:focus,.table-input:focus,.table-select:focus,.date-control:focus-within,.form-field>input:focus,.form-field>select:focus{border-color:var(--control-border-strong);background-color:var(--control-background-hover)}.table-select option,.form-field select option{background:var(--control-background);color:var(--text)}.table-select option:checked,.form-field select option:checked{background:var(--accent);color:var(--accent-contrast)}.member-select,.boolean-toggle{border-color:var(--control-border);background:var(--control-background)}.member-select:hover,.boolean-toggle:not(:disabled):hover{border-color:var(--control-border-strong)}.member-select:checked{border-color:var(--accent);background:var(--accent)}.members-table th{background:var(--panel-soft)}.bbcode-live-preview,.publish-code-card,.publish-sequence{border-color:var(--control-border);background:var(--control-background)}.editor-fieldset+.editor-fieldset{border-color:var(--control-border)}.members-table-wrap{background:var(--panel-elevated);padding:0 10px 10px}.members-table{border-collapse:separate;border-spacing:0 8px;font-family:var(--component-font)}.members-table th,.members-table td{border-bottom:0;border-right:0}.members-table th{border-top:1px solid var(--control-border);border-bottom:1px solid var(--control-border);background:var(--panel-soft);height:40px;color:var(--accent-bright);letter-spacing:.12em;font-size:10px;font-weight:600}.members-table th:first-child{border-left:1px solid var(--control-border);border-radius:12px 0 0 12px}.members-table th:last-child{border-right:1px solid var(--control-border);border-radius:0 12px 12px 0}.members-table tbody td{border-top:1px solid var(--control-border);border-bottom:1px solid var(--control-border);background:var(--control-background);transition:border-color .18s,background-color .18s}.members-table tbody td:first-child{border-left:1px solid var(--control-border);border-radius:12px 0 0 12px}.members-table tbody td:last-child{border-right:1px solid var(--control-border);border-radius:0 12px 12px 0}.members-table tbody tr:hover td{border-color:var(--control-border-strong);background:var(--control-background-hover)}.members-table tbody tr.is-saved td{border-color:color-mix(in srgb,var(--success)28%,var(--control-border));background:color-mix(in srgb,var(--success)6%,var(--control-background))}.members-table tbody tr.is-dirty td{border-color:color-mix(in srgb,var(--accent)42%,var(--control-border));background:color-mix(in srgb,var(--accent)9%,var(--control-background))}.members-table tbody tr.is-selected td{border-color:color-mix(in srgb,var(--danger)38%,var(--control-border));background:color-mix(in srgb,var(--danger)8%,var(--control-background))}.table-cell{font-size:11px;font-weight:500}.table-state{border:1px solid var(--control-border);background:var(--control-background);border-radius:12px;margin:10px 0 0}.toast-container{gap:10px;width:min(410px,100% - 24px);bottom:24px}.toast{border:1px solid color-mix(in srgb,var(--toast-color)58%,var(--control-border));background:var(--toast-background);transform-origin:bottom;border-radius:14px;width:52px;height:52px;min-height:52px;padding:0;transition:width .48s cubic-bezier(.16,1,.3,1),opacity .24s,transform .38s cubic-bezier(.16,1,.3,1);transform:translateY(24px)scale(.86)}.toast.is-visible{transform:translateY(0)scale(1)}.toast.is-expanded{width:min(400px,100vw - 24px)}.toast.is-leaving{transform:translateY(24px)scale(.9)}.toast__icon{border-right:1px solid #0000;flex-basis:50px;width:50px;height:50px;transition:border-color .18s}.toast.is-expanded .toast__icon{border-right-color:color-mix(in srgb,var(--toast-color)24%,var(--control-border))}.toast__icon svg{width:20px;height:20px}.toast__content{opacity:0;padding:10px 16px 10px 13px;transition:opacity .18s,transform .24s;transform:translate(-8px)}.toast.is-expanded .toast__content{opacity:1;transition-delay:.12s;transform:translate(0)}.toast__title{font-size:12px;font-weight:700}.toast__message{margin-top:4px;font-size:10px}.toast[data-type=success]{--toast-background:color-mix(in srgb,var(--success)9%,var(--panel-elevated))}.toast[data-type=error]{--toast-background:color-mix(in srgb,var(--danger)9%,var(--panel-elevated))}.toast[data-type=warning]{--toast-background:color-mix(in srgb,var(--warning)9%,var(--panel-elevated))}.toast[data-type=info]{--toast-background:color-mix(in srgb,var(--accent)11%,var(--panel-elevated))}@media (width<=767px){.integrations,.role-list,.layout-resources,.publish-auto-actions{gap:8px;padding:8px}}@media (prefers-reduced-motion:reduce){*,:before,:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}</style></head><body><div class=app-shell><aside aria-label="Navegação principal" class=sidebar id=app-sidebar><a aria-label="RondList — membros" class=sidebar__logo href=#membros id=sidebar-logo> <img alt=RondList src=https://www.habbo.com.br/habbo-imaging/badge/b09024s43131s50134s17113s171156ce0e38b73dfada6ba2b3f411d65e69b.gif> </a><nav class=sidebar__nav><button aria-label="Controle de membros" class="nav-item is-active" title="Controle de membros" aria-current=page data-view-target=members id=nav-members type=button><svg viewbox="0 0 24 24" aria-hidden=true><circle cx=8 cy=7.5 r=3></circle><path d="M3.5 19v-1.3A4.7 4.7 0 0 1 8.2 13h.6a4.7 4.7 0 0 1 4.7 4.7V19"></path><path d="M16 7h5M16 12h5M16 17h5"></path></svg></button><button aria-label="Configurações da RondList" title="Configurações da RondList" class=nav-item data-view-target=settings hidden id=nav-settings type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx=16 cy=7 r=2></circle><circle cx=8 cy=17 r=2></circle><path d="M4 12h4M12 12h8"></path><circle cx=10 cy=12 r=2></circle></svg></button></nav><footer class=sidebar__footer><span class=sidebar__wordmark>RONDLIST</span><small class=sidebar__credit> Desenvolvido por <strong>.Brendon</strong> </small></footer></aside><button aria-label="Fechar menu" class=sidebar-overlay id=sidebar-overlay tabindex=-1 type=button></button><div class=main-column><header class=topbar><div class=topbar__left><button aria-label="Abrir menu principal" aria-controls=app-sidebar aria-expanded=false class=mobile-menu-button id=mobile-menu-button type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button><div><span class=topbar__eyebrow>RondList</span><p class=topbar__title id=topbar-page-title>Controle de membros</p></div></div><div class=topbar__right><button aria-label="Abrir ajustes para baixa visão" title="Acessibilidade visual" aria-controls=vision-panel aria-expanded=false class=vision-toggle id=vision-toggle type=button><span aria-hidden=true class=vision-toggle__label>Aa</span></button><button aria-label="Alternar tema" title="Alternar tema" class=theme-toggle id=theme-toggle type=button><svg viewbox="0 0 24 24" aria-hidden=true class=theme-toggle__sun><circle cx=12 cy=12 r=3.5></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg> <svg viewbox="0 0 24 24" aria-hidden=true class=theme-toggle__moon><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path></svg></button><section aria-labelledby=vision-panel-title aria-modal=false class=vision-panel hidden id=vision-panel role=dialog><h2 class=vision-panel__title id=vision-panel-title>Acessibilidade visual</h2><p class=vision-panel__description>Amplie a interface e reforce o contraste conforme sua necessidade.</p><span class=vision-panel__label>Tamanho da interface</span><div aria-label="Tamanho da interface" class=vision-scale-group role=group><button aria-pressed=true class=vision-scale-button data-vision-scale-option=normal type=button>Padrão</button><button aria-pressed=false class=vision-scale-button data-vision-scale-option=large type=button>Grande</button><button aria-pressed=false class=vision-scale-button data-vision-scale-option=larger type=button>Maior</button></div><button aria-pressed=false class=vision-contrast-button id=vision-contrast type=button><span>Contraste reforçado</span> <strong id=vision-contrast-state>Desativado</strong></button><button class=vision-reset-button id=vision-reset type=button>Restaurar padrão</button></section><div class=topbar-user id=topbar-user><div class=topbar-user__details><span class=topbar-user__name id=user-display-name>—</span><span class=topbar-user__role id=user-display-role>—</span></div><img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=official_habbo&direction=2&head_direction=3&gesture=sml&size=m&headonly=1" alt class=topbar-user__head id=user-avatar></div></div></header><main class=content-stage><div class=page><div class=page__inner><section aria-labelledby=page-title class=app-view data-view=members id=view-members><section class="hero hero--members"><p class=eyebrow>Companhia dos Professores</p><h1 id=page-title>Listagem de Membros.</h1><p class=hero__description>Consulte a base original, encontre qualquer registro e salve alterações mantendo os dados originais protegidos.</p></section><section aria-labelledby=workspace-title class=workspace><header class=workspace__header><div class=workspace__heading><h2 class=workspace__title id=workspace-title>Registros de membros</h2><p class=workspace__subtitle id=workspace-subtitle>Os dados originais permanecem protegidos.</p></div><div class=workspace__actions><span class=workspace__state id=workspace-state>Conectando</span><div aria-label="Ações da lista de membros" class=member-edit-actions role=toolbar><button aria-label="Recarregar lista" class=icon-button id=refresh-members title=Recarregar type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M20 5v6h-6"></path><path d="M18.7 16.5A8 8 0 1 1 20 11"></path></svg></button><button aria-label="Adicionar membro" class="icon-button is-accent" disabled id=add-member title=Adicionar type=button><svg viewbox="0 0 24 24" aria-hidden=true><circle cx=8.5 cy=8 r=3></circle><path d="M3.5 19v-1.2A4.8 4.8 0 0 1 8.3 13h.4a4.8 4.8 0 0 1 4.8 4.8V19"></path><path d="M18 7v6M15 10h6"></path></svg></button><button aria-label="Editar lista" class=icon-button disabled id=edit-members title=Editar type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M4 6h8M4 11h6M4 16h5"></path><path d="m12.5 17.5-.4 3.4 3.4-.4 5.1-5.1a1.7 1.7 0 0 0-2.4-2.4l-5.7 4.5Z"></path><path d="m17 14.2 2.4 2.4"></path></svg></button><button aria-label="Remover membros" class="icon-button is-danger" disabled id=remove-members title=Remover type=button><svg viewbox="0 0 24 24" aria-hidden=true><circle cx=8.5 cy=8 r=3></circle><path d="M3.5 19v-1.2A4.8 4.8 0 0 1 8.3 13h.4a4.8 4.8 0 0 1 4.8 4.8V19"></path><path d="m16 8 5 5M21 8l-5 5"></path></svg></button><button aria-label="Organizar lista" class=icon-button disabled id=organize-members title=Organizar type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M10 6h10M10 12h7M10 18h4"></path><path d="M4 4v16M1.5 17.5 4 20l2.5-2.5"></path></svg></button><button aria-label="Publicar carimbo" title="Publicar carimbo" class=icon-button disabled id=open-requirements type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M7 3h10v3H7V3Z"></path><path d="M5 5h14v16H5V5Z"></path><path d="m8 13 2.2 2.2L16 9.5"></path></svg></button><button aria-label="Postar atualização" class=icon-button disabled id=open-publishing title=Postar type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M6 3h9l4 4v14H6V3Z"></path><path d="M14 3v5h5M9 15l3-3 3 3M12 12v6"></path></svg></button><button aria-label="Cancelar edição" title="Cancelar edição" class=icon-button hidden id=cancel-members-edit type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button><button aria-label="Salvar alterações" class="icon-button is-accent" title="Salvar alterações" hidden id=save-members-edit type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m5 12.5 4.3 4.3L19 7"></path></svg></button><button aria-label="Cancelar remoção" title="Cancelar remoção" class=icon-button hidden id=cancel-members-remove type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button><button aria-label="Confirmar remoção" class="icon-button is-danger" title="Confirmar remoção" hidden id=confirm-members-remove type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13"></path><path d="m10 13 1.4 1.4L15 11"></path></svg></button></div></div></header><div class=workspace-toolbar><label class=search-field for=member-search><svg viewbox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=6.5></circle><path d="m16 16 4 4"></path></svg> <input placeholder="Buscar em todos os campos..." autocomplete=off id=member-search type=search></label><span class=table-result id=table-result>Aguardando dados</span></div><div class=members-table-wrap><div class=table-state id=table-state>Carregando a base de membros…</div><table class=members-table hidden id=members-table><thead><tr id=members-table-head></tr></thead><tbody id=members-table-body></tbody></table></div><footer class=workspace__footer><span id=data-origin>Aguardando sincronização</span><span id=data-updated>Ainda não sincronizado</span></footer></section></section><section aria-labelledby=settings-page-title class=app-view data-view=settings hidden id=view-settings><section class="hero hero--members"><p class=eyebrow>Configurações</p><h1 id=settings-page-title>Configurações do RondList.</h1><p class=hero__description>Organize cargos, recursos do BBCode e acessos adicionais.</p></section><section aria-labelledby=settings-title class=settings-section><header class=settings-section__header><div><h2 class=settings-section__title id=settings-title>Cargos e vagas</h2><p class=settings-section__description>Defina a estrutura de cargos e a quantidade de vagas.</p></div><button class=text-button id=refresh-settings type=button>Atualizar</button></header><div class=role-list id=role-list><p class=role-list__empty>Aguardando cargos…</p></div></section><section aria-labelledby=layout-settings-title class=settings-section><header class=settings-section__header><div><h2 class=settings-section__title id=layout-settings-title>Recursos do BBCode</h2><p class=settings-section__description>Banner, cores e links usados na composição visual.</p></div><button class=text-button disabled id=edit-layout type=button>Editar recursos</button></header><div class=layout-resources id=layout-resources><p class=layout-resources__empty>Aguardando recursos visuais…</p></div></section><section aria-labelledby=additional-access-title class=settings-section hidden id=additional-access-section><header class=settings-section__header><div><h2 class=settings-section__title id=additional-access-title>Acessos adicionais</h2><p class=settings-section__description>Gerenciamento exclusivo da Liderança e de Desenvolvedores.</p></div></header><form class=additional-access-form id=additional-access-form><div class=form-field><label for=additional-access-type>Adicionar por</label><select class=form-select id=additional-access-type><option value=nickname>Nickname</option><option value=cargo>Cargo</option></select></div><div class="form-field additional-access-choice" id=additional-access-nickname-field><label for=additional-access-value>Nickname</label><input placeholder="Informe o nickname" autocomplete=off id=additional-access-value required></div><div class="form-field additional-access-choice" hidden id=additional-access-role-field><label for=additional-access-role>Cargo</label><select aria-label="Cargo com acesso adicional" class=form-select disabled id=additional-access-role></select></div><button class="dialog-primary additional-access-form__submit" id=save-additional-access>Adicionar acesso</button></form><div class=additional-access-list id=additional-access-list><p class=layout-resources__empty>Nenhum acesso adicional.</p></div></section></section><footer class=site-footer>RondList · Controle seguro de membros</footer></div></div></main></div></div><div aria-live=polite class=auth-screen id=auth-screen role=status><div class=auth-copy><h2 class=auth-title id=auth-title>Verificando acesso</h2><p class=auth-message id=auth-message>Aguarde enquanto validamos seu login e sua permissão na RondList.</p><a class=auth-login-link href=/login>Entrar pelo fórum</a></div></div><div aria-atomic=true aria-live=polite class=toast-container id=toast-container></div><dialog class=editor-dialog id=add-member-editor><form class=editor-dialog__form id=add-member-form><header class=editor-dialog__header><div><span class=editor-dialog__eyebrow>Novo registro</span><h2 class=editor-dialog__title>Adicionar membro</h2></div><button aria-label="Fechar cadastro" class=icon-button id=close-add-member type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button></header><div class=editor-dialog__body><div class=editor-grid id=add-member-fields></div></div><footer class=editor-dialog__footer><button class=secondary-button id=cancel-add-member type=button>Cancelar</button><button class=dialog-primary id=save-new-member>Adicionar membro</button></footer></form></dialog><dialog class="editor-dialog requirements-dialog" id=requirements-dialog><div class=editor-dialog__form><header class=editor-dialog__header><div><span class=editor-dialog__eyebrow>Tópico de requerimentos</span><h2 class=editor-dialog__title>Publicar carimbo</h2></div><button aria-label="Fechar requerimentos" class=icon-button id=close-requirements type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button></header><div class=editor-dialog__body><fieldset class=requirements-tag-field><legend>TAG do responsável</legend><div aria-label="TAG de três caracteres" class=requirements-tag-inputs role=group><input aria-label="Primeiro caractere da TAG" autocapitalize=off autocomplete=off id=requirements-tag-1 inputmode=text maxlength=1 spellcheck=false><input aria-label="Segundo caractere da TAG" autocapitalize=off autocomplete=off id=requirements-tag-2 inputmode=text maxlength=1 spellcheck=false><input aria-label="Terceiro caractere da TAG" autocapitalize=off autocomplete=off id=requirements-tag-3 inputmode=text maxlength=1 spellcheck=false></div><small> Preencha exatamente os três caracteres que substituirão a marcação do carimbo. </small></fieldset><p aria-live=polite class=requirements-empty id=requirements-status>O carimbo será publicado no tópico de requerimentos.</p></div><footer class=editor-dialog__footer><button class=secondary-button id=dismiss-requirements type=button>Fechar</button><button class=dialog-primary disabled id=post-requirements-stamp type=button>Publicar carimbo</button></footer></div></dialog><dialog class="editor-dialog publish-dialog" id=publishing-dialog><div class=editor-dialog__form><header class=editor-dialog__header><div><span class=editor-dialog__eyebrow>Tópicos · Forumeiros</span><h2 class=editor-dialog__title>Postar atualização</h2></div><button aria-label="Fechar publicação" class=icon-button id=close-publishing type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button></header><div class=editor-dialog__body><div aria-label="Modo de publicação" class=publish-mode-switch role=tablist><button class="publish-mode-button is-active" aria-controls=publish-manual-panel aria-selected=true id=publish-mode-manual role=tab type=button>Manual</button><button aria-controls=publish-auto-panel aria-selected=false class=publish-mode-button id=publish-mode-auto role=tab type=button>Automática</button></div><section class=publish-panel id=publish-manual-panel role=tabpanel><div class=publish-manual-list><article class=publish-code-card><header class=publish-code-card__header><h3 class=publish-code-card__title>Listagem</h3><button class=text-button data-copy-publish=listing type=button>Copiar</button></header><textarea class=publish-code id=publish-listing-code readonly></textarea></article><article class=publish-code-card><header class=publish-code-card__header><h3 class=publish-code-card__title>Consulta</h3><button class=text-button data-copy-publish=consultation type=button>Copiar</button></header><textarea class=publish-code id=publish-consultation-code readonly></textarea></article><article class=publish-code-card><header class=publish-code-card__header><h3 class=publish-code-card__title>Backup formatado</h3><button class=text-button data-copy-publish=backup type=button>Copiar</button></header><textarea class=publish-code id=publish-backup-code readonly></textarea></article></div></section><section class=publish-panel hidden id=publish-auto-panel role=tabpanel><p class=publish-auto-description>Execute as três etapas em ordem ou repita somente uma delas. Na sequência completa, os intervalos de 13 segundos acontecem entre listagem, consulta e backup.</p><button class="primary-button publish-sequence" id=publish-all-actions type=button><span class=publish-sequence__copy> <strong>Executar atualização completa</strong> <span>Listagem → 13 s → Consulta → 13 s → Backup</span> </span> <span aria-hidden=true class=publish-sequence__arrow>→</span></button><div class=publish-auto-actions><article class=publish-action-card data-publish-card=listing><button class=publish-action data-publish-action=listing type=button><strong>Atualizar listagem</strong> <span>Atualiza o conteúdo do tópico da listagem.</span></button><footer class=publish-action-card__result><span class=publish-action-state data-publish-state=listing> Aguardando </span><a rel="noopener noreferrer" class=publish-open-link data-publish-open=listing hidden href=# target=_blank> Abrir ↗ </a></footer></article><article class=publish-action-card data-publish-card=consultation><button class=publish-action data-publish-action=consultation type=button><strong>Atualizar consulta</strong> <span>Atualiza o conteúdo do tópico da consulta.</span></button><footer class=publish-action-card__result><span class=publish-action-state data-publish-state=consultation> Aguardando </span><a rel="noopener noreferrer" class=publish-open-link data-publish-open=consultation hidden href=# target=_blank> Abrir ↗ </a></footer></article><article class=publish-action-card data-publish-card=backup><button class=publish-action data-publish-action=backup type=button><strong>Publicar backup</strong> <span>Publica uma cópia datada no tópico de backup.</span></button><footer class=publish-action-card__result><span class=publish-action-state data-publish-state=backup> Aguardando </span><a rel="noopener noreferrer" class=publish-open-link data-publish-open=backup hidden href=# target=_blank> Abrir ↗ </a></footer></article></div><p aria-live=polite class=publish-status id=publish-status>Selecione uma ação para iniciar.</p></section></div><footer class=editor-dialog__footer><button class=secondary-button id=dismiss-publishing type=button>Fechar</button></footer></div></dialog><dialog class=editor-dialog id=settings-editor><form class=editor-dialog__form id=settings-editor-form><header class=editor-dialog__header><div><span class=editor-dialog__eyebrow id=settings-editor-eyebrow> Estrutura de cargos </span><h2 class=editor-dialog__title>Cargo e vagas</h2></div><button aria-label="Fechar editor" class=icon-button id=close-settings-editor type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button></header><div class=editor-dialog__body><div class=editor-grid id=settings-editor-fields></div></div><footer class=editor-dialog__footer><button class=secondary-button id=cancel-settings-editor type=button>Cancelar</button><button class=dialog-primary id=save-settings>Salvar cargo</button></footer></form></dialog><dialog class=editor-dialog id=layout-editor><form class=editor-dialog__form id=layout-editor-form><header class=editor-dialog__header><div><span class=editor-dialog__eyebrow>Layout da publicação</span><h2 class=editor-dialog__title>Recursos do BBCode</h2></div><button aria-label="Fechar editor de recursos" class=icon-button id=close-layout-editor type=button><svg viewbox="0 0 24 24" aria-hidden=true><path d="m6 6 12 12M18 6 6 18"></path></svg></button></header><div class=editor-dialog__body><div class=layout-editor-shell><div id=layout-editor-fields></div><aside aria-labelledby=bbcode-live-preview-title class=bbcode-live-preview><header class=bbcode-live-preview__header><h3 class=bbcode-live-preview__title id=bbcode-live-preview-title>Pré-visualização</h3><span class=bbcode-live-preview__status>Ao vivo</span></header><div class=bbcode-live-preview__canvas id=layout-preview-canvas><div aria-label="Cores da pré-visualização" class=bbcode-live-preview__palette id=layout-preview-palette></div><div class=directory-site-preview><div class=directory-preview-shell><div class=directory-preview-inner><div class=directory-preview-hero><img alt="Pré-visualização do banner" hidden id=layout-preview-banner><span class=directory-preview-placeholder id=layout-preview-banner-placeholder> Adicione o link do banner para visualizá-lo. </span></div><div class=directory-preview-title>LISTAGEM DE MEMBROS</div><div class=directory-preview-frame><div class=directory-preview-content><div class=directory-preview-communities><span class="directory-preview-community directory-preview-community--whatsapp"> WhatsApp </span><span class="directory-preview-community directory-preview-community--discord"> Discord </span></div><div class=directory-preview-controls><span class=directory-preview-control> ⌕  Buscar membro... </span><span class=directory-preview-control> Todos os cargos  ⌄ </span></div><section class=directory-preview-rank><h4 class=directory-preview-rank__title>♛ <span>LÍDER [L.PROF]</span></h4><span class=directory-preview-count>01/01</span><div class=directory-preview-featured-grid><article class=directory-preview-featured><img src="https://wsrv.nl/?url=https://www.habbo.com.br/habbo-imaging/avatarimage?user=.Brendon%26action=std%26direction=2%26head_direction=3%26img_format=png%26gesture=sml%26headonly=0%26size=l&w=128&h=160&fit=cover&a=top&output=png" alt class=directory-preview-avatar><div class=directory-preview-featured__copy><strong class=directory-preview-featured__name> .Brendon </strong><span class=directory-preview-dates> 15 Jan 2025 › 03 Ago 2026 </span></div></article><article class=directory-preview-featured><img src="https://wsrv.nl/?url=https://www.habbo.com.br/habbo-imaging/avatarimage?user=Pegas%26action=std%26direction=2%26head_direction=3%26img_format=png%26gesture=sml%26headonly=0%26size=l&w=128&h=160&fit=cover&a=top&output=png" alt class=directory-preview-avatar><div class=directory-preview-featured__copy><strong class=directory-preview-featured__name> Pegas </strong><span class=directory-preview-dates> 22 Jan 2025 › 29 Jun 2026 </span></div></article></div></section><section class=directory-preview-rank><h4 class=directory-preview-rank__title>◈ <span>PROFESSORES</span></h4><span class=directory-preview-count>04/30</span><div class=directory-preview-member-list><div class=directory-preview-member><span class=directory-preview-member__order>01</span><span class=directory-preview-member__copy> <strong>onicin</strong> <small>10 Abr 2026</small> </span><span class="directory-preview-badge directory-preview-badge--license">L</span></div><div class=directory-preview-member><span class=directory-preview-member__order>02</span><span class=directory-preview-member__copy> <strong>malevamentes</strong> <small>04 Jun 2026</small> </span><span class=directory-preview-badge>CDC</span></div><div class=directory-preview-member><span class=directory-preview-member__order>03</span><span class=directory-preview-member__copy> <strong>Shadye</strong> <small>18 Jun 2026</small> </span><span class="directory-preview-badge directory-preview-badge--project">PA</span></div><div class="directory-preview-member directory-preview-member--danger"><span class=directory-preview-member__order>04</span><span class=directory-preview-member__copy> <strong>Lellex</strong> <small>02 Ago 2026</small> </span><span class="directory-preview-badge directory-preview-badge--pending">G</span></div></div></section><div class=directory-preview-utility><span>▣  MEMBROS EM LICENÇA/RESERVA</span><span>⌄</span></div><div class=directory-preview-utility><span>☷  LEGENDAS</span><span>⌄</span></div></div></div><div class=directory-preview-footer>Desenvolvimento e Design por <strong>.Brendon</strong></div></div></div></div></div></aside></div></div><footer class=editor-dialog__footer><button class=secondary-button id=cancel-layout-editor type=button>Cancelar</button><button class=dialog-primary id=save-layout>Salvar recursos</button></footer></form></dialog><script>(()=>{let THEME_STORAGE_KEY=`RONDLIST_THEME`,VISION_STORAGE_KEY=`RONDLIST_VISION_SETTINGS`,VISION_SCALES=Object.freeze([`normal`,`large`,`larger`]);function setTheme(theme,options={}){let nextTheme=theme===`light`?`light`:`dark`,isDark=nextTheme===`dark`,toggle=document.getElementById(`theme-toggle`);if(document.documentElement.dataset.theme=nextTheme,document.querySelector(`meta[name="theme-color"]`).setAttribute(`content`,`#ED7A1E`),toggle){let nextModeLabel=isDark?`claro`:`escuro`;toggle.setAttribute(`aria-label`,`Ativar modo ${nextModeLabel}`),toggle.setAttribute(`aria-pressed`,String(isDark)),toggle.setAttribute(`title`,`Ativar modo ${nextModeLabel}`)}if(options.persist)try{localStorage.setItem(`RONDLIST_THEME`,nextTheme)}catch{}}function initializeTheme(){setTheme(document.documentElement.dataset.theme),document.getElementById(`theme-toggle`).addEventListener(`click`,()=>{let currentTheme=document.documentElement.dataset.theme;setTheme(currentTheme===`dark`?`light`:`dark`,{persist:!0})})}function setVisionPanelOpen(isOpen){let panel=document.getElementById(`vision-panel`),toggle=document.getElementById(`vision-toggle`);panel.hidden=!isOpen,toggle.setAttribute(`aria-expanded`,String(isOpen)),toggle.setAttribute(`aria-label`,isOpen?`Fechar ajustes para baixa visão`:`Abrir ajustes para baixa visão`)}function applyVisionSettings(settings,options={}){let scale=VISION_SCALES.includes(settings.scale)?settings.scale:`normal`,highContrast=settings.highContrast===!0;if(document.documentElement.dataset.visionScale=scale,document.documentElement.dataset.visionContrast=highContrast?`high`:`standard`,document.querySelectorAll(`[data-vision-scale-option]`).forEach(button=>{button.setAttribute(`aria-pressed`,String(button.dataset.visionScaleOption===scale))}),document.getElementById(`vision-contrast`).setAttribute(`aria-pressed`,String(highContrast)),document.getElementById(`vision-contrast-state`).textContent=highContrast?`Ativado`:`Desativado`,options.persist)try{localStorage.setItem(`RONDLIST_VISION_SETTINGS`,JSON.stringify({scale,highContrast}))}catch{}}function currentVisionSettings(){return{scale:document.documentElement.dataset.visionScale||`normal`,highContrast:document.documentElement.dataset.visionContrast===`high`}}function initializeVisionTools(){let toggle=document.getElementById(`vision-toggle`),panel=document.getElementById(`vision-panel`),contrastButton=document.getElementById(`vision-contrast`);applyVisionSettings(currentVisionSettings()),toggle.addEventListener(`click`,()=>{setVisionPanelOpen(panel.hidden)}),document.querySelectorAll(`[data-vision-scale-option]`).forEach(button=>{button.addEventListener(`click`,()=>{applyVisionSettings({...currentVisionSettings(),scale:button.dataset.visionScaleOption},{persist:!0})})}),contrastButton.addEventListener(`click`,()=>{let settings=currentVisionSettings();applyVisionSettings({...settings,highContrast:!settings.highContrast},{persist:!0})}),document.getElementById(`vision-reset`).addEventListener(`click`,()=>{applyVisionSettings({scale:`normal`,highContrast:!1},{persist:!0})}),document.addEventListener(`click`,event=>{!panel.hidden&&!panel.contains(event.target)&&!toggle.contains(event.target)&&setVisionPanelOpen(!1)})}let CONFIG=Object.freeze({workerProxy:`https://rondlist.rondeiros2023.workers.dev/`,cacheDurationMs:300*1e3,auth:Object.freeze({temporaryUser:`.Brendon`,databaseName:`RondListAuth`,storeName:`session`,cacheKey:`current`,revalidateIntervalMs:60*1e3}),sheets:Object.freeze({rondListApi:`https://script.google.com/macros/s/AKfycbyDwewHsL1JjfcnOUH_h6R9Ouz68uSjypEQQd9FvHbg3U0_L1vgLXxI38OZJibUE3w/exec`}),forum:Object.freeze({origin:`https://brendonrcc.forumeiros.com`,automaticDelayMs:13e3,bridgeTimeoutMs:25e3})}),CACHE_PREFIX=`RONDLIST_CACHE_V2_`,ROLE_OPTIONS=Object.freeze([`Líder`,`Vice-Líder`,`Consultor(a)`,`Ministro(a) da Administração`,`Ministro(a) da Atualização`,`Ministro(a) da Contabilidade`,`Ministro(a) da Documentação`,`Ministro(a) das Finanças`,`Ministro(a) da Segurança`,`Estagiário(a)`,`Graduador(a)`,`Tutor(a)`,`Rondeiro(a)`]),NEXUS_MONTHS=Object.freeze([`Jan`,`Fev`,`Mar`,`Abr`,`Mai`,`Jun`,`Jul`,`Ago`,`Set`,`Out`,`Nov`,`Dez`]),DATE_HEADER_KEYS=Object.freeze([`ENTRADA`,`DATAPROMOREB`,`PROMOREBAIX`,`INICIO`,`RETORNO`,`TERMINO`]),currentUser=null,authRevalidationTimer=null;function openAuthDatabase(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(/* @__PURE__ */ Error(`IndexedDB indisponível.`));return}let request=indexedDB.open(CONFIG.auth.databaseName,1);request.onupgradeneeded=()=>{let database=request.result;database.objectStoreNames.contains(CONFIG.auth.storeName)||database.createObjectStore(CONFIG.auth.storeName)},request.onsuccess=()=>resolve(request.result),request.onerror=()=>reject(request.error)})}async function readCachedAuthentication(){try{let database=await openAuthDatabase();return await new Promise((resolve,reject)=>{let transaction=database.transaction(CONFIG.auth.storeName,`readonly`),request=transaction.objectStore(CONFIG.auth.storeName).get(CONFIG.auth.cacheKey);request.onsuccess=()=>resolve(request.result||null),request.onerror=()=>reject(request.error),transaction.oncomplete=()=>database.close()})}catch{return null}}async function saveCachedAuthentication(user){try{let database=await openAuthDatabase();await new Promise((resolve,reject)=>{let transaction=database.transaction(CONFIG.auth.storeName,`readwrite`);transaction.objectStore(CONFIG.auth.storeName).put({user:{...user},verifiedAt:Date.now()},CONFIG.auth.cacheKey),transaction.oncomplete=resolve,transaction.onerror=()=>reject(transaction.error)}),database.close()}catch{}}async function clearCachedAuthentication(){try{let database=await openAuthDatabase();await new Promise((resolve,reject)=>{let transaction=database.transaction(CONFIG.auth.storeName,`readwrite`);transaction.objectStore(CONFIG.auth.storeName).delete(CONFIG.auth.cacheKey),transaction.oncomplete=resolve,transaction.onerror=()=>reject(transaction.error)}),database.close()}catch{}}function currentUserRoles(user=currentUser){return user?[user.role,...Array.isArray(user.roles)?user.roles:[]].map(role=>String(role||``).trim()).filter(Boolean):[]}function canCurrentUserEdit(user=currentUser){return user&&typeof user.canEdit==`boolean`?user.canEdit:currentUserRoles(user).some(role=>/^(?:DESENVOLVEDOR(?:\(A\))?|LIDER|VICE-LIDER)$/.test(normalizeLookup(role)))}function canCurrentUserManageAccess(user=currentUser){return user&&typeof user.canManageAccess==`boolean`?user.canManageAccess:currentUserRoles(user).some(role=>/^(?:DESENVOLVEDOR(?:\(A\))?|LIDER|VICE-LIDER)$/.test(normalizeLookup(role)))}function requireEditAccess(options={}){return canCurrentUserEdit()?!0:(options.notify!==!1&&showToast(`Seu usuário não possui acesso total para editar.`,`warning`),!1)}function requireManageAccess(options={}){return canCurrentUserManageAccess()?!0:(options.notify!==!1&&showToast(`Somente a Liderança e Desenvolvedores podem gerenciar acessos adicionais.`,`warning`),!1)}function applyAccessMode(){let canEdit=canCurrentUserEdit(),canManageAccess=canCurrentUserManageAccess();document.documentElement.dataset.accessMode=canEdit?`full`:`read-only`,canEdit||(appState.editingMembers=!1,appState.removingMembers=!1,appState.addingMember=!1,appState.memberDrafts.clear(),appState.selectedMemberRows.clear(),[`add-member-editor`,`requirements-dialog`,`settings-editor`,`layout-editor`].forEach(id=>{let dialog=document.getElementById(id);dialog&&dialog.open&&dialog.close()}));let editLayoutButton=document.getElementById(`edit-layout`);editLayoutButton.hidden=!canEdit,editLayoutButton.disabled=!canEdit||!appState.settings.length,document.getElementById(`nav-settings`).hidden=!canEdit,document.getElementById(`additional-access-section`).hidden=!canManageAccess,canManageAccess||(appState.additionalAccess=[],appState.additionalAccessRoles=[],appState.availableAccessRoles=[],renderAdditionalAccess(),updateAdditionalAccessRoleOptions()),!canEdit&&appState.currentView===`settings`&&navigateToView(`members`,{force:!0}),updateMemberEditControls(),appState.settings.length&&renderSettings()}let appState={headers:[],rows:[],settings:[],additionalAccess:[],additionalAccessRoles:[],availableAccessRoles:[],publishing:null,maxDataRow:1,currentView:`members`,search:``,editingMembers:!1,removingMembers:!1,addingMember:!1,selectedMemberRows:/* @__PURE__ */ new Set,memberDrafts:/* @__PURE__ */ new Map,booleanColumns:/* @__PURE__ */ new Set,loading:!1,savingMembers:!1,organizingMembers:!1,requirementsBusy:!1,publishingBusy:!1,publishingResults:createPublishingResults(),editingSettingsRow:null,editingLayoutOwnerRow:null,loaded:!1};function buildWorkerUrl(targetUrl){let url=new URL(CONFIG.workerProxy);return url.searchParams.set(`url`,targetUrl),url.toString()}async function fetchViaWorker(targetUrl,options={}){let{forceRefresh=!1,cacheDurationMs=CONFIG.cacheDurationMs,timeoutMs=15e3}=options,cacheKey=`RONDLIST_CACHE_V2_${targetUrl}`;if(!forceRefresh)try{let cached=JSON.parse(localStorage.getItem(cacheKey)||`null`);if(cached&&Date.now()-cached.timestamp<cacheDurationMs)return cached.data}catch{localStorage.removeItem(cacheKey)}let controller=new AbortController,timeout=setTimeout(()=>controller.abort(),timeoutMs);try{let response=await fetch(buildWorkerUrl(targetUrl),{signal:controller.signal});if(!response.ok)throw Error(`Worker respondeu com status ${response.status}.`);let text=await response.text();if(!text.trim())throw Error(`O Worker retornou uma resposta vazia.`);try{localStorage.setItem(cacheKey,JSON.stringify({timestamp:Date.now(),data:text}))}catch{}return text}catch(error){throw error.name===`AbortError`?Error(`A consulta excedeu o tempo limite.`):error}finally{clearTimeout(timeout)}}async function requestRondList(action,payload=null,options={}){let{forceRefresh=!1}=options,target=new URL(CONFIG.sheets.rondListApi),requestedUsername=cleanCell(payload&&payload.username||currentUser&&currentUser.nick||``),isWrite=action.startsWith(`save`)||action===`addAdditionalAccess`||action.startsWith(`remove`)||action===`organizeData`;if(isWrite&&!requireEditAccess({notify:!1}))throw Error(`Seu usuário não possui acesso total para editar.`);let controller=new AbortController,timeout=window.setTimeout(()=>controller.abort(),2e4),request={method:isWrite?`POST`:`GET`,signal:controller.signal,cache:`no-store`};isWrite?(request.headers={"Content-Type":`text/plain;charset=utf-8`},request.body=JSON.stringify({action,...payload||{},username:requestedUsername})):(target.searchParams.set(`action`,action),requestedUsername&&target.searchParams.set(`username`,requestedUsername),forceRefresh&&(target.searchParams.set(`force`,`1`),target.searchParams.set(`_`,String(Date.now())),request.headers={"Cache-Control":`no-cache, no-store, max-age=0`,Pragma:`no-cache`}));try{let response=await fetch(buildWorkerUrl(target.toString()),request),text=await response.text(),result;try{result=JSON.parse(text)}catch{throw Error(`A API da RondList retornou uma resposta inválida.`)}if(!response.ok||!result.ok){let message=result&&result.error?result.error:`Falha na API.`;throw/não autorizado/i.test(message)?Error(`O Worker ainda precisa receber a chave segura da RondList.`):Error(message)}return result}catch(error){throw error.name===`AbortError`?Error(`O serviço demorou demais para responder.`):error}finally{window.clearTimeout(timeout)}}function setWorkspaceState(state,label){let element=document.getElementById(`workspace-state`);element.classList.remove(`is-ready`,`is-error`),state&&element.classList.add(`is-${state}`),element.textContent=label}function setDataLoading(isLoading){appState.loading=isLoading,document.getElementById(`refresh-members`).disabled=isLoading||appState.editingMembers||appState.removingMembers||appState.addingMember,document.getElementById(`refresh-settings`).disabled=isLoading,document.getElementById(`edit-layout`).hidden=!canCurrentUserEdit(),document.getElementById(`edit-layout`).disabled=!canCurrentUserEdit()||isLoading||!appState.settings.length,updateMemberEditControls()}function formatCount(value){return Number(value||0).toLocaleString(`pt-BR`)}function normalizeLookup(value){return String(value||``).normalize(`NFD`).replace(/[\u0300-\u036f]/g,``).replace(/\./g,``).trim().toUpperCase()}function headerIndex(label){let normalized=normalizeLookup(label);return appState.headers.findIndex(header=>normalizeLookup(header)===normalized)}function headerKey(value){return normalizeLookup(value).replace(/[^A-Z0-9]+/g,``)}function headerIndexAny(...labels){let keys=labels.map(headerKey);return appState.headers.findIndex(header=>keys.includes(headerKey(header)))}function memberFieldIndexes(){return{role:headerIndex(`CARGO`),nickname:headerIndex(`NICKNAME`),entry:headerIndex(`ENTRADA`),promotion:headerIndexAny(`DATA (PROMO/REB)`,`PROMO. / REBAIX.`),licenseStart:headerIndexAny(`INÍCIO`,`INICIO`),licenseDays:headerIndex(`DIAS`),licenseReturn:headerIndexAny(`RETORNO`,`TÉRMINO`,`TERMINO`)}}function isDateColumn(index){return DATE_HEADER_KEYS.includes(headerKey(appState.headers[index]))}function canonicalRoleName(role){let value=String(role||``).trim();return normalizeLookup(value).startsWith(`CONSELHEIRO(A)`)?value.replace(/^Conselheiro\(a\)/i,`Ministro(a)`):value}function roleRank(role){let normalized=normalizeLookup(canonicalRoleName(role));return normalized===`LIDER`?0:normalized===`VICE-LIDER`?1:normalized===`CONSULTOR(A)`?2:normalized.startsWith(`MINISTRO(A)`)?3:normalized===`ESTAGIARIO(A)`?4:normalized===`GRADUADOR(A)`?5:normalized===`TUTOR(A)`?6:normalized===`RONDEIRO(A)`?7:8}function roleOptionIndex(role){let normalized=normalizeLookup(canonicalRoleName(role)),index=ROLE_OPTIONS.findIndex(option=>normalizeLookup(option)===normalized);return index===-1?ROLE_OPTIONS.length:index}function isConsultantRole(role){return normalizeLookup(role)===`CONSULTOR(A)`}function parseNexusDate(value){let raw=String(value||``).trim();if(!raw)return null;let year,month,day,match=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(match)year=Number(match[1]),month=Number(match[2])-1,day=Number(match[3]);else if(match=raw.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/),match)day=Number(match[1]),month=Number(match[2])-1,year=Number(match[3]);else{if(match=raw.match(/^(\d{1,2})\s+([A-Za-zÀ-ÿ.]+)\s+(\d{4})$/),!match)return null;day=Number(match[1]),month={JAN:0,FEV:1,FEB:1,MAR:2,ABR:3,APR:3,MAI:4,MAY:4,JUN:5,JUL:6,AGO:7,AUG:7,SET:8,SEP:8,OUT:9,OCT:9,NOV:10,DEZ:11,DEC:11}[normalizeLookup(match[2]).slice(0,3)],year=Number(match[3])}if(!Number.isInteger(year)||!Number.isInteger(month)||!Number.isInteger(day)||month<0||month>11||day<1||day>31)return null;let date=new Date(Date.UTC(year,month,day));return date.getUTCFullYear()!==year||date.getUTCMonth()!==month||date.getUTCDate()!==day?null:{year,month,day}}function formatNexusDate(value){let parsed=parseNexusDate(value);return parsed?`${String(parsed.day).padStart(2,`0`)} ${NEXUS_MONTHS[parsed.month]} ${parsed.year}`:String(value||``).trim()}function nexusDateToIso(value){let parsed=parseNexusDate(value);return parsed?`${parsed.year}-${String(parsed.month+1).padStart(2,`0`)}-${String(parsed.day).padStart(2,`0`)}`:``}function dateSortValue(value){let parsed=parseNexusDate(value);return parsed?Date.UTC(parsed.year,parsed.month,parsed.day):1/0}function calculateMemberReturnDate(startValue,daysValue){let start=parseNexusDate(startValue),daysText=String(daysValue??``).trim();if(!start||!/^\d+$/.test(daysText))return``;let days=Number(daysText);if(!Number.isSafeInteger(days)||days<0)return``;let date=new Date(Date.UTC(start.year,start.month,start.day)+days*24*60*60*1e3);return formatNexusDate(`${date.getUTCFullYear()}-${String(date.getUTCMonth()+1).padStart(2,`0`)}-${String(date.getUTCDate()).padStart(2,`0`)}`)}function applyCalculatedReturnDate(values,options={}){let nextValues=values.slice(),indexes=memberFieldIndexes();if(indexes.licenseStart<0||indexes.licenseDays<0||indexes.licenseReturn<0)return nextValues;let calculated=calculateMemberReturnDate(nextValues[indexes.licenseStart],nextValues[indexes.licenseDays]);return(calculated||options.clearIncomplete)&&(nextValues[indexes.licenseReturn]=calculated),nextValues}function normalizeConsultantValues(values){let normalized=values.slice(),indexes=memberFieldIndexes();return isConsultantRole(normalized[indexes.role])&&normalized.forEach((_,index)=>{index!==indexes.role&&index!==indexes.nickname&&(normalized[index]=``)}),normalized}function prepareMemberValues(values){let currentValues=applyCalculatedReturnDate(values),roleIndex=memberFieldIndexes().role;roleIndex>=0&&(currentValues[roleIndex]=canonicalRoleName(currentValues[roleIndex]));let normalized=normalizeConsultantValues(currentValues);return isConsultantRole(normalized[memberFieldIndexes().role])?normalized:normalized.map((value,index)=>isDateColumn(index)&&parseNexusDate(value)?formatNexusDate(value):value)}function compareMemberRows(left,right){let indexes=memberFieldIndexes(),leftRole=left.values[indexes.role],rightRole=right.values[indexes.role],rank=roleRank(leftRole),rankDifference=rank-roleRank(rightRole);if(rankDifference)return rankDifference;let isRondeiro=rank===7;if(rank!==3){let dateIndex=isRondeiro?indexes.entry:indexes.promotion,dateDifference=dateSortValue(left.values[dateIndex])-dateSortValue(right.values[dateIndex]);if(dateDifference)return dateDifference}return roleOptionIndex(leftRole)-roleOptionIndex(rightRole)||String(left.values[indexes.nickname]||``).localeCompare(String(right.values[indexes.nickname]||``),`pt-BR`,{sensitivity:`base`})}function sortMembers(){appState.rows.sort(compareMemberRows)}function buildCompactMemberRows(members){let nicknameIndex=memberFieldIndexes().nickname,seenNicknames=/* @__PURE__ */ new Map,repeatedNicknames=/* @__PURE__ */ new Set,rows=members.slice().sort(compareMemberRows).map((member,index)=>{let values=prepareMemberValues(member.values).map(value=>String(value??``).trim()),nickname=String(values[nicknameIndex]||``).trim(),nicknameKey=nickname.toLocaleLowerCase(`pt-BR`);return nicknameKey&&(seenNicknames.has(nicknameKey)?repeatedNicknames.add(nickname):seenNicknames.set(nicknameKey,!0)),{row:index+2,values}});if(repeatedNicknames.size)throw Error(`Nickname duplicado: ${Array.from(repeatedNicknames).join(`, `)}. Corrija ou remova a repetição antes de salvar.`);return rows}async function persistCompactMemberList(members){let rows=buildCompactMemberRows(members);return await requestRondList(`organizeData`,{rows}),rows}function filteredMembers(){let term=appState.search.trim().toLocaleLowerCase(`pt-BR`);return term?appState.rows.filter(row=>memberDraft(row).some(value=>String(value||``).toLocaleLowerCase(`pt-BR`).includes(term))):appState.rows}function booleanState(value){let normalized=String(value??``).trim().toLowerCase();return normalized===`true`?`true`:normalized===`false`?`false`:`empty`}function detectBooleanColumns(){let columns=/* @__PURE__ */ new Set;return appState.headers.forEach((_,index)=>{let header=String(appState.headers[index]||``).trim().toUpperCase(),populated=appState.rows.map(row=>booleanState(row.values[index])).filter(state=>state!==`empty`);([`G`,`RL`,`REB`].includes(header)||populated.length&&populated.every(state=>state===`true`||state===`false`))&&columns.add(index)}),columns}function memberDraft(row){return appState.memberDrafts.get(row.row)||row.values}function memberEditableValues(row){return row.hasSaved&&Array.isArray(row.saved)?row.saved:row.values}function isMemberRowDirty(row){let draft=appState.memberDrafts.get(row.row);if(!draft)return!1;let baseline=memberEditableValues(row);return draft.some((value,index)=>String(value??``).trim()!==String(baseline[index]??``).trim())}function updateBooleanToggle(button,state,columnIndex){let labels={true:`Selecionado`,false:`Desmarcado`,empty:`Sem valor`},header=appState.headers[columnIndex]||`Campo ${columnIndex+1}`;button.dataset.state=state,button.textContent=``,button.setAttribute(`aria-pressed`,String(state===`true`)),button.setAttribute(`aria-label`,`${header}: ${labels[state]}`),button.title=state===`empty`?`Sem valor definido`:state===`true`?`Selecionado`:`Desmarcado`}function createRoleSelect(value,options={}){let select=document.createElement(`select`),selectedValue=canonicalRoleName(value);select.className=options.className||`table-select`,options.id&&(select.id=options.id),options.index!==void 0&&(select.dataset.index=options.index),options.disabled&&(select.disabled=!0),select.setAttribute(`aria-label`,options.label||`Selecionar cargo`);let blank=document.createElement(`option`);if(blank.value=``,blank.textContent=`Selecione`,select.appendChild(blank),selectedValue&&!ROLE_OPTIONS.includes(selectedValue)){let current=document.createElement(`option`);current.value=selectedValue,current.textContent=selectedValue,select.appendChild(current)}return ROLE_OPTIONS.forEach(role=>{let option=document.createElement(`option`);option.value=role,option.textContent=role,select.appendChild(option)}),select.value=selectedValue,options.onChange&&select.addEventListener(`change`,()=>options.onChange(select.value,select)),select}function createDateControl(value,options={}){let control=document.createElement(`div`),formatted=formatNexusDate(value);control.className=`date-control${formatted?``:` is-empty`}`,options.calculated&&control.classList.add(`is-calculated`),control.dataset.value=formatted;let display=document.createElement(`span`);display.className=`date-control__value`,display.textContent=formatted||`—`;let calendar=document.createElement(`span`);calendar.className=`date-control__calendar`,calendar.setAttribute(`aria-hidden`,`true`);let input=document.createElement(`input`);return input.className=`date-control__native`,input.type=`date`,input.value=nexusDateToIso(value),input.disabled=!!options.disabled,input.setAttribute(`aria-label`,options.label||`Selecionar data`),options.id&&(input.id=options.id),options.index!==void 0&&(input.dataset.index=options.index),input.addEventListener(`change`,()=>{let nextValue=formatNexusDate(input.value);control.dataset.value=nextValue,display.textContent=nextValue||`—`,control.classList.toggle(`is-empty`,!nextValue),options.onChange&&options.onChange(nextValue,input)}),control.append(display,calendar,input),control}function setDateControlValue(control,value){if(!control)return;let formatted=formatNexusDate(value),display=control.querySelector(`.date-control__value`),input=control.querySelector(`.date-control__native`);control.dataset.value=formatted,control.classList.toggle(`is-empty`,!formatted),display&&(display.textContent=formatted||`—`),input&&(input.value=nexusDateToIso(formatted))}function createMemberRoleSelect(value,row,columnIndex){return createRoleSelect(value,{index:columnIndex,disabled:appState.savingMembers,label:`Cargo de ${row.values[1]||`membro`}`,onChange:nextRole=>{let draft=memberDraft(row).slice();draft[columnIndex]=nextRole,appState.memberDrafts.set(row.row,normalizeConsultantValues(draft)),renderMembers()}})}function updateMemberCalculatedReturn(row,draft){let indexes=memberFieldIndexes(),calculatedDraft=applyCalculatedReturnDate(draft,{clearIncomplete:!0});if(appState.memberDrafts.set(row.row,calculatedDraft),indexes.licenseReturn>=0){let tableRow=document.querySelector(`[data-member-row="${row.row}"]`),returnInput=tableRow?.querySelector(`.date-control__native[data-index="${indexes.licenseReturn}"]`);setDateControlValue(returnInput?.closest(`.date-control`),calculatedDraft[indexes.licenseReturn]),tableRow?.classList.toggle(`is-dirty`,isMemberRowDirty(row))}return calculatedDraft}function createMemberDateControl(value,row,columnIndex){let indexes=memberFieldIndexes(),calculated=columnIndex===indexes.licenseReturn;return createDateControl(value,{disabled:appState.savingMembers||calculated,calculated,index:columnIndex,label:`${appState.headers[columnIndex]||`Campo ${columnIndex+1}`} de ${row.values[1]||`membro`}`,onChange:nextValue=>{let draft=memberDraft(row).slice();draft[columnIndex]=nextValue,columnIndex===indexes.licenseStart?updateMemberCalculatedReturn(row,draft):appState.memberDrafts.set(row.row,draft);let tableRow=document.querySelector(`[data-member-row="${row.row}"]`);tableRow&&tableRow.classList.toggle(`is-dirty`,isMemberRowDirty(row))}})}function createBooleanToggle(value,row,columnIndex,editable){let button=document.createElement(`button`);return button.className=`boolean-toggle`,button.type=`button`,button.disabled=!editable||appState.savingMembers,updateBooleanToggle(button,booleanState(value),columnIndex),editable&&!appState.savingMembers&&button.addEventListener(`click`,()=>{let nextState=button.dataset.state===`true`?`false`:`true`,draft=memberDraft(row).slice();draft[columnIndex]=nextState.toUpperCase(),appState.memberDrafts.set(row.row,draft),updateBooleanToggle(button,nextState,columnIndex),button.closest(`tr`).classList.toggle(`is-dirty`,isMemberRowDirty(row))}),button}function createMemberInput(value,row,columnIndex){let indexes=memberFieldIndexes(),input=document.createElement(`input`);return input.className=`table-input`,input.type=columnIndex===indexes.licenseDays?`number`:`text`,columnIndex===indexes.licenseDays&&(input.min=`0`,input.step=`1`,input.inputMode=`numeric`),input.value=value??``,input.disabled=appState.savingMembers,input.setAttribute(`aria-label`,appState.headers[columnIndex]||`Campo ${columnIndex+1}`),input.addEventListener(`input`,()=>{let draft=memberDraft(row).slice();draft[columnIndex]=input.value,columnIndex===indexes.licenseDays?updateMemberCalculatedReturn(row,draft):appState.memberDrafts.set(row.row,draft),input.closest(`tr`).classList.toggle(`is-dirty`,isMemberRowDirty(row))}),input}function createMemberSelection(row){let checkbox=document.createElement(`input`),label=row.values[1]||row.values[0]||`registro selecionado`;return checkbox.className=`member-select`,checkbox.type=`checkbox`,checkbox.checked=appState.selectedMemberRows.has(row.row),checkbox.disabled=appState.savingMembers,checkbox.setAttribute(`aria-label`,`Selecionar ${label}`),checkbox.addEventListener(`change`,()=>{checkbox.checked?appState.selectedMemberRows.add(row.row):appState.selectedMemberRows.delete(row.row),updateMemberEditControls(),renderMembers()}),checkbox}function renderMembers(){let table=document.getElementById(`members-table`),head=document.getElementById(`members-table-head`),body=document.getElementById(`members-table-body`),tableState=document.getElementById(`table-state`),resultLabel=document.getElementById(`table-result`),rows=filteredMembers();if(head.replaceChildren(),body.replaceChildren(),appState.removingMembers){let selectionHeader=document.createElement(`th`);selectionHeader.scope=`col`,selectionHeader.className=`member-selection-cell`;let selectAll=document.createElement(`input`),selectedVisible=rows.filter(row=>appState.selectedMemberRows.has(row.row)).length;selectAll.className=`member-select`,selectAll.type=`checkbox`,selectAll.checked=!!rows.length&&selectedVisible===rows.length,selectAll.indeterminate=selectedVisible>0&&selectedVisible<rows.length,selectAll.disabled=appState.savingMembers||!rows.length,selectAll.setAttribute(`aria-label`,`Selecionar registros visíveis`),selectAll.addEventListener(`change`,()=>{rows.forEach(row=>{selectAll.checked?appState.selectedMemberRows.add(row.row):appState.selectedMemberRows.delete(row.row)}),updateMemberEditControls(),renderMembers()}),selectionHeader.appendChild(selectAll),head.appendChild(selectionHeader)}appState.headers.forEach((header,index)=>{let cell=document.createElement(`th`);cell.scope=`col`,cell.textContent=header||`Campo ${index+1}`,cell.title=cell.textContent,appState.booleanColumns.has(index)&&cell.classList.add(`is-boolean-column`),head.appendChild(cell)});let indexes=memberFieldIndexes();rows.forEach(row=>{let tableRow=document.createElement(`tr`);if(tableRow.dataset.memberRow=row.row,row.hasSaved&&tableRow.classList.add(`is-saved`),isMemberRowDirty(row)&&tableRow.classList.add(`is-dirty`),appState.selectedMemberRows.has(row.row)&&tableRow.classList.add(`is-selected`),appState.removingMembers){let selectionCell=document.createElement(`td`);selectionCell.className=`member-selection-cell`,selectionCell.appendChild(createMemberSelection(row)),tableRow.appendChild(selectionCell)}appState.headers.forEach((_,index)=>{let cell=document.createElement(`td`),value=memberDraft(row)[index]??``,consultantField=isConsultantRole(memberDraft(row)[indexes.role])&&index!==indexes.role&&index!==indexes.nickname;if(appState.booleanColumns.has(index)&&cell.classList.add(`is-boolean-column`),consultantField){let content=document.createElement(`span`);content.className=`table-cell is-empty`,content.textContent=`—`,content.title=`Não se aplica a Consultor(a)`,cell.appendChild(content)}else if(appState.editingMembers)cell.appendChild(appState.booleanColumns.has(index)?createBooleanToggle(value,row,index,!0):index===indexes.role?createMemberRoleSelect(value,row,index):isDateColumn(index)?createMemberDateControl(value,row,index):createMemberInput(value,row,index));else if(booleanState(value)!==`empty`)cell.appendChild(createBooleanToggle(value,row,index,!1));else{let content=document.createElement(`span`),displayValue=index===indexes.role?canonicalRoleName(value):isDateColumn(index)?formatNexusDate(value):value;content.className=`table-cell`,content.textContent=displayValue||`—`,content.title=displayValue,displayValue||content.classList.add(`is-empty`),cell.appendChild(content)}tableRow.appendChild(cell)}),body.appendChild(tableRow)});let resultText=appState.search?`${formatCount(rows.length)} de ${formatCount(appState.rows.length)} registros`:`${formatCount(rows.length)} registros`;appState.editingMembers?resultLabel.textContent=`${resultText} · edição ativa`:appState.removingMembers?resultLabel.textContent=`${resultText} · ${formatCount(appState.selectedMemberRows.size)} selecionado${appState.selectedMemberRows.size===1?``:`s`}`:resultLabel.textContent=resultText,rows.length?(tableState.hidden=!0,table.hidden=!1):(table.hidden=!0,tableState.hidden=!1,tableState.textContent=appState.search?`Nenhum membro corresponde à busca.`:`Nenhum registro foi encontrado.`)}function updateMemberEditControls(){let editButton=document.getElementById(`edit-members`),saveButton=document.getElementById(`save-members-edit`),cancelEditButton=document.getElementById(`cancel-members-edit`),addButton=document.getElementById(`add-member`),requirementsButton=document.getElementById(`open-requirements`),publishingButton=document.getElementById(`open-publishing`),organizeButton=document.getElementById(`organize-members`),removeButton=document.getElementById(`remove-members`),confirmRemoveButton=document.getElementById(`confirm-members-remove`),cancelRemoveButton=document.getElementById(`cancel-members-remove`),isEditing=appState.editingMembers,isRemoving=appState.removingMembers,canEdit=canCurrentUserEdit(),isBusy=appState.loading||appState.savingMembers||appState.addingMember||appState.requirementsBusy||appState.publishingBusy;editButton.hidden=!canEdit||isEditing||isRemoving,addButton.hidden=!canEdit||isEditing||isRemoving,requirementsButton.hidden=!canEdit||isEditing||isRemoving,publishingButton.hidden=!canEdit||isEditing||isRemoving,organizeButton.hidden=!canEdit||isEditing||isRemoving,removeButton.hidden=!canEdit||isEditing||isRemoving,saveButton.hidden=!canEdit||!isEditing,cancelEditButton.hidden=!canEdit||!isEditing,confirmRemoveButton.hidden=!canEdit||!isRemoving,cancelRemoveButton.hidden=!canEdit||!isRemoving,editButton.disabled=!canEdit||isBusy||!appState.loaded,addButton.disabled=!canEdit||isBusy||!appState.loaded,requirementsButton.disabled=!canEdit||isBusy||!appState.loaded||!hasRequirementConfiguration(),publishingButton.disabled=!canEdit||isBusy||!appState.loaded||!hasPublishingData(),organizeButton.disabled=!canEdit||isBusy||!appState.loaded||!appState.rows.length,removeButton.disabled=!canEdit||isBusy||!appState.loaded||!appState.rows.length,saveButton.disabled=!canEdit||appState.savingMembers,cancelEditButton.disabled=appState.savingMembers,confirmRemoveButton.disabled=appState.savingMembers||!appState.selectedMemberRows.size,cancelRemoveButton.disabled=appState.savingMembers;let organizeLabel=appState.organizingMembers?`Organizando lista`:`Organizar lista`;organizeButton.setAttribute(`aria-label`,organizeLabel),organizeButton.title=organizeLabel,organizeButton.classList.toggle(`is-loading`,appState.organizingMembers);let saveLabel=appState.savingMembers?`Salvando alterações`:`Salvar alterações`;saveButton.setAttribute(`aria-label`,saveLabel),saveButton.title=saveLabel,saveButton.classList.toggle(`is-loading`,appState.savingMembers&&isEditing);let removeCount=appState.selectedMemberRows.size,confirmRemoveLabel=appState.savingMembers?`Removendo membros`:removeCount?`Remover ${formatCount(removeCount)} selecionado${removeCount===1?``:`s`}`:`Remover selecionados`;confirmRemoveButton.setAttribute(`aria-label`,confirmRemoveLabel),confirmRemoveButton.title=confirmRemoveLabel,confirmRemoveButton.classList.toggle(`is-loading`,appState.savingMembers&&isRemoving),document.getElementById(`refresh-members`).disabled=isBusy||isEditing||isRemoving}function beginMemberEditing(){requireEditAccess()&&(!appState.loaded||appState.editingMembers||appState.removingMembers||appState.addingMember||(appState.memberDrafts=new Map(appState.rows.map(row=>[row.row,applyCalculatedReturnDate(memberEditableValues(row))])),appState.booleanColumns=detectBooleanColumns(),appState.editingMembers=!0,setWorkspaceState(``,`Editando`),updateMemberEditControls(),renderMembers()))}function cancelMemberEditing(){appState.savingMembers||(appState.editingMembers=!1,appState.memberDrafts.clear(),setWorkspaceState(`ready`,`Sincronizado`),updateMemberEditControls(),renderMembers())}async function organizeMemberList(){if(requireEditAccess()&&!(!appState.loaded||!appState.rows.length||appState.loading||appState.savingMembers||appState.editingMembers||appState.removingMembers||appState.addingMember)){appState.savingMembers=!0,appState.organizingMembers=!0,setWorkspaceState(``,`Organizando`),updateMemberEditControls(),renderMembers();try{let rows=await persistCompactMemberList(appState.rows.map(row=>({...row,values:memberEditableValues(row).slice()})));appState.selectedMemberRows.clear(),updateDataTimestamp(),setWorkspaceState(`ready`,`Sincronizado`),showToast(`${formatCount(rows.length)} registro${rows.length===1?``:`s`} organizado${rows.length===1?``:`s`} e atualizado${rows.length===1?``:`s`}.`,`success`)}catch(error){setWorkspaceState(`error`,`Falha ao organizar`),showToast(error.message,`error`)}finally{appState.savingMembers=!1,appState.organizingMembers=!1,updateMemberEditControls(),renderMembers()}}}async function saveMemberList(){if(!requireEditAccess()||!appState.editingMembers||appState.savingMembers)return;let changedRows=appState.rows.filter(isMemberRowDirty).map(row=>({row:row.row,values:prepareMemberValues(memberDraft(row)).map(value=>String(value??``).trim())}));if(!changedRows.length){cancelMemberEditing(),showToast(`Nenhuma alteração para salvar.`,`info`);return}appState.savingMembers=!0,setWorkspaceState(``,`Salvando`),updateMemberEditControls(),renderMembers();try{await requestRondList(`saveData`,{rows:changedRows}),changedRows.forEach(item=>{let row=appState.rows.find(entry=>entry.row===item.row);row&&(row.saved=item.values.slice(),row.hasSaved=!0,(!Array.isArray(row.source)||!row.source.some(value=>String(value??``).trim()))&&(row.values=item.values.slice()))}),appState.editingMembers=!1,appState.memberDrafts.clear(),updateDataTimestamp(),setWorkspaceState(`ready`,`Sincronizado`),showToast(`${formatCount(changedRows.length)} registro${changedRows.length===1?``:`s`} salvo${changedRows.length===1?``:`s`}.`,`success`)}catch(error){setWorkspaceState(`error`,`Falha ao salvar`),showToast(error.message,`error`)}finally{appState.savingMembers=!1,updateMemberEditControls(),renderMembers()}}function createAddBooleanField(label,index){let wrapper=document.createElement(`div`);wrapper.className=`form-field`,wrapper.dataset.addMemberIndex=String(index);let buttonId=`add-member-boolean-${index}`,fieldLabel=document.createElement(`label`);fieldLabel.htmlFor=buttonId,fieldLabel.textContent=label;let button=document.createElement(`button`);return button.id=buttonId,button.className=`boolean-toggle`,button.type=`button`,button.dataset.addBooleanIndex=String(index),updateBooleanToggle(button,`empty`,index),button.addEventListener(`click`,()=>{updateBooleanToggle(button,button.dataset.state===`true`?`false`:`true`,index)}),wrapper.append(fieldLabel,button),wrapper}function createAddRoleField(label,index){let wrapper=document.createElement(`div`);wrapper.className=`form-field`,wrapper.dataset.addMemberIndex=String(index);let fieldLabel=document.createElement(`label`);fieldLabel.htmlFor=`add-member-role`,fieldLabel.textContent=label;let select=createRoleSelect(``,{id:`add-member-role`,index,className:`form-select`,label,onChange:updateAddMemberFieldVisibility});return wrapper.append(fieldLabel,select),wrapper}function createAddDateField(label,index){let wrapper=document.createElement(`div`);wrapper.className=`form-field`,wrapper.dataset.addMemberIndex=String(index);let indexes=memberFieldIndexes(),calculated=index===indexes.licenseReturn,inputId=`add-member-date-${index}`,fieldLabel=document.createElement(`label`);return fieldLabel.htmlFor=inputId,fieldLabel.textContent=label,wrapper.append(fieldLabel,createDateControl(``,{id:inputId,index,label,disabled:calculated,calculated,onChange:index===indexes.licenseStart?updateAddMemberReturnDate:void 0})),wrapper}function updateAddMemberReturnDate(){let indexes=memberFieldIndexes();if(indexes.licenseStart<0||indexes.licenseDays<0||indexes.licenseReturn<0)return;let startControl=document.getElementById(`add-member-date-${indexes.licenseStart}`)?.closest(`.date-control`),daysInput=document.getElementById(`add-member-field-${indexes.licenseDays}`),returnControl=document.getElementById(`add-member-date-${indexes.licenseReturn}`)?.closest(`.date-control`);setDateControlValue(returnControl,calculateMemberReturnDate(startControl?.dataset.value||``,daysInput?.value||``))}function updateAddMemberFieldVisibility(){let role=document.getElementById(`add-member-role`);if(!role)return;let indexes=memberFieldIndexes(),consultant=isConsultantRole(role.value);document.querySelectorAll(`[data-add-member-index]`).forEach(field=>{let index=Number(field.dataset.addMemberIndex);field.hidden=consultant&&index!==indexes.role&&index!==indexes.nickname});let booleanGroup=document.getElementById(`add-member-boolean-group`);booleanGroup&&(booleanGroup.hidden=consultant)}function openAddMemberEditor(){if(!requireEditAccess()||!appState.loaded||appState.editingMembers||appState.removingMembers||appState.addingMember)return;appState.addingMember=!0,appState.booleanColumns=detectBooleanColumns();let fields=document.getElementById(`add-member-fields`);fields.replaceChildren();let indexes=memberFieldIndexes(),booleanGroup=document.createElement(`div`);booleanGroup.id=`add-member-boolean-group`,booleanGroup.className=`add-member-boolean-group`,appState.headers.forEach((header,index)=>{let label=header||`Campo ${index+1}`,field;if(index===indexes.role)field=createAddRoleField(label,index);else if(appState.booleanColumns.has(index))field=createAddBooleanField(label,index);else if(isDateColumn(index))field=createAddDateField(label,index);else{let isDaysField=index===indexes.licenseDays;field=createFormField(label,``,index,{id:`add-member-field-${index}`,placeholder:isDaysField?`Informe a quantidade de dias`:`Preencha este campo`,type:isDaysField?`number`:`text`,min:isDaysField?0:void 0}),field.dataset.addMemberIndex=String(index)}appState.booleanColumns.has(index)?booleanGroup.appendChild(field):fields.appendChild(field)}),booleanGroup.childElementCount&&fields.appendChild(booleanGroup);let daysInput=document.getElementById(`add-member-field-${indexes.licenseDays}`);daysInput&&(daysInput.step=`1`,daysInput.inputMode=`numeric`,daysInput.addEventListener(`input`,updateAddMemberReturnDate)),updateAddMemberFieldVisibility(),updateMemberEditControls(),document.getElementById(`add-member-editor`).showModal()}function closeAddMemberEditor(){appState.savingMembers||(appState.addingMember=!1,document.getElementById(`add-member-editor`).close(),updateMemberEditControls())}async function saveNewMember(event){if(event.preventDefault(),!requireEditAccess()||!appState.addingMember||appState.savingMembers)return;let indexes=memberFieldIndexes(),values=prepareMemberValues(appState.headers.map((_,index)=>{if(index===indexes.role)return document.getElementById(`add-member-role`).value;if(appState.booleanColumns.has(index)){let button=document.getElementById(`add-member-boolean-${index}`);return button.dataset.state===`empty`?``:button.dataset.state.toUpperCase()}return isDateColumn(index)?document.getElementById(`add-member-date-${index}`).closest(`.date-control`).dataset.value:document.getElementById(`add-member-field-${index}`).value.trim()}));if(!values.some(Boolean)){showToast(`Preencha ao menos um campo para adicionar.`,`warning`);return}let newRowNumber=Math.max(appState.maxDataRow,1)+1,button=document.getElementById(`save-new-member`);appState.savingMembers=!0,button.disabled=!0,button.textContent=`Adicionando…`,updateMemberEditControls();try{await requestRondList(`saveData`,{rows:[{row:newRowNumber,values}]}),appState.rows.push({row:newRowNumber,source:Array(appState.headers.length).fill(``),saved:values.slice(),values:values.slice(),hasSaved:!0}),appState.maxDataRow=Math.max(appState.maxDataRow,newRowNumber),sortMembers(),appState.addingMember=!1,document.getElementById(`add-member-editor`).close(),renderMembers(),updateDataTimestamp(),setWorkspaceState(`ready`,`Sincronizado`),showToast(`Novo membro adicionado.`,`success`)}catch(error){showToast(error.message,`error`)}finally{appState.savingMembers=!1,button.disabled=!1,button.textContent=`Adicionar membro`,updateMemberEditControls()}}function beginMemberRemoval(){requireEditAccess()&&(!appState.loaded||!appState.rows.length||appState.editingMembers||appState.removingMembers||appState.addingMember||(appState.removingMembers=!0,appState.selectedMemberRows.clear(),setWorkspaceState(``,`Selecionando`),updateMemberEditControls(),renderMembers()))}function cancelMemberRemoval(){appState.savingMembers||(appState.removingMembers=!1,appState.selectedMemberRows.clear(),setWorkspaceState(`ready`,`Sincronizado`),updateMemberEditControls(),renderMembers())}async function confirmMemberRemoval(){if(!requireEditAccess()||!appState.removingMembers||appState.savingMembers||!appState.selectedMemberRows.size)return;let selected=new Set(appState.selectedMemberRows),rows=Array.from(selected);appState.savingMembers=!0,setWorkspaceState(``,`Removendo`),updateMemberEditControls(),renderMembers();try{await requestRondList(`removeData`,{rows:rows.map(row=>({row}))}),appState.rows=appState.rows.filter(row=>!selected.has(row.row)),appState.removingMembers=!1,appState.selectedMemberRows.clear(),updateDataTimestamp(),setWorkspaceState(`ready`,`Sincronizado`),showToast(`${formatCount(rows.length)} membro${rows.length===1?``:`s`} removido${rows.length===1?``:`s`} da RondList.`,`success`)}catch(error){setWorkspaceState(`error`,`Falha ao remover`),showToast(error.message,`error`)}finally{appState.savingMembers=!1,updateMemberEditControls(),renderMembers()}}function renderSettings(){let list=document.getElementById(`role-list`);list.replaceChildren();let roles=appState.settings.filter(item=>String(item.role||``).trim()||String(item.vacancies??``).trim());if(roles.sort((left,right)=>roleRank(left.role)-roleRank(right.role)||roleOptionIndex(left.role)-roleOptionIndex(right.role)),roles.length)roles.forEach(item=>{let card=document.createElement(`article`);card.className=`role-card`;let top=document.createElement(`div`);top.className=`role-card__top`;let name=document.createElement(`strong`);name.className=`role-card__name`,name.textContent=canonicalRoleName(item.role)||`Cargo sem nome`,name.title=name.textContent;let meta=document.createElement(`div`);meta.className=`role-card__meta`;let vacancies=document.createElement(`span`);vacancies.className=`role-card__vacancies`,vacancies.textContent=item.vacancies===``||item.vacancies===null?`Vagas não definidas`:`${formatCount(item.vacancies)} vaga${Number(item.vacancies)===1?``:`s`}`;let editButton=document.createElement(`button`);editButton.className=`text-button`,editButton.type=`button`,editButton.textContent=`Editar`,editButton.addEventListener(`click`,()=>openSettingsEditor(item.row)),top.append(name),meta.append(vacancies),canCurrentUserEdit()&&meta.append(editButton),card.append(top,meta),list.appendChild(card)});else{let empty=document.createElement(`p`);empty.className=`role-list__empty`,empty.textContent=`Nenhum cargo configurado.`,list.appendChild(empty)}renderLayoutResources()}function renderAdditionalAccess(){let container=document.getElementById(`additional-access-list`);if(container.replaceChildren(),!appState.additionalAccess.length&&!appState.additionalAccessRoles.length){let empty=document.createElement(`p`);empty.className=`layout-resources__empty`,empty.textContent=`Nenhum acesso adicional.`,container.appendChild(empty);return}appState.additionalAccess.slice().sort((left,right)=>left.localeCompare(right,`pt-BR`,{sensitivity:`base`})).forEach(nickname=>{container.appendChild(createAdditionalAccessChip(`Nickname: ${nickname}`,`nickname`,nickname,`Acesso explícito de ${nickname}`))}),appState.additionalAccessRoles.slice().sort((left,right)=>left.localeCompare(right,`pt-BR`,{sensitivity:`base`})).forEach(role=>{container.appendChild(createAdditionalAccessChip(`Cargo: ${role}`,`cargo`,role,`Acesso dinâmico para o cargo ${role}`))})}function createAdditionalAccessChip(label,accessType,value,title){let chip=document.createElement(`span`);chip.className=`additional-access-chip`,chip.title=title;let text=document.createElement(`span`);text.className=`additional-access-chip__text`,text.textContent=label;let removeButton=document.createElement(`button`);return removeButton.className=`additional-access-chip__remove`,removeButton.type=`button`,removeButton.textContent=`×`,removeButton.setAttribute(`aria-label`,`Remover ${label}`),removeButton.title=`Remover ${label}`,removeButton.addEventListener(`click`,()=>removeAdditionalAccess(accessType,value,removeButton)),chip.append(text,removeButton),chip}function applyAdditionalAccessState(result){appState.additionalAccess=Array.isArray(result.nicknames)?result.nicknames.slice():appState.additionalAccess,appState.additionalAccessRoles=Array.isArray(result.roles)?result.roles.slice():appState.additionalAccessRoles,appState.availableAccessRoles=Array.isArray(result.availableRoles)?result.availableRoles.map(entry=>({role:String(entry.role||``)})):appState.availableAccessRoles,renderAdditionalAccess(),updateAdditionalAccessRoleOptions()}async function removeAdditionalAccess(accessType,value,button){if(requireManageAccess()){button.disabled=!0;try{applyAdditionalAccessState((await requestRondList(`removeAdditionalAccess`,{accessType,value})).additionalAccess||{}),showToast(`${accessType===`cargo`?`Cargo`:`Nickname`} removido dos acessos adicionais.`,`success`),revalidateAuthentication().catch(()=>{})}catch(error){button.disabled=!1,showToast(error.message,`error`)}}}function updateAdditionalAccessRoleOptions(){let select=document.getElementById(`additional-access-role`),previous=select.value;select.replaceChildren();let placeholder=document.createElement(`option`);placeholder.value=``,placeholder.textContent=appState.availableAccessRoles.length?`Selecione um cargo`:`Nenhum cargo disponível`,select.appendChild(placeholder),appState.availableAccessRoles.forEach(entry=>{let option=document.createElement(`option`);option.value=entry.role,option.textContent=entry.role,select.appendChild(option)}),Array.from(select.options).some(option=>option.value===previous)&&(select.value=previous)}function updateAdditionalAccessField(){let type=document.getElementById(`additional-access-type`).value,nicknameField=document.getElementById(`additional-access-nickname-field`),roleField=document.getElementById(`additional-access-role-field`),input=document.getElementById(`additional-access-value`),roleSelect=document.getElementById(`additional-access-role`),byRole=type===`cargo`;nicknameField.hidden=byRole,roleField.hidden=!byRole,input.placeholder=`Informe o nickname`,input.disabled=byRole,input.required=!byRole,roleSelect.disabled=!byRole,roleSelect.required=byRole,byRole?roleSelect.focus():input.focus()}async function saveAdditionalAccess(event){if(event.preventDefault(),!requireManageAccess())return;let accessType=document.getElementById(`additional-access-type`).value,input=document.getElementById(`additional-access-value`),roleSelect=document.getElementById(`additional-access-role`),value=(accessType===`cargo`?roleSelect.value:input.value).trim();if(!value)return;let button=document.getElementById(`save-additional-access`);button.disabled=!0,button.textContent=`Adicionando…`;try{let result=(await requestRondList(`addAdditionalAccess`,{accessType,value})).additionalAccess||{};applyAdditionalAccessState(result),input.value=``,roleSelect.value=``,!Array.isArray(result.added)||result.added.length?showToast(`${result.addedType===`cargo`?`Cargo`:`Nickname`} adicionado aos acessos adicionais.`,`success`):showToast(`Este acesso adicional já está configurado.`,`info`)}catch(error){showToast(error.message,`error`)}finally{button.disabled=!1,button.textContent=`Adicionar acesso`}}function getLayoutOwner(){return appState.settings.find(item=>String(item.banner||``).trim()||(item.links||[]).some(link=>String(link||``).trim()))||appState.settings[0]||null}function displayHostname(value){if(!value)return`Ainda não configurado`;try{return new URL(value).hostname}catch{return value}}function createLayoutResource(label,value,meta){let card=document.createElement(`article`);card.className=`layout-resource`;let labelElement=document.createElement(`span`);labelElement.className=`layout-resource__label`,labelElement.textContent=label;let valueElement=document.createElement(`strong`);valueElement.className=`layout-resource__value`,valueElement.textContent=value,valueElement.title=value;let metaElement=document.createElement(`span`);return metaElement.className=`layout-resource__meta`,metaElement.textContent=meta,metaElement.title=meta,card.append(labelElement,valueElement,metaElement),card}function renderLayoutResources(){let container=document.getElementById(`layout-resources`),editButton=document.getElementById(`edit-layout`),owner=getLayoutOwner();if(container.replaceChildren(),editButton.disabled=appState.loading||!owner,!owner){let empty=document.createElement(`p`);empty.className=`layout-resources__empty`,empty.textContent=`Nenhuma configuração disponível.`,container.appendChild(empty);return}let bannerCard=createLayoutResource(`Banner`,owner.banner?`Banner configurado`:`Sem banner`,displayHostname(owner.banner)),colors=appState.settings.map((item,index)=>({row:item.row,title:String(item.colorTitle||``).trim()||`Cor ${index+1}`,value:String(item.color||``).trim()})).filter(item=>item.value),paletteCard=document.createElement(`article`);paletteCard.className=`layout-resource`;let paletteLabel=document.createElement(`span`);paletteLabel.className=`layout-resource__label`,paletteLabel.textContent=`Paleta`;let palette=document.createElement(`div`);if(palette.className=`layout-palette`,colors.length)colors.forEach(color=>{let swatch=document.createElement(`span`);swatch.className=`layout-palette__swatch`,swatch.title=`${color.title} — ${color.value}`,swatch.setAttribute(`aria-label`,`${color.title}: ${color.value}`),window.CSS&&CSS.supports(`color`,color.value)?swatch.style.setProperty(`--layout-color`,color.value):color.row===18&&window.CSS&&CSS.supports(`box-shadow`,color.value)&&(swatch.style.setProperty(`--layout-color`,`var(--surface-muted)`),swatch.style.boxShadow=color.value),palette.appendChild(swatch)});else{let value=document.createElement(`strong`);value.className=`layout-resource__value`,value.textContent=`Sem cores`,palette.appendChild(value)}let paletteMeta=document.createElement(`span`);paletteMeta.className=`layout-resource__meta`,paletteMeta.textContent=colors.length?`${formatCount(colors.length)} recurso${colors.length===1?``:`s`} ${colors.length===1?`visual configurado`:`visuais configurados`}`:`Os recursos serão usados na composição visual`,paletteCard.append(paletteLabel,palette,paletteMeta);let links=(owner.links||[]).filter(link=>String(link||``).trim()),topicIds=(owner.topicIds||[]).map(topicId=>String(topicId||``).trim()),topicsCard=createLayoutResource(`Tópicos`,topicIds.filter(Boolean).length?`${formatCount(topicIds.filter(Boolean).length)} IDs configurados`:`Sem IDs`,`Listagem: ${topicIds[0]||`—`} · Consulta: ${topicIds[1]||`—`} · Backup: ${topicIds[2]||`—`}`),linksCard=createLayoutResource(`Links importantes`,links.length?`${formatCount(links.length)} link${links.length===1?``:`s`}`:`Sem links`,links.length?links.map(displayHostname).join(` · `):`Nenhum link configurado`);container.append(bannerCard,paletteCard,topicsCard,linksCard)}function updateDataTimestamp(isoDate){let target=document.getElementById(`data-updated`);target.textContent=`Sincronizado às ${(isoDate?new Date(isoDate):/* @__PURE__ */ new Date).toLocaleTimeString(`pt-BR`,{hour:`2-digit`,minute:`2-digit`})}`}function hasRequirementConfiguration(){let publishing=appState.publishing;return!!(publishing&&/^\d+$/.test(String(publishing.requirementsTopicId||``).trim())&&/\{TAG\}/i.test(String(publishing.requirementsStampBbcode||``)))}async function publishRequirementStamp(topicId,bbcode,transport){return transport.sameForumOrigin?replyForumTopic(topicId,bbcode):publishThroughForumBridge(transport.popup,{type:`RONDLIST_FORUM_ACTION`,requestId:createPublishingRequestId(),action:`reply`,topicId,bbcode})}function requirementTagInputs(){return[1,2,3].map(index=>document.getElementById(`requirements-tag-${index}`))}function requirementTagValue(){return requirementTagInputs().map(input=>input.value).join(``)}function updateRequirementStampControls(){let button=document.getElementById(`post-requirements-stamp`),complete=Array.from(requirementTagValue()).length===3;button.disabled=appState.requirementsBusy||!complete||!hasRequirementConfiguration(),button.textContent=appState.requirementsBusy?`Publicando…`:`Publicar carimbo`}function handleRequirementTagInput(event){let inputs=requirementTagInputs(),index=inputs.indexOf(event.currentTarget),character=Array.from(String(event.currentTarget.value||``).replace(/\s/g,``))[0]||``;event.currentTarget.value=character,character&&inputs[index+1]&&inputs[index+1].focus(),updateRequirementStampControls()}function handleRequirementTagPaste(event){let characters=Array.from(String(event.clipboardData?.getData(`text`)||``).replace(/\s/g,``)).slice(0,3);if(!characters.length)return;event.preventDefault();let inputs=requirementTagInputs();inputs.forEach((input,index)=>{input.value=characters[index]||``}),inputs[Math.min(characters.length,3)-1].focus(),updateRequirementStampControls()}function handleRequirementTagKeydown(event){if(event.key!==`Backspace`||event.currentTarget.value)return;let inputs=requirementTagInputs(),index=inputs.indexOf(event.currentTarget);inputs[index-1]&&inputs[index-1].focus()}function openStampDialog(){if(requireEditAccess()){if(!hasRequirementConfiguration()){showToast(`Configure o tópico e o modelo do carimbo antes de continuar.`,`warning`);return}requirementTagInputs().forEach(input=>{input.value=``}),document.getElementById(`requirements-status`).textContent=`Informe a TAG de três caracteres para publicar o carimbo.`,document.getElementById(`requirements-dialog`).showModal(),requirementTagInputs()[0].focus(),updateRequirementStampControls()}}function closeRequirementsDialog(){appState.requirementsBusy||document.getElementById(`requirements-dialog`).close()}function requireTopicId(value,label){let topicId=String(value||``).trim();if(!/^\d+$/.test(topicId))throw Error(`${label} precisa ter um ID numérico válido.`);return topicId}async function postRequirementsStamp(){if(!requireEditAccess()||appState.requirementsBusy)return;let tag=requirementTagValue();if(Array.from(tag).length!==3){showToast(`A TAG deve ter exatamente três caracteres.`,`warning`);return}let topicId=requireTopicId(appState.publishing?.requirementsTopicId,`O tópico de requerimentos`),bbcode=String(appState.publishing?.requirementsStampBbcode||``).replace(/\{TAG\}/gi,tag),transport=createPublishingTransport({topicId},`rondlist-requirements-${topicId}`);if(transport){appState.requirementsBusy=!0,document.getElementById(`requirements-status`).textContent=`Publicando carimbo…`,updateRequirementStampControls(),updateMemberEditControls();try{await publishRequirementStamp(topicId,bbcode,transport),document.getElementById(`requirements-status`).textContent=`Carimbo publicado com sucesso.`,showToast(`Carimbo publicado com sucesso.`,`success`)}catch(error){document.getElementById(`requirements-status`).textContent=error.message,showToast(error.message,`error`)}finally{appState.requirementsBusy=!1,updateRequirementStampControls(),updateMemberEditControls()}}}function forumTopicUrl(topicId){return`${CONFIG.forum.origin}/t${topicId}-`}function parseForumDocument(html){return new DOMParser().parseFromString(html,`text/html`)}function forumLoginRequired(documentNode,responseUrl){return/\/login(?:\?|$)/i.test(responseUrl||``)||!!documentNode.querySelector(`form[action*="/login"] input[name="username"]`)}async function fetchForumDocument(url){let response=await fetch(url,{credentials:`include`,redirect:`follow`,cache:`no-store`}),documentNode=parseForumDocument(await response.text());if(!response.ok)throw Error(`O fórum respondeu com status ${response.status}.`);if(forumLoginRequired(documentNode,response.url))throw Error(`Entre no fórum antes de usar a postagem automática.`);return{document:documentNode,url:response.url||url}}function findForumPostingForm(documentNode){return Array.from(documentNode.forms).find(form=>form.querySelector(`textarea[name="message"], textarea#text_editor_textarea, textarea`))}function createForumSubmissionBody(form,textarea,bbcode,options={}){options.clearEditReason&&form.querySelectorAll(`[name="edit_reason"]`).forEach(control=>control.remove());let body=new FormData(form);if(body.set(textarea.name||`message`,bbcode),body.delete(`preview`),body.set(`post`,`Enviar`),options.clearEditReason&&body.delete(`edit_reason`),options.disableHtml){let disableHtmlControl=form.querySelector(`input[name="disable_html"]`);body.set(disableHtmlControl?.name||`disable_html`,disableHtmlControl?.value||`1`)}return body}async function submitForumPostingForm(formUrl,bbcode,options={}){let form=findForumPostingForm((await fetchForumDocument(formUrl)).document);if(!form)throw Error(`O formulário de postagem não foi encontrado. Verifique sua permissão.`);let body=createForumSubmissionBody(form,form.querySelector(`textarea[name="message"], textarea#text_editor_textarea, textarea`),bbcode,options),action=new URL(form.getAttribute(`action`)||`/post`,CONFIG.forum.origin);if(action.origin!==CONFIG.forum.origin)throw Error(`O formulário do fórum apontou para uma origem inesperada.`);let response=await fetch(action,{method:`POST`,credentials:`include`,redirect:`follow`,body}),resultDocument=parseForumDocument(await response.text());if(!response.ok)throw Error(`O fórum recusou o envio com status ${response.status}.`);if(forumLoginRequired(resultDocument,response.url))throw Error(`Sua sessão do fórum expirou. Entre novamente.`);if(/\/post(?:\?|$)/i.test(response.url||``)&&findForumPostingForm(resultDocument)){let error=resultDocument.querySelector(`.message-die, .error, .panel .error, .block-error`)?.textContent||`O fórum não confirmou a publicação.`;throw Error(error.trim())}return response.url}async function replyForumTopic(topicId,bbcode){let replyUrl=new URL(`/post`,CONFIG.forum.origin);return replyUrl.searchParams.set(`t`,topicId),replyUrl.searchParams.set(`mode`,`reply`),submitForumPostingForm(replyUrl,bbcode,{disableHtml:!0})}async function editForumTopic(topicId,bbcode){let editLink=(await fetchForumDocument(forumTopicUrl(topicId))).document.querySelector(`a.btn-edit[href*="mode=editpost"], a[href*="mode=editpost"]`);if(!editLink)throw Error(`O botão de editar não foi encontrado. Confirme o login e a permissão.`);return submitForumPostingForm(new URL(editLink.getAttribute(`href`),CONFIG.forum.origin),bbcode,{clearEditReason:!0})}function createPublishingRequestId(){return window.crypto&&typeof window.crypto.randomUUID==`function`?window.crypto.randomUUID():`rondlist-${Date.now()}-${Math.random().toString(16).slice(2)}`}function publishThroughForumBridge(popup,request){return new Promise((resolve,reject)=>{let timeout=window.setTimeout(()=>{cleanup(),reject(/* @__PURE__ */ Error(`A ponte do Forumeiros não respondeu. Instale ou atualize o script RondList-Forumeiros-Bridge.js.`))},CONFIG.forum.bridgeTimeoutMs),interval=window.setInterval(()=>{if(popup.closed){cleanup(),reject(/* @__PURE__ */ Error(`A janela do fórum foi fechada antes do envio.`));return}popup.postMessage(request,CONFIG.forum.origin)},900);function cleanup(){window.clearTimeout(timeout),window.clearInterval(interval),window.removeEventListener(`message`,onMessage)}function onMessage(event){event.origin!==CONFIG.forum.origin||event.source!==popup||!event.data||event.data.type!==`RONDLIST_FORUM_RESULT`||event.data.requestId!==request.requestId||(cleanup(),event.data.ok?resolve(event.data):reject(Error(event.data.error||`Falha ao publicar no fórum.`)))}window.addEventListener(`message`,onMessage),popup.postMessage(request,CONFIG.forum.origin)})}function createPublishingTransport(action,windowName){let sameForumOrigin=window.location.origin===CONFIG.forum.origin,popup=sameForumOrigin?null:window.open(forumTopicUrl(action.topicId),windowName);return!sameForumOrigin&&!popup?(showToast(`Permita a abertura da janela do fórum para continuar.`,`warning`),null):{sameForumOrigin,popup}}function createPublishingResults(){return{listing:{status:`idle`,message:`Aguardando`,url:``},consultation:{status:`idle`,message:`Aguardando`,url:``},backup:{status:`idle`,message:`Aguardando`,url:``}}}function hasPublishingData(){let publishing=appState.publishing;return!!(publishing&&String(publishing.listingTopicId||``).trim()&&String(publishing.consultationTopicId||``).trim()&&String(publishing.backupTopicId||``).trim()&&String(publishing.listingBbcode||``).trim()&&String(publishing.consultationBbcode||``).trim())}function currentRondListDate(){let parts=new Intl.DateTimeFormat(`en-CA`,{timeZone:`America/Fortaleza`,day:`2-digit`,month:`2-digit`,year:`numeric`}).formatToParts(/* @__PURE__ */ new Date).reduce((result,part)=>(result[part.type]=part.value,result),{});return`${parts.day} ${NEXUS_MONTHS[Number(parts.month)-1]} ${parts.year}`}function publishingBackupBbcode(){let consultation=String(appState.publishing&&appState.publishing.consultationBbcode||``);return`[spoiler="${currentRondListDate()}"]${consultation}[/spoiler]`}function publishingText(kind){return appState.publishing?kind===`listing`?appState.publishing.listingBbcode||``:kind===`consultation`?appState.publishing.consultationBbcode||``:kind===`backup`?publishingBackupBbcode():``:``}function renderPublishingDialog(){document.getElementById(`publish-listing-code`).value=publishingText(`listing`),document.getElementById(`publish-consultation-code`).value=publishingText(`consultation`),document.getElementById(`publish-backup-code`).value=publishingText(`backup`),document.querySelectorAll(`[data-publish-action]`).forEach(button=>{button.disabled=appState.publishingBusy||!hasPublishingData()}),document.getElementById(`publish-all-actions`).disabled=appState.publishingBusy||!hasPublishingData(),Object.entries(appState.publishingResults).forEach(([kind,result])=>{let card=document.querySelector(`[data-publish-card="${kind}"]`),state=document.querySelector(`[data-publish-state="${kind}"]`),openLink=document.querySelector(`[data-publish-open="${kind}"]`);!card||!state||!openLink||(card.classList.remove(`is-running`,`is-waiting`,`is-success`,`is-error`),result.status!==`idle`&&card.classList.add(`is-${result.status}`),state.textContent=result.message||`Aguardando`,openLink.hidden=result.status!==`success`||!result.url,openLink.hidden?openLink.removeAttribute(`href`):openLink.href=result.url)})}function resetPublishingResults(){appState.publishingResults=createPublishingResults()}function setPublishingResult(kind,status,message,url=``){Object.prototype.hasOwnProperty.call(appState.publishingResults,kind)&&(appState.publishingResults[kind]={status,message,url},renderPublishingDialog())}function setPublishingMode(mode){let manual=mode!==`automatic`,manualButton=document.getElementById(`publish-mode-manual`),automaticButton=document.getElementById(`publish-mode-auto`);manualButton.classList.toggle(`is-active`,manual),automaticButton.classList.toggle(`is-active`,!manual),manualButton.setAttribute(`aria-selected`,String(manual)),automaticButton.setAttribute(`aria-selected`,String(!manual)),document.getElementById(`publish-manual-panel`).hidden=!manual,document.getElementById(`publish-auto-panel`).hidden=manual}function openPublishingDialog(){if(requireEditAccess()){if(!hasPublishingData()){showToast(`Configure os tópicos e os conteúdos de publicação antes de continuar.`,`warning`);return}setPublishingMode(`manual`),resetPublishingResults(),document.getElementById(`publish-status`).textContent=`Selecione uma ação para iniciar.`,renderPublishingDialog(),document.getElementById(`publishing-dialog`).showModal()}}function closePublishingDialog(){if(appState.publishingBusy){showToast(`Aguarde a publicação em andamento.`,`warning`);return}document.getElementById(`publishing-dialog`).close()}async function copyPublishingText(kind){let text=publishingText(kind);if(!text){showToast(`Não há BBCode disponível para copiar.`,`warning`);return}try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);else{let field=document.getElementById(`publish-${kind}-code`);if(field.focus(),field.select(),!document.execCommand(`copy`))throw Error(`A cópia automática não está disponível.`)}showToast(`BBCode copiado.`,`success`)}catch(error){showToast(error.message,`error`)}}function automaticPublishingActions(){let publishing=appState.publishing;return{listing:{kind:`listing`,label:`Atualização da listagem`,bridgeAction:`edit`,topicId:requireTopicId(publishing.listingTopicId,`O tópico da listagem`),bbcode:publishingText(`listing`)},consultation:{kind:`consultation`,label:`Atualização da consulta`,bridgeAction:`edit`,topicId:requireTopicId(publishing.consultationTopicId,`O tópico da consulta`),bbcode:publishingText(`consultation`)},backup:{kind:`backup`,label:`Publicação do backup`,bridgeAction:`reply`,topicId:requireTopicId(publishing.backupTopicId,`O tópico de backup`),bbcode:publishingText(`backup`)}}}async function executeAutomaticPublishingAction(action,transport){document.getElementById(`publish-status`).textContent=`${action.label}: enviando…`,setPublishingResult(action.kind,`running`,`Enviando…`,``);try{transport.sameForumOrigin?action.bridgeAction===`edit`?await editForumTopic(action.topicId,action.bbcode):await replyForumTopic(action.topicId,action.bbcode):await publishThroughForumBridge(transport.popup,{type:`RONDLIST_FORUM_ACTION`,requestId:createPublishingRequestId(),action:action.bridgeAction,topicId:action.topicId,bbcode:action.bbcode});let topicUrl=forumTopicUrl(action.topicId);return setPublishingResult(action.kind,`success`,`Concluído`,topicUrl),topicUrl}catch(error){throw setPublishingResult(action.kind,`error`,`Falhou`,``),error}}function beginPublishing(){appState.publishingBusy=!0,updateMemberEditControls(),renderPublishingDialog()}function finishPublishing(){appState.publishingBusy=!1,updateMemberEditControls(),renderPublishingDialog()}function waitForPublishingDelay(action){let seconds=Math.ceil(CONFIG.forum.automaticDelayMs/1e3),status=document.getElementById(`publish-status`);return new Promise(resolve=>{let remaining=seconds;status.textContent=`${action.label} em ${remaining}s…`,setPublishingResult(action.kind,`waiting`,`Em ${remaining} s`,``);let timer=window.setInterval(()=>{if(--remaining,remaining<=0){window.clearInterval(timer),resolve();return}status.textContent=`${action.label} em ${remaining}s…`,setPublishingResult(action.kind,`waiting`,`Em ${remaining} s`,``)},1e3)})}async function runAutomaticPublishing(kind){if(appState.publishingBusy||!hasPublishingData())return;let action=automaticPublishingActions()[kind];if(!action)return;let transport=createPublishingTransport(action,`rondlist-forum-${action.topicId}`);if(transport){setPublishingResult(kind,`idle`,`Aguardando`,``),beginPublishing();try{await waitForPublishingDelay(action),await executeAutomaticPublishingAction(action,transport),document.getElementById(`publish-status`).textContent=`${action.label} concluída.`,showToast(`${action.label} concluída no fórum.`,`success`)}catch(error){document.getElementById(`publish-status`).textContent=error.message,showToast(error.message,`error`)}finally{finishPublishing()}}}async function runAutomaticPublishingSequence(){if(appState.publishingBusy||!hasPublishingData())return;let actions=automaticPublishingActions(),sequence=[actions.listing,actions.consultation,actions.backup],transport=createPublishingTransport(sequence[0],`rondlist-forum-sequence`);if(transport){resetPublishingResults(),beginPublishing();try{for(let index=0;index<sequence.length;index+=1){let action=sequence[index];index>0&&await waitForPublishingDelay(action),await executeAutomaticPublishingAction(action,transport)}document.getElementById(`publish-status`).textContent=`Atualização completa concluída.`,showToast(`Listagem, consulta e backup atualizados no fórum.`,`success`)}catch(error){document.getElementById(`publish-status`).textContent=error.message,showToast(error.message,`error`)}finally{finishPublishing()}}}async function loadRondList(options={}){let{quiet=!1,forceSource=!1}=options;if(setDataLoading(!0),setWorkspaceState(``,`Sincronizando`),!appState.loaded){let table=document.getElementById(`members-table`),tableState=document.getElementById(`table-state`);table.hidden=!0,tableState.hidden=!1,tableState.textContent=`Carregando a base de membros…`}try{let response=await requestRondList(`bootstrap`,null,forceSource?{forceRefresh:!0}:{}),responseRows=response.data.rows||[],incomingRows=forceSource?responseRows.filter(row=>Array.isArray(row.source)&&row.source.some(value=>String(value??``).trim())||Array.isArray(row.saved)&&row.saved.some(value=>String(value??``).trim())):responseRows;appState.headers=forceSource&&Array.isArray(response.data.sourceHeaders)?response.data.sourceHeaders.slice():response.data.headers||[],appState.maxDataRow=incomingRows.reduce((maximum,row)=>Math.max(maximum,Number(row.row)||1),1);let roleIndex=memberFieldIndexes().role;appState.rows=incomingRows.map(row=>{let normalizedRow={...row};if(forceSource){let sourceValues=Array.isArray(row.source)?row.source.slice():[],savedValues=Array.isArray(row.saved)?row.saved.slice():[],hasSource=sourceValues.some(value=>String(value??``).trim());normalizedRow.source=sourceValues.slice(),normalizedRow.saved=savedValues.slice(),normalizedRow.values=hasSource?sourceValues.slice():savedValues.slice(),normalizedRow.hasSaved=savedValues.some(value=>String(value??``).trim())}return[`source`,`saved`,`values`].forEach(key=>{Array.isArray(row[key])&&(normalizedRow[key]=row[key].slice(),roleIndex>=0&&(normalizedRow[key][roleIndex]=canonicalRoleName(normalizedRow[key][roleIndex])))}),normalizedRow}),appState.settings=(response.settings.rows||[]).map(item=>({...item,role:canonicalRoleName(item.role)})),appState.additionalAccess=Array.isArray(response.additionalAccess&&response.additionalAccess.nicknames)?response.additionalAccess.nicknames.slice():[],appState.additionalAccessRoles=Array.isArray(response.additionalAccess&&response.additionalAccess.roles)?response.additionalAccess.roles.slice():[],appState.availableAccessRoles=Array.isArray(response.additionalAccess&&response.additionalAccess.availableRoles)?response.additionalAccess.availableRoles.map(entry=>({role:String(entry.role||``)})):[],appState.publishing=response.publishing||null,appState.booleanColumns=detectBooleanColumns(),sortMembers(),appState.selectedMemberRows.clear(),appState.loaded=!0,renderMembers(),renderSettings(),renderAdditionalAccess(),updateAdditionalAccessRoleOptions(),document.getElementById(`data-origin`).textContent=forceSource?`Dados recarregados`:`Dados sincronizados`,updateDataTimestamp(response.meta&&response.meta.generatedAt),setWorkspaceState(`ready`,`Sincronizado`),quiet||showToast(forceSource?`${formatCount(appState.rows.length)} registros recarregados.`:`${formatCount(appState.rows.length)} registros atualizados.`,`success`)}catch(error){setWorkspaceState(`error`,`Conexão pendente`),document.getElementById(`members-table`).hidden=!0;let tableState=document.getElementById(`table-state`);tableState.hidden=!1,tableState.textContent=error.message,document.getElementById(`table-result`).textContent=`Não foi possível carregar`,showToast(error.message,`error`)}finally{setDataLoading(!1)}}function createFormField(label,value,index,options={}){let wrapper=document.createElement(`div`);wrapper.className=`form-field${options.wide?` form-field--wide`:``}`;let inputId=options.id||`${options.prefix||`field`}-${index}`,fieldLabel=document.createElement(`label`);fieldLabel.htmlFor=inputId,fieldLabel.textContent=label;let input=document.createElement(`input`);return input.id=inputId,input.name=inputId,input.type=options.type||`text`,input.value=value??``,input.dataset.index=index,options.placeholder&&(input.placeholder=options.placeholder),options.min!==void 0&&(input.min=options.min),options.dataset&&Object.entries(options.dataset).forEach(([key,datasetValue])=>{input.dataset[key]=datasetValue}),wrapper.append(fieldLabel,input),wrapper}function openSettingsEditor(rowNumber){if(!requireEditAccess())return;let item=appState.settings.find(entry=>entry.row===rowNumber);if(!item)return;appState.editingSettingsRow=rowNumber,document.getElementById(`settings-editor-eyebrow`).textContent=`Configuração do cargo`;let fields=document.getElementById(`settings-editor-fields`);fields.replaceChildren();let roleField=document.createElement(`div`);roleField.className=`form-field`;let roleLabel=document.createElement(`label`);roleLabel.htmlFor=`settings-field-0`,roleLabel.textContent=`Cargo`,roleField.append(roleLabel,createRoleSelect(item.role,{id:`settings-field-0`,index:0,className:`form-select`,label:`Cargo`}));let vacanciesField=createFormField(`Quantidade de vagas`,item.vacancies,1,{id:`settings-field-1`,type:`number`,placeholder:`0`,min:0});fields.append(roleField,vacanciesField),document.getElementById(`settings-editor`).showModal()}function closeSettingsEditor(){appState.editingSettingsRow=null,document.getElementById(`settings-editor`).close()}async function saveRoleSettings(event){if(event.preventDefault(),!requireEditAccess())return;let item=appState.settings.find(entry=>entry.row===appState.editingSettingsRow);if(!item)return;let button=document.getElementById(`save-settings`),values=Array.from(document.querySelectorAll(`#settings-editor-fields input, #settings-editor-fields select`)).sort((left,right)=>Number(left.dataset.index)-Number(right.dataset.index)).map(input=>input.value.trim());button.disabled=!0,button.textContent=`Salvando…`;try{await requestRondList(`saveSettings`,{rows:[{row:item.row,role:values[0],vacancies:values[1]}]}),item.role=values[0],item.vacancies=values[1]===``?``:Number(values[1]),closeSettingsEditor(),renderSettings(),updateDataTimestamp(),showToast(`Cargo e vagas atualizados.`,`success`)}catch(error){showToast(error.message,`error`)}finally{button.disabled=!1,button.textContent=`Salvar cargo`}}function createEditorFieldset(title,description){let section=document.createElement(`section`);section.className=`editor-fieldset`;let heading=document.createElement(`h3`);heading.className=`editor-fieldset__title`,heading.textContent=title;let copy=document.createElement(`p`);copy.className=`editor-fieldset__description`,copy.textContent=description;let grid=document.createElement(`div`);return grid.className=`editor-grid`,section.append(heading,copy,grid),{section,grid}}function normalizeLayoutStyleValue(value){return String(value||``).trim()}function validPreviewStyleValue(value,property){return!value||!window.CSS||typeof CSS.supports!=`function`?!1:property===`--directory-shadow`?CSS.supports(`box-shadow`,value):CSS.supports(`color`,value)}function previewTextColor(value){let hex=String(value||``).replace(`#`,``);if(hex=hex.length===3||hex.length===4?hex.slice(0,3).split(``).map(digit=>digit+digit).join(``):hex.slice(0,6),!/^[0-9A-F]{6}$/i.test(hex))return`#FFFFFF`;let channels=[0,2,4].map(offset=>parseInt(hex.slice(offset,offset+2),16));return(channels[0]*299+channels[1]*587+channels[2]*114)/255e3>.62?`#171717`:`#FFFFFF`}function updateLayoutBannerPreview(){let input=document.getElementById(`layout-banner`),image=document.getElementById(`layout-preview-banner`),placeholder=document.getElementById(`layout-preview-banner-placeholder`);if(!input||!image||!placeholder)return;let value=input.value.trim();if(image.hidden=!0,placeholder.hidden=!1,!value){image.removeAttribute(`src`),image.dataset.previewSource=``,placeholder.textContent=`Adicione o link do banner para visualizá-lo.`;return}let source;try{let parsed=new URL(value);if(![`http:`,`https:`].includes(parsed.protocol))throw Error(`Protocolo inválido`);source=parsed.toString()}catch{image.removeAttribute(`src`),image.dataset.previewSource=``,placeholder.textContent=`Insira um link válido para o banner.`;return}placeholder.textContent=`Carregando banner…`,image.dataset.previewSource=source,image.onload=()=>{image.dataset.previewSource===source&&(image.hidden=!1,placeholder.hidden=!0)},image.onerror=()=>{image.dataset.previewSource===source&&(image.hidden=!0,placeholder.hidden=!1,placeholder.textContent=`Não foi possível carregar este banner.`)},image.src===source?image.complete&&(image.naturalWidth?(image.hidden=!1,placeholder.hidden=!0):placeholder.textContent=`Não foi possível carregar este banner.`):image.src=source}function updateLayoutColorPreview(){let canvas=document.getElementById(`layout-preview-canvas`),palette=document.getElementById(`layout-preview-palette`);if(!canvas||!palette)return;let definitions=[{property:`--directory-purple`,label:`Roxo principal`,fallback:`#821f88`},{property:`--directory-purple-dark`,label:`Roxo escuro`,fallback:`#57125b`},{property:`--directory-purple-deep`,label:`Roxo profundo`,fallback:`#500b59`},{property:`--directory-purple-bright`,label:`Roxo brilhante`,fallback:`#a22ca9`},{property:`--directory-purple-role`,label:`Roxo dos cargos`,fallback:`#8a188c`},{property:`--directory-lilac`,label:`Lilás`,fallback:`#dacbdb`},{property:`--directory-lilac-soft`,label:`Lilás suave`,fallback:`#f0f0f0`},{property:`--directory-lilac-muted`,label:`Lilás secundário`,fallback:`#c8b9c9`},{property:`--directory-ink`,label:`Texto`,fallback:`#352838`},{property:`--directory-white`,label:`Branco`,fallback:`#ffffff`},{property:`--directory-green`,label:`WhatsApp`,fallback:`#1ca14e`},{property:`--directory-discord`,label:`Discord`,fallback:`#5865f2`},{property:`--directory-project`,label:`Projeto aprovado`,fallback:`#da70d6`},{property:`--directory-pending`,label:`Graduação pendente`,fallback:`#b38171`},{property:`--directory-danger`,label:`Perigo`,fallback:`#b83243`},{property:`--directory-danger-soft`,label:`Perigo suave`,fallback:`rgba(184, 50, 67, 0.18)`},{property:`--directory-shadow`,label:`Sombra`,fallback:`0 2px 5px rgba(20, 0, 0, 0.14)`}],titles=new Map(Array.from(document.querySelectorAll(`[data-layout-color-title-row]`)).map(input=>[Number(input.dataset.layoutColorTitleRow),input.value.trim()])),entries=Array.from(document.querySelectorAll(`[data-layout-color-row]`)).map(input=>{let row=Number(input.dataset.layoutColorRow),definition=definitions[row-2];if(!definition)return null;let value=normalizeLayoutStyleValue(input.value);return{...definition,row,title:titles.get(row)||definition.label,value,valid:validPreviewStyleValue(value,definition.property)}}).filter(Boolean).sort((left,right)=>left.row-right.row);definitions.forEach(definition=>{let entry=entries.find(item=>item.property===definition.property);canvas.style.setProperty(definition.property,entry&&entry.valid?entry.value:definition.fallback)}),palette.replaceChildren(),entries.forEach(entry=>{let item=document.createElement(`div`);item.className=`bbcode-preview-color${entry.value&&!entry.valid?` is-invalid`:``}`;let displayedValue=entry.valid?entry.value:entry.fallback;entry.property===`--directory-shadow`?(item.style.setProperty(`--preview-swatch`,`var(--surface-muted)`),item.style.boxShadow=displayedValue,item.style.setProperty(`--preview-chip-text`,`var(--text)`)):(item.style.setProperty(`--preview-swatch`,displayedValue),item.style.setProperty(`--preview-chip-text`,previewTextColor(displayedValue))),item.textContent=entry.title,item.title=entry.valid?`${entry.title}: ${entry.value}`:`${entry.title}: ${entry.value?`valor inválido`:`usando o padrão`}`,palette.appendChild(item)})}function updateLayoutLivePreview(){updateLayoutBannerPreview(),updateLayoutColorPreview()}function openLayoutEditor(){if(!requireEditAccess())return;let owner=getLayoutOwner();if(!owner)return;appState.editingLayoutOwnerRow=owner.row;let fields=document.getElementById(`layout-editor-fields`);fields.replaceChildren();let bannerGroup=createEditorFieldset(`Banner`,`Imagem principal que será usada no topo da futura listagem em BBCode.`);bannerGroup.grid.appendChild(createFormField(`URL do banner`,owner.banner,0,{id:`layout-banner`,type:`url`,placeholder:`https://...`,wide:!0}));let colorGroup=createEditorFieldset(`Paleta de cores`,`Defina os valores visuais na mesma ordem usada pela listagem.`);appState.settings.forEach((item,index)=>{colorGroup.grid.appendChild(createFormField(`Título da cor ${index+1}`,item.colorTitle,index,{id:`layout-color-title-${item.row}`,placeholder:`Cor ${index+1}`,dataset:{layoutColorTitleRow:String(item.row)}})),colorGroup.grid.appendChild(createFormField(`Valor de ${String(item.colorTitle||``).trim()||`cor ${index+1}`}`,item.color,index,{id:`layout-color-${item.row}`,placeholder:item.row===18?`0 2px 5px rgba(20, 0, 0, .14)`:`#821F88 ou rgba(...)`,dataset:{layoutColorRow:String(item.row)}}))});let topicsGroup=createEditorFieldset(`Tópicos de publicação`,`Informe os IDs numéricos dos tópicos usados na publicação.`);[`Listagem`,`Consulta`,`Backup`].forEach((label,index)=>{topicsGroup.grid.appendChild(createFormField(label,(owner.topicIds||[])[index]||``,index,{id:`layout-topic-${index}`,type:`text`,placeholder:`1`}))});let linksGroup=createEditorFieldset(`Links importantes`,`Links complementares usados na composição do BBCode.`);Array.from({length:2},(_,index)=>{linksGroup.grid.appendChild(createFormField(`Link importante ${index+1}`,(owner.links||[])[index]||``,index,{id:`layout-link-${index}`,type:`url`,placeholder:`https://...`,wide:!0}))}),fields.append(bannerGroup.section,colorGroup.section,topicsGroup.section,linksGroup.section),document.getElementById(`layout-banner`).addEventListener(`input`,updateLayoutBannerPreview),fields.querySelectorAll(`[data-layout-color-row], [data-layout-color-title-row]`).forEach(input=>input.addEventListener(`input`,updateLayoutColorPreview)),updateLayoutLivePreview(),document.getElementById(`layout-editor`).showModal()}function closeLayoutEditor(){appState.editingLayoutOwnerRow=null,document.getElementById(`layout-editor`).close()}async function saveLayoutSettings(event){if(event.preventDefault(),!requireEditAccess())return;let owner=appState.settings.find(item=>item.row===appState.editingLayoutOwnerRow);if(!owner)return;let banner=document.getElementById(`layout-banner`).value.trim(),topicIds=Array.from({length:3},(_,index)=>document.getElementById(`layout-topic-${index}`).value.trim()),links=Array.from({length:2},(_,index)=>document.getElementById(`layout-link-${index}`).value.trim()),colors=new Map(Array.from(document.querySelectorAll(`[data-layout-color-row]`)).map(input=>[Number(input.dataset.layoutColorRow),normalizeLayoutStyleValue(input.value)])),colorTitles=new Map(Array.from(document.querySelectorAll(`[data-layout-color-title-row]`)).map(input=>[Number(input.dataset.layoutColorTitleRow),input.value.trim()])),updates=/* @__PURE__ */ new Map;function mergeUpdate(row,fields){updates.set(row,{...updates.get(row)||{row},...fields})}if((banner!==String(owner.banner||``).trim()||topicIds.some((topicId,index)=>topicId!==String((owner.topicIds||[])[index]||``).trim())||links.some((link,index)=>link!==String((owner.links||[])[index]||``).trim()))&&mergeUpdate(owner.row,{banner,topicIds,links}),appState.settings.forEach(item=>{let color=colors.get(item.row)||``,colorTitle=colorTitles.get(item.row)||``,colorChanged=color!==normalizeLayoutStyleValue(item.color),titleChanged=colorTitle!==String(item.colorTitle||``).trim();(colorChanged||titleChanged)&&mergeUpdate(item.row,{color,colorTitle})}),!updates.size){closeLayoutEditor(),showToast(`Nenhuma alteração nos recursos do BBCode.`,`info`);return}let button=document.getElementById(`save-layout`);button.disabled=!0,button.textContent=`Salvando…`;try{let rows=Array.from(updates.values());await requestRondList(`saveSettings`,{rows}),rows.forEach(update=>{let item=appState.settings.find(entry=>entry.row===update.row);item&&(Object.prototype.hasOwnProperty.call(update,`banner`)&&(item.banner=update.banner),Object.prototype.hasOwnProperty.call(update,`color`)&&(item.color=update.color),Object.prototype.hasOwnProperty.call(update,`colorTitle`)&&(item.colorTitle=update.colorTitle),Object.prototype.hasOwnProperty.call(update,`topicIds`)&&(item.topicIds=update.topicIds.slice(),appState.publishing&&(appState.publishing.listingTopicId=update.topicIds[0]||``,appState.publishing.consultationTopicId=update.topicIds[1]||``,appState.publishing.backupTopicId=update.topicIds[2]||``)),Object.prototype.hasOwnProperty.call(update,`links`)&&(item.links=update.links.slice()))}),closeLayoutEditor(),renderSettings(),updateDataTimestamp(),showToast(`Recursos do BBCode atualizados.`,`success`)}catch(error){showToast(error.message,`error`)}finally{button.disabled=!1,button.textContent=`Salvar recursos`}}function cleanCell(value){return String(value||``).replace(/^"|"$/g,``).trim()}async function fetchForumUsername(){let runtimeUsername=cleanCell(window._userdata&&window._userdata.username);if(runtimeUsername&&runtimeUsername.toLocaleLowerCase(`pt-BR`)!==`anônimo`)return runtimeUsername;let response;try{response=await fetch(new URL(`forum`,CONFIG.workerProxy).toString(),{method:`GET`,credentials:`omit`,cache:`no-store`})}catch{throw Error(`Não foi possível consultar sua sessão no fórum.`)}if(!response.ok)throw Error(`Não foi possível confirmar seu login no fórum.`);let match=(await response.text()).match(/_userdata\[['"]username['"]\]\s*=\s*['"]([^'"]+)['"]/i),username=match?cleanCell(match[1]):``;if(!username||username.toLocaleLowerCase(`pt-BR`)===`anônimo`){let error=/* @__PURE__ */ Error(`Você precisa estar conectado ao fórum para continuar.`);throw error.code=`AUTH_DENIED`,error}return username}function denyAccess(message){let authScreen=document.getElementById(`auth-screen`);currentUser=null,authRevalidationTimer&&=(window.clearInterval(authRevalidationTimer),null),authScreen.hidden=!1,authScreen.classList.remove(`is-hidden`),authScreen.classList.add(`is-denied`),document.getElementById(`auth-title`).textContent=`Acesso negado`,document.getElementById(`auth-message`).textContent=message,authScreen.setAttribute(`role`,`alert`),document.getElementById(`topbar-user`).classList.remove(`is-visible`),applyAccessMode()}function allowAccess(user,options={}){currentUser=Object.freeze({...user});let authScreen=document.getElementById(`auth-screen`),userBlock=document.getElementById(`topbar-user`),avatar=document.getElementById(`user-avatar`);document.getElementById(`user-display-name`).textContent=user.nick,document.getElementById(`user-display-role`).textContent=options.pendingValidation?`${user.role} · verificando acesso`:canCurrentUserEdit(user)?user.role:`${user.role} · somente leitura`,avatar.src=`https://www.habbo.com.br/habbo-imaging/avatarimage?user=${encodeURIComponent(user.nick)}&direction=2&head_direction=3&gesture=sml&size=m&headonly=1`,avatar.alt=`Avatar de ${user.nick}`,userBlock.classList.add(`is-visible`),authScreen.classList.add(`is-hidden`),applyAccessMode(),window.setTimeout(()=>{authScreen.hidden=!0},250)}function userFromAccess(access,username){return{nick:access.nick||username,role:canonicalRoleName(access.role)||`Acesso autorizado`,roles:Array.isArray(access.roles)?access.roles.map(canonicalRoleName):[],canEdit:typeof access.canEdit==`boolean`?access.canEdit:void 0,canManageAccess:typeof access.canManageAccess==`boolean`?access.canManageAccess:void 0}}async function validateForumAccess(){let username=CONFIG.auth.temporaryUser||await fetchForumUsername(),access=(await requestRondList(`access`,{username})).access||{};if(!access.allowed){let error=Error(access.message||`Seu usuário não possui permissão para acessar a RondList.`);throw error.code=`AUTH_DENIED`,error}return userFromAccess(access,username)}function scheduleAuthenticationRevalidation(){authRevalidationTimer&&window.clearInterval(authRevalidationTimer),authRevalidationTimer=window.setInterval(()=>{revalidateAuthentication().catch(()=>{})},CONFIG.auth.revalidateIntervalMs)}async function revalidateAuthentication(options={}){try{let user=await validateForumAccess();return allowAccess(user),await saveCachedAuthentication(user),scheduleAuthenticationRevalidation(),options.reloadData&&await loadRondList({quiet:!0,forceSource:!0}),options.honorInitialHash&&window.location.hash===`#configuracoes`&&canCurrentUserEdit(user)&&navigateToView(`settings`,{force:!0}),options.announce&&showToast(``,`success`,`Bem-vindo, ${user.nick}`),user}catch(error){if(currentUser&&error&&error.code!==`AUTH_DENIED`)return allowAccess({...currentUser,canEdit:!1,canManageAccess:!1},{pendingValidation:!0}),scheduleAuthenticationRevalidation(),null;throw await clearCachedAuthentication(),denyAccess(error&&error.message?error.message:`Não foi possível validar seu acesso.`),error}}async function initializeAuthentication(){let authScreen=document.getElementById(`auth-screen`);authScreen.hidden=!1,authScreen.classList.remove(`is-hidden`,`is-denied`),authScreen.setAttribute(`role`,`status`),document.getElementById(`auth-title`).textContent=`Verificando acesso`,document.getElementById(`auth-message`).textContent=`Aguarde enquanto validamos seu login e sua permissão na RondList.`;let cached=await readCachedAuthentication();if(cached&&cached.user&&cached.user.nick){allowAccess({...cached.user,canEdit:!1,canManageAccess:!1},{pendingValidation:!0}),loadRondList({quiet:!0,forceSource:!0}).catch(()=>{}),revalidateAuthentication({reloadData:!0,honorInitialHash:!0}).catch(()=>{});return}revalidateAuthentication({reloadData:!0,honorInitialHash:!0,announce:!0}).catch(()=>{})}function showToast(message,type=`info`,title=``){let styles={success:{title:`Sucesso`,icon:`              <svg viewBox="0 0 24 24" aria-hidden="true">                <circle cx="12" cy="12" r="8.5"></circle>                <path class="toast__icon-shape" d="m8 12.2 2.6 2.6L16.5 9"></path>              </svg>            `},error:{title:`Erro`,icon:`              <svg viewBox="0 0 24 24" aria-hidden="true">                <circle cx="12" cy="12" r="8.5"></circle>                <path class="toast__icon-shape" d="m9 9 6 6M15 9l-6 6"></path>              </svg>            `},warning:{title:`Atenção`,icon:`              <svg viewBox="0 0 24 24" aria-hidden="true">                <path d="M10.3 4.6 3.4 17a2 2 0 0 0 1.8 3h13.6a2 2 0 0 0 1.8-3L13.7 4.6a2 2 0 0 0-3.4 0Z"></path>                <path class="toast__icon-shape" d="M12 9v4.2M12 16.5h.01"></path>              </svg>            `},info:{title:`Informação`,icon:`              <svg viewBox="0 0 24 24" aria-hidden="true">                <circle cx="12" cy="12" r="8.5"></circle>                <path class="toast__icon-shape" d="M12 10.5v5M12 7.5h.01"></path>              </svg>            `}},style=styles[type]||styles.info,toast=document.createElement(`div`);toast.className=`toast`,toast.dataset.type=styles[type]?type:`info`,toast.setAttribute(`role`,type===`error`?`alert`:`status`);let toastIcon=document.createElement(`span`);toastIcon.className=`toast__icon`,toastIcon.innerHTML=style.icon;let toastContent=document.createElement(`span`);toastContent.className=`toast__content`;let toastTitle=document.createElement(`strong`);if(toastTitle.className=`toast__title`,toastTitle.textContent=title||style.title,toastContent.appendChild(toastTitle),message){let toastMessage=document.createElement(`span`);toastMessage.className=`toast__message`,toastMessage.textContent=message,toastContent.appendChild(toastMessage)}toast.append(toastIcon,toastContent),document.getElementById(`toast-container`).appendChild(toast),requestAnimationFrame(()=>{toast.classList.add(`is-visible`),window.setTimeout(()=>toast.classList.add(`is-expanded`),420)});let duration=type===`error`?5400:4700;window.setTimeout(()=>{toast.classList.remove(`is-expanded`)},duration-850),window.setTimeout(()=>{toast.classList.add(`is-leaving`)},duration-300),window.setTimeout(()=>toast.remove(),duration+120)}function setSidebarOpen(isOpen){let sidebar=document.getElementById(`app-sidebar`),menuButton=document.getElementById(`mobile-menu-button`);sidebar.classList.toggle(`is-open`,isOpen),menuButton.setAttribute(`aria-expanded`,String(isOpen)),menuButton.setAttribute(`aria-label`,isOpen?`Fechar menu principal`:`Abrir menu principal`)}function navigateToView(viewName,options={}){if(![`members`,`settings`].includes(viewName))return;if(viewName===`settings`&&!canCurrentUserEdit()){showToast(`As configurações são exclusivas de usuários com acesso total.`,`warning`);return}if(!options.force&&viewName!==`members`&&(appState.editingMembers||appState.removingMembers||appState.addingMember)){showToast(`Conclua ou cancele a ação atual antes de trocar de página.`,`warning`);return}appState.currentView=viewName,document.querySelectorAll(`.app-view`).forEach(view=>{view.hidden=view.dataset.view!==viewName}),document.querySelectorAll(`[data-view-target]`).forEach(button=>{let isActive=button.dataset.viewTarget===viewName;button.classList.toggle(`is-active`,isActive),isActive?button.setAttribute(`aria-current`,`page`):button.removeAttribute(`aria-current`)});let isSettings=viewName===`settings`;document.getElementById(`topbar-page-title`).textContent=isSettings?`Configurações da RondList`:`Controle de membros`,document.title=isSettings?`Configurações · RondList`:`RondList`;let page=document.querySelector(`.page`);page.scrollTop=0,setSidebarOpen(!1)}window.RondList=Object.freeze({config:CONFIG,worker:Object.freeze({buildUrl:buildWorkerUrl,fetch:fetchViaWorker}),auth:Object.freeze({getCurrentUser:()=>currentUser,refresh:initializeAuthentication}),sheets:Object.freeze({request:requestRondList,fetchViaWorker})}),document.getElementById(`refresh-members`).addEventListener(`click`,()=>loadRondList({forceSource:!0})),document.getElementById(`refresh-settings`).addEventListener(`click`,()=>loadRondList({forceSource:!0})),document.getElementById(`additional-access-type`).addEventListener(`change`,updateAdditionalAccessField),document.getElementById(`additional-access-form`).addEventListener(`submit`,saveAdditionalAccess),document.getElementById(`open-requirements`).addEventListener(`click`,openStampDialog),document.getElementById(`close-requirements`).addEventListener(`click`,closeRequirementsDialog),document.getElementById(`dismiss-requirements`).addEventListener(`click`,closeRequirementsDialog),document.getElementById(`post-requirements-stamp`).addEventListener(`click`,postRequirementsStamp),requirementTagInputs().forEach(input=>{input.addEventListener(`input`,handleRequirementTagInput),input.addEventListener(`paste`,handleRequirementTagPaste),input.addEventListener(`keydown`,handleRequirementTagKeydown)}),document.getElementById(`requirements-dialog`).addEventListener(`click`,event=>{event.target===event.currentTarget&&closeRequirementsDialog()}),document.getElementById(`requirements-dialog`).addEventListener(`cancel`,event=>{appState.requirementsBusy&&event.preventDefault()}),document.getElementById(`open-publishing`).addEventListener(`click`,openPublishingDialog),document.getElementById(`close-publishing`).addEventListener(`click`,closePublishingDialog),document.getElementById(`dismiss-publishing`).addEventListener(`click`,closePublishingDialog),document.getElementById(`publish-mode-manual`).addEventListener(`click`,()=>setPublishingMode(`manual`)),document.getElementById(`publish-mode-auto`).addEventListener(`click`,()=>setPublishingMode(`automatic`)),document.querySelectorAll(`[data-copy-publish]`).forEach(button=>{button.addEventListener(`click`,()=>copyPublishingText(button.dataset.copyPublish))}),document.querySelectorAll(`[data-publish-action]`).forEach(button=>{button.addEventListener(`click`,()=>runAutomaticPublishing(button.dataset.publishAction))}),document.getElementById(`publish-all-actions`).addEventListener(`click`,runAutomaticPublishingSequence),document.getElementById(`publishing-dialog`).addEventListener(`click`,event=>{event.target===event.currentTarget&&closePublishingDialog()}),document.getElementById(`publishing-dialog`).addEventListener(`cancel`,event=>{appState.publishingBusy&&event.preventDefault()}),document.getElementById(`member-search`).addEventListener(`input`,event=>{appState.search=event.target.value,renderMembers()}),document.getElementById(`edit-members`).addEventListener(`click`,beginMemberEditing),document.getElementById(`organize-members`).addEventListener(`click`,organizeMemberList),document.getElementById(`save-members-edit`).addEventListener(`click`,saveMemberList),document.getElementById(`cancel-members-edit`).addEventListener(`click`,cancelMemberEditing),document.getElementById(`add-member`).addEventListener(`click`,openAddMemberEditor),document.getElementById(`add-member-form`).addEventListener(`submit`,saveNewMember),document.getElementById(`close-add-member`).addEventListener(`click`,closeAddMemberEditor),document.getElementById(`cancel-add-member`).addEventListener(`click`,closeAddMemberEditor),document.getElementById(`add-member-editor`).addEventListener(`click`,event=>{event.target===event.currentTarget&&closeAddMemberEditor()}),document.getElementById(`add-member-editor`).addEventListener(`cancel`,event=>{if(appState.savingMembers){event.preventDefault();return}appState.addingMember=!1,updateMemberEditControls()}),document.getElementById(`add-member-editor`).addEventListener(`close`,()=>{appState.addingMember=!1,updateMemberEditControls()}),document.getElementById(`remove-members`).addEventListener(`click`,beginMemberRemoval),document.getElementById(`confirm-members-remove`).addEventListener(`click`,confirmMemberRemoval),document.getElementById(`cancel-members-remove`).addEventListener(`click`,cancelMemberRemoval),document.getElementById(`settings-editor-form`).addEventListener(`submit`,saveRoleSettings),document.getElementById(`close-settings-editor`).addEventListener(`click`,closeSettingsEditor),document.getElementById(`cancel-settings-editor`).addEventListener(`click`,closeSettingsEditor),document.getElementById(`settings-editor`).addEventListener(`click`,event=>{event.target===event.currentTarget&&closeSettingsEditor()}),document.getElementById(`edit-layout`).addEventListener(`click`,openLayoutEditor),document.getElementById(`layout-editor-form`).addEventListener(`submit`,saveLayoutSettings),document.getElementById(`close-layout-editor`).addEventListener(`click`,closeLayoutEditor),document.getElementById(`cancel-layout-editor`).addEventListener(`click`,closeLayoutEditor),document.getElementById(`layout-editor`).addEventListener(`click`,event=>{event.target===event.currentTarget&&closeLayoutEditor()}),document.getElementById(`mobile-menu-button`).addEventListener(`click`,()=>{setSidebarOpen(!document.getElementById(`app-sidebar`).classList.contains(`is-open`))}),document.getElementById(`sidebar-overlay`).addEventListener(`click`,()=>setSidebarOpen(!1)),document.querySelectorAll(`[data-view-target]`).forEach(navItem=>{navItem.addEventListener(`click`,()=>{navItem.classList.remove(`is-pulsing`),navItem.offsetWidth,navItem.classList.add(`is-pulsing`),window.setTimeout(()=>navItem.classList.remove(`is-pulsing`),440),navigateToView(navItem.dataset.viewTarget)})}),document.getElementById(`sidebar-logo`).addEventListener(`click`,event=>{event.preventDefault(),navigateToView(`members`)}),document.addEventListener(`keydown`,event=>{event.key===`Escape`&&(setSidebarOpen(!1),setVisionPanelOpen(!1))}),window.addEventListener(`resize`,()=>{window.innerWidth>=768&&setSidebarOpen(!1)}),initializeTheme(),initializeVisionTools(),updateAdditionalAccessField(),navigateToView(`members`,{force:!0}),initializeAuthentication()})();
+(() => {
+"use strict";
+
+const THEME_STORAGE_KEY = "RONDLIST_THEME";
+const VISION_STORAGE_KEY = "RONDLIST_VISION_SETTINGS";
+const VISION_SCALES = Object.freeze(["normal", "large", "larger"]);
+
+function setTheme(theme, options = {}) {
+const nextTheme = theme === "light" ? "light" : "dark";
+const isDark = nextTheme === "dark";
+const toggle = document.getElementById("theme-toggle");
+
+document.documentElement.dataset.theme = nextTheme;
+document
+.querySelector('meta[name="theme-color"]')
+.setAttribute("content", "#ED7A1E");
+
+if (toggle) {
+const nextModeLabel = isDark ? "claro" : "escuro";
+toggle.setAttribute("aria-label", `Ativar modo ${nextModeLabel}`);
+toggle.setAttribute("aria-pressed", String(isDark));
+toggle.setAttribute("title", `Ativar modo ${nextModeLabel}`);
+}
+
+if (options.persist) {
+try {
+localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+} catch {
+// O tema continua ativo mesmo quando o navegador bloqueia o armazenamento.
+}
+}
+}
+
+function initializeTheme() {
+setTheme(document.documentElement.dataset.theme);
+document.getElementById("theme-toggle").addEventListener("click", () => {
+const currentTheme = document.documentElement.dataset.theme;
+setTheme(currentTheme === "dark" ? "light" : "dark", {
+persist: true
+});
+});
+}
+
+function setVisionPanelOpen(isOpen) {
+const panel = document.getElementById("vision-panel");
+const toggle = document.getElementById("vision-toggle");
+
+panel.hidden = !isOpen;
+toggle.setAttribute("aria-expanded", String(isOpen));
+toggle.setAttribute(
+"aria-label",
+isOpen
+? "Fechar ajustes para baixa visão"
+: "Abrir ajustes para baixa visão"
+);
+}
+
+function applyVisionSettings(settings, options = {}) {
+const scale = VISION_SCALES.includes(settings.scale)
+? settings.scale
+: "normal";
+const highContrast = settings.highContrast === true;
+
+document.documentElement.dataset.visionScale = scale;
+document.documentElement.dataset.visionContrast = highContrast
+? "high"
+: "standard";
+
+document
+.querySelectorAll("[data-vision-scale-option]")
+.forEach((button) => {
+button.setAttribute(
+"aria-pressed",
+String(button.dataset.visionScaleOption === scale)
+);
+});
+
+const contrastButton = document.getElementById("vision-contrast");
+contrastButton.setAttribute("aria-pressed", String(highContrast));
+document.getElementById("vision-contrast-state").textContent =
+highContrast ? "Ativado" : "Desativado";
+
+if (options.persist) {
+try {
+localStorage.setItem(
+VISION_STORAGE_KEY,
+JSON.stringify({ scale, highContrast })
+);
+} catch {
+// As preferências continuam ativas durante a sessão atual.
+}
+}
+}
+
+function currentVisionSettings() {
+return {
+scale: document.documentElement.dataset.visionScale || "normal",
+highContrast:
+document.documentElement.dataset.visionContrast === "high"
+};
+}
+
+function initializeVisionTools() {
+const toggle = document.getElementById("vision-toggle");
+const panel = document.getElementById("vision-panel");
+const contrastButton = document.getElementById("vision-contrast");
+
+applyVisionSettings(currentVisionSettings());
+
+toggle.addEventListener("click", () => {
+setVisionPanelOpen(panel.hidden);
+});
+
+document
+.querySelectorAll("[data-vision-scale-option]")
+.forEach((button) => {
+button.addEventListener("click", () => {
+const settings = currentVisionSettings();
+applyVisionSettings(
+{
+...settings,
+scale: button.dataset.visionScaleOption
+},
+{ persist: true }
+);
+});
+});
+
+contrastButton.addEventListener("click", () => {
+const settings = currentVisionSettings();
+applyVisionSettings(
+{
+...settings,
+highContrast: !settings.highContrast
+},
+{ persist: true }
+);
+});
+
+document.getElementById("vision-reset").addEventListener("click", () => {
+applyVisionSettings(
+{ scale: "normal", highContrast: false },
+{ persist: true }
+);
+});
+
+document.addEventListener("click", (event) => {
+if (
+!panel.hidden &&
+!panel.contains(event.target) &&
+!toggle.contains(event.target)
+) {
+setVisionPanelOpen(false);
+}
+});
+}
+
+const CONFIG = Object.freeze({
+workerProxy: "https://rondlist.rondeiros2023.workers.dev/",
+cacheDurationMs: 5 * 60 * 1000,
+auth: Object.freeze({
+temporaryUser: ".Brendon",
+databaseName: "RondListAuth",
+storeName: "session",
+cacheKey: "current",
+revalidateIntervalMs: 60 * 1000
+}),
+sheets: Object.freeze({
+rondListApi: "https://script.google.com/macros/s/AKfycbyDwewHsL1JjfcnOUH_h6R9Ouz68uSjypEQQd9FvHbg3U0_L1vgLXxI38OZJibUE3w/exec"
+}),
+forum: Object.freeze({
+origin: "https://brendonrcc.forumeiros.com",
+automaticDelayMs: 13000,
+bridgeTimeoutMs: 25000
+})
+});
+
+const CACHE_PREFIX = "RONDLIST_CACHE_V2_";
+const ROLE_OPTIONS = Object.freeze([
+"Líder",
+"Vice-Líder",
+"Consultor(a)",
+"Ministro(a) da Administração",
+"Ministro(a) da Atualização",
+"Ministro(a) da Contabilidade",
+"Ministro(a) da Documentação",
+"Ministro(a) das Finanças",
+"Ministro(a) da Segurança",
+"Estagiário(a)",
+"Graduador(a)",
+"Tutor(a)",
+"Rondeiro(a)"
+]);
+const NEXUS_MONTHS = Object.freeze([
+"Jan",
+"Fev",
+"Mar",
+"Abr",
+"Mai",
+"Jun",
+"Jul",
+"Ago",
+"Set",
+"Out",
+"Nov",
+"Dez"
+]);
+const DATE_HEADER_KEYS = Object.freeze([
+"ENTRADA",
+"DATAPROMOREB",
+"PROMOREBAIX",
+"INICIO",
+"RETORNO",
+"TERMINO"
+]);
+let currentUser = null;
+let authRevalidationTimer = null;
+
+function openAuthDatabase() {
+return new Promise((resolve, reject) => {
+if (!window.indexedDB) {
+reject(new Error("IndexedDB indisponível."));
+return;
+}
+
+const request = indexedDB.open(CONFIG.auth.databaseName, 1);
+request.onupgradeneeded = () => {
+const database = request.result;
+if (!database.objectStoreNames.contains(CONFIG.auth.storeName)) {
+database.createObjectStore(CONFIG.auth.storeName);
+}
+};
+request.onsuccess = () => resolve(request.result);
+request.onerror = () => reject(request.error);
+});
+}
+
+async function readCachedAuthentication() {
+try {
+const database = await openAuthDatabase();
+return await new Promise((resolve, reject) => {
+const transaction = database.transaction(
+CONFIG.auth.storeName,
+"readonly"
+);
+const request = transaction
+.objectStore(CONFIG.auth.storeName)
+.get(CONFIG.auth.cacheKey);
+request.onsuccess = () => resolve(request.result || null);
+request.onerror = () => reject(request.error);
+transaction.oncomplete = () => database.close();
+});
+} catch {
+return null;
+}
+}
+
+async function saveCachedAuthentication(user) {
+try {
+const database = await openAuthDatabase();
+await new Promise((resolve, reject) => {
+const transaction = database.transaction(
+CONFIG.auth.storeName,
+"readwrite"
+);
+transaction
+.objectStore(CONFIG.auth.storeName)
+.put(
+{ user: { ...user }, verifiedAt: Date.now() },
+CONFIG.auth.cacheKey
+);
+transaction.oncomplete = resolve;
+transaction.onerror = () => reject(transaction.error);
+});
+database.close();
+} catch {
+// O login continua válido durante a sessão atual.
+}
+}
+
+async function clearCachedAuthentication() {
+try {
+const database = await openAuthDatabase();
+await new Promise((resolve, reject) => {
+const transaction = database.transaction(
+CONFIG.auth.storeName,
+"readwrite"
+);
+transaction
+.objectStore(CONFIG.auth.storeName)
+.delete(CONFIG.auth.cacheKey);
+transaction.oncomplete = resolve;
+transaction.onerror = () => reject(transaction.error);
+});
+database.close();
+} catch {
+// Não há cache local para remover.
+}
+}
+
+function currentUserRoles(user = currentUser) {
+if (!user) return [];
+return [user.role, ...(Array.isArray(user.roles) ? user.roles : [])]
+.map((role) => String(role || "").trim())
+.filter(Boolean);
+}
+
+function canCurrentUserEdit(user = currentUser) {
+if (user && typeof user.canEdit === "boolean") {
+return user.canEdit;
+}
+return currentUserRoles(user).some((role) =>
+/^(?:DESENVOLVEDOR(?:\(A\))?|LIDER|VICE-LIDER)$/.test(
+normalizeLookup(role)
+)
+);
+}
+
+function canCurrentUserManageAccess(user = currentUser) {
+if (user && typeof user.canManageAccess === "boolean") {
+return user.canManageAccess;
+}
+return currentUserRoles(user).some((role) =>
+/^(?:DESENVOLVEDOR(?:\(A\))?|LIDER|VICE-LIDER)$/.test(
+normalizeLookup(role)
+)
+);
+}
+
+function requireEditAccess(options = {}) {
+if (canCurrentUserEdit()) return true;
+if (options.notify !== false) {
+showToast(
+"Seu usuário não possui acesso total para editar.",
+"warning"
+);
+}
+return false;
+}
+
+function requireManageAccess(options = {}) {
+if (canCurrentUserManageAccess()) return true;
+if (options.notify !== false) {
+showToast(
+"Somente a Liderança e Desenvolvedores podem gerenciar acessos adicionais.",
+"warning"
+);
+}
+return false;
+}
+
+function applyAccessMode() {
+const canEdit = canCurrentUserEdit();
+const canManageAccess = canCurrentUserManageAccess();
+document.documentElement.dataset.accessMode = canEdit
+? "full"
+: "read-only";
+
+if (!canEdit) {
+appState.editingMembers = false;
+appState.removingMembers = false;
+appState.addingMember = false;
+appState.memberDrafts.clear();
+appState.selectedMemberRows.clear();
+[
+"add-member-editor",
+"requirements-dialog",
+"settings-editor",
+"layout-editor"
+].forEach(
+(id) => {
+const dialog = document.getElementById(id);
+if (dialog && dialog.open) dialog.close();
+}
+);
+}
+
+const editLayoutButton = document.getElementById("edit-layout");
+editLayoutButton.hidden = !canEdit;
+editLayoutButton.disabled = !canEdit || !appState.settings.length;
+document.getElementById("nav-settings").hidden = !canEdit;
+document.getElementById("additional-access-section").hidden =
+!canManageAccess;
+
+if (!canManageAccess) {
+appState.additionalAccess = [];
+appState.additionalAccessRoles = [];
+appState.availableAccessRoles = [];
+renderAdditionalAccess();
+updateAdditionalAccessRoleOptions();
+}
+
+if (!canEdit && appState.currentView === "settings") {
+navigateToView("members", { force: true });
+}
+
+updateMemberEditControls();
+if (appState.settings.length) renderSettings();
+}
+
+const appState = {
+headers: [],
+rows: [],
+settings: [],
+additionalAccess: [],
+additionalAccessRoles: [],
+availableAccessRoles: [],
+publishing: null,
+maxDataRow: 1,
+currentView: "members",
+search: "",
+editingMembers: false,
+removingMembers: false,
+addingMember: false,
+selectedMemberRows: new Set(),
+memberDrafts: new Map(),
+booleanColumns: new Set(),
+loading: false,
+savingMembers: false,
+organizingMembers: false,
+requirementsBusy: false,
+publishingBusy: false,
+publishingResults: createPublishingResults(),
+editingSettingsRow: null,
+editingLayoutOwnerRow: null,
+loaded: false
+};
+
+function buildWorkerUrl(targetUrl) {
+const url = new URL(CONFIG.workerProxy);
+url.searchParams.set("url", targetUrl);
+return url.toString();
+}
+
+async function fetchViaWorker(targetUrl, options = {}) {
+const {
+forceRefresh = false,
+cacheDurationMs = CONFIG.cacheDurationMs,
+timeoutMs = 15000
+} = options;
+
+const cacheKey = `${CACHE_PREFIX}${targetUrl}`;
+
+if (!forceRefresh) {
+try {
+const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+if (cached && Date.now() - cached.timestamp < cacheDurationMs) {
+return cached.data;
+}
+} catch {
+localStorage.removeItem(cacheKey);
+}
+}
+
+const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+try {
+const response = await fetch(buildWorkerUrl(targetUrl), {
+signal: controller.signal
+});
+
+if (!response.ok) {
+throw new Error(`Worker respondeu com status ${response.status}.`);
+}
+
+const text = await response.text();
+if (!text.trim()) {
+throw new Error("O Worker retornou uma resposta vazia.");
+}
+
+try {
+localStorage.setItem(
+cacheKey,
+JSON.stringify({ timestamp: Date.now(), data: text })
+);
+} catch {
+// O cache é opcional e não deve impedir a consulta.
+}
+
+return text;
+} catch (error) {
+if (error.name === "AbortError") {
+throw new Error("A consulta excedeu o tempo limite.");
+}
+throw error;
+} finally {
+clearTimeout(timeout);
+}
+}
+
+async function requestRondList(
+action,
+payload = null,
+options = {}
+) {
+const { forceRefresh = false } = options;
+const target = new URL(CONFIG.sheets.rondListApi);
+const requestedUsername = cleanCell(
+(payload && payload.username) ||
+(currentUser && currentUser.nick) ||
+""
+);
+const isWrite =
+action.startsWith("save") ||
+action === "addAdditionalAccess" ||
+action.startsWith("remove") ||
+action === "organizeData";
+if (isWrite && !requireEditAccess({ notify: false })) {
+throw new Error(
+"Seu usuário não possui acesso total para editar."
+);
+}
+const controller = new AbortController();
+const timeout = window.setTimeout(() => controller.abort(), 20000);
+const request = {
+method: isWrite ? "POST" : "GET",
+signal: controller.signal,
+cache: "no-store"
+};
+
+if (isWrite) {
+request.headers = { "Content-Type": "text/plain;charset=utf-8" };
+request.body = JSON.stringify({
+action,
+...(payload || {}),
+username: requestedUsername
+});
+} else {
+target.searchParams.set("action", action);
+if (requestedUsername) {
+target.searchParams.set("username", requestedUsername);
+}
+if (forceRefresh) {
+target.searchParams.set("force", "1");
+target.searchParams.set("_", String(Date.now()));
+request.headers = {
+"Cache-Control": "no-cache, no-store, max-age=0",
+Pragma: "no-cache"
+};
+}
+}
+
+try {
+const response = await fetch(buildWorkerUrl(target.toString()), request);
+const text = await response.text();
+let result;
+
+try {
+result = JSON.parse(text);
+} catch {
+throw new Error("A API da RondList retornou uma resposta inválida.");
+}
+
+if (!response.ok || !result.ok) {
+const message = result && result.error ? result.error : "Falha na API.";
+if (/não autorizado/i.test(message)) {
+throw new Error(
+"O Worker ainda precisa receber a chave segura da RondList."
+);
+}
+throw new Error(message);
+}
+
+return result;
+} catch (error) {
+if (error.name === "AbortError") {
+throw new Error("O serviço demorou demais para responder.");
+}
+throw error;
+} finally {
+window.clearTimeout(timeout);
+}
+}
+
+function setWorkspaceState(state, label) {
+const element = document.getElementById("workspace-state");
+element.classList.remove("is-ready", "is-error");
+if (state) element.classList.add(`is-${state}`);
+element.textContent = label;
+}
+
+function setDataLoading(isLoading) {
+appState.loading = isLoading;
+document.getElementById("refresh-members").disabled =
+isLoading ||
+appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember;
+document.getElementById("refresh-settings").disabled = isLoading;
+document.getElementById("edit-layout").hidden =
+!canCurrentUserEdit();
+document.getElementById("edit-layout").disabled =
+!canCurrentUserEdit() || isLoading || !appState.settings.length;
+updateMemberEditControls();
+}
+
+function formatCount(value) {
+return Number(value || 0).toLocaleString("pt-BR");
+}
+
+function normalizeLookup(value) {
+return String(value || "")
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.replace(/\./g, "")
+.trim()
+.toUpperCase();
+}
+
+function headerIndex(label) {
+const normalized = normalizeLookup(label);
+return appState.headers.findIndex(
+(header) => normalizeLookup(header) === normalized
+);
+}
+
+function headerKey(value) {
+return normalizeLookup(value).replace(/[^A-Z0-9]+/g, "");
+}
+
+function headerIndexAny(...labels) {
+const keys = labels.map(headerKey);
+return appState.headers.findIndex((header) =>
+keys.includes(headerKey(header))
+);
+}
+
+function memberFieldIndexes() {
+return {
+role: headerIndex("CARGO"),
+nickname: headerIndex("NICKNAME"),
+entry: headerIndex("ENTRADA"),
+promotion: headerIndexAny(
+"DATA (PROMO/REB)",
+"PROMO. / REBAIX."
+),
+licenseStart: headerIndexAny("INÍCIO", "INICIO"),
+licenseDays: headerIndex("DIAS"),
+licenseReturn: headerIndexAny("RETORNO", "TÉRMINO", "TERMINO")
+};
+}
+
+function isDateColumn(index) {
+return DATE_HEADER_KEYS.includes(headerKey(appState.headers[index]));
+}
+
+function canonicalRoleName(role) {
+const value = String(role || "").trim();
+const normalized = normalizeLookup(value);
+
+if (normalized.startsWith("CONSELHEIRO(A)")) {
+return value.replace(/^Conselheiro\(a\)/i, "Ministro(a)");
+}
+return value;
+}
+
+function roleRank(role) {
+const normalized = normalizeLookup(canonicalRoleName(role));
+if (normalized === "LIDER") return 0;
+if (normalized === "VICE-LIDER") return 1;
+if (normalized === "CONSULTOR(A)") return 2;
+if (normalized.startsWith("MINISTRO(A)")) return 3;
+if (normalized === "ESTAGIARIO(A)") return 4;
+if (normalized === "GRADUADOR(A)") return 5;
+if (normalized === "TUTOR(A)") return 6;
+if (normalized === "RONDEIRO(A)") return 7;
+return 8;
+}
+
+function roleOptionIndex(role) {
+const normalized = normalizeLookup(canonicalRoleName(role));
+const index = ROLE_OPTIONS.findIndex(
+(option) => normalizeLookup(option) === normalized
+);
+return index === -1 ? ROLE_OPTIONS.length : index;
+}
+
+function isConsultantRole(role) {
+return normalizeLookup(role) === "CONSULTOR(A)";
+}
+
+function parseNexusDate(value) {
+const raw = String(value || "").trim();
+if (!raw) return null;
+
+let year;
+let month;
+let day;
+let match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+if (match) {
+year = Number(match[1]);
+month = Number(match[2]) - 1;
+day = Number(match[3]);
+} else {
+match = raw.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/);
+if (match) {
+day = Number(match[1]);
+month = Number(match[2]) - 1;
+year = Number(match[3]);
+} else {
+match = raw.match(/^(\d{1,2})\s+([A-Za-zÀ-ÿ.]+)\s+(\d{4})$/);
+if (!match) return null;
+
+const aliases = {
+JAN: 0,
+FEV: 1,
+FEB: 1,
+MAR: 2,
+ABR: 3,
+APR: 3,
+MAI: 4,
+MAY: 4,
+JUN: 5,
+JUL: 6,
+AGO: 7,
+AUG: 7,
+SET: 8,
+SEP: 8,
+OUT: 9,
+OCT: 9,
+NOV: 10,
+DEZ: 11,
+DEC: 11
+};
+day = Number(match[1]);
+month = aliases[normalizeLookup(match[2]).slice(0, 3)];
+year = Number(match[3]);
+}
+}
+
+if (
+!Number.isInteger(year) ||
+!Number.isInteger(month) ||
+!Number.isInteger(day) ||
+month < 0 ||
+month > 11 ||
+day < 1 ||
+day > 31
+) {
+return null;
+}
+
+const date = new Date(Date.UTC(year, month, day));
+if (
+date.getUTCFullYear() !== year ||
+date.getUTCMonth() !== month ||
+date.getUTCDate() !== day
+) {
+return null;
+}
+
+return { year, month, day };
+}
+
+function formatNexusDate(value) {
+const parsed = parseNexusDate(value);
+if (!parsed) return String(value || "").trim();
+return `${String(parsed.day).padStart(2, "0")} ${
+NEXUS_MONTHS[parsed.month]
+} ${parsed.year}`;
+}
+
+function nexusDateToIso(value) {
+const parsed = parseNexusDate(value);
+if (!parsed) return "";
+return `${parsed.year}-${String(parsed.month + 1).padStart(
+2,
+"0"
+)}-${String(parsed.day).padStart(2, "0")}`;
+}
+
+function dateSortValue(value) {
+const parsed = parseNexusDate(value);
+return parsed
+? Date.UTC(parsed.year, parsed.month, parsed.day)
+: Number.POSITIVE_INFINITY;
+}
+
+function calculateMemberReturnDate(startValue, daysValue) {
+const start = parseNexusDate(startValue);
+const daysText = String(daysValue ?? "").trim();
+if (!start || !/^\d+$/.test(daysText)) return "";
+
+const days = Number(daysText);
+if (!Number.isSafeInteger(days) || days < 0) return "";
+const date = new Date(
+Date.UTC(start.year, start.month, start.day) +
+days * 24 * 60 * 60 * 1000
+);
+return formatNexusDate(
+`${date.getUTCFullYear()}-${String(
+date.getUTCMonth() + 1
+).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`
+);
+}
+
+function applyCalculatedReturnDate(values, options = {}) {
+const nextValues = values.slice();
+const indexes = memberFieldIndexes();
+if (
+indexes.licenseStart < 0 ||
+indexes.licenseDays < 0 ||
+indexes.licenseReturn < 0
+) {
+return nextValues;
+}
+const calculated = calculateMemberReturnDate(
+nextValues[indexes.licenseStart],
+nextValues[indexes.licenseDays]
+);
+if (calculated || options.clearIncomplete) {
+nextValues[indexes.licenseReturn] = calculated;
+}
+return nextValues;
+}
+
+function normalizeConsultantValues(values) {
+const normalized = values.slice();
+const indexes = memberFieldIndexes();
+if (!isConsultantRole(normalized[indexes.role])) return normalized;
+
+normalized.forEach((_, index) => {
+if (index !== indexes.role && index !== indexes.nickname) {
+normalized[index] = "";
+}
+});
+return normalized;
+}
+
+function prepareMemberValues(values) {
+const currentValues = applyCalculatedReturnDate(values);
+const roleIndex = memberFieldIndexes().role;
+if (roleIndex >= 0) {
+currentValues[roleIndex] = canonicalRoleName(
+currentValues[roleIndex]
+);
+}
+
+const normalized = normalizeConsultantValues(currentValues);
+if (isConsultantRole(normalized[memberFieldIndexes().role])) {
+return normalized;
+}
+
+return normalized.map((value, index) =>
+isDateColumn(index) && parseNexusDate(value)
+? formatNexusDate(value)
+: value
+);
+}
+
+function compareMemberRows(left, right) {
+const indexes = memberFieldIndexes();
+const leftRole = left.values[indexes.role];
+const rightRole = right.values[indexes.role];
+const rank = roleRank(leftRole);
+const rankDifference = rank - roleRank(rightRole);
+if (rankDifference) return rankDifference;
+
+const isRondeiro = rank === 7;
+const isMinistro = rank === 3;
+
+if (!isMinistro) {
+const dateIndex = isRondeiro ? indexes.entry : indexes.promotion;
+const dateDifference =
+dateSortValue(left.values[dateIndex]) -
+dateSortValue(right.values[dateIndex]);
+if (dateDifference) return dateDifference;
+}
+
+const roleDifference =
+roleOptionIndex(leftRole) - roleOptionIndex(rightRole);
+if (roleDifference) return roleDifference;
+
+return String(left.values[indexes.nickname] || "").localeCompare(
+String(right.values[indexes.nickname] || ""),
+"pt-BR",
+{ sensitivity: "base" }
+);
+}
+
+function sortMembers() {
+appState.rows.sort(compareMemberRows);
+}
+
+function buildCompactMemberRows(members) {
+const nicknameIndex = memberFieldIndexes().nickname;
+const seenNicknames = new Map();
+const repeatedNicknames = new Set();
+const rows = members
+.slice()
+.sort(compareMemberRows)
+.map((member, index) => {
+const values = prepareMemberValues(member.values).map((value) =>
+String(value ?? "").trim()
+);
+const nickname = String(values[nicknameIndex] || "").trim();
+const nicknameKey = nickname.toLocaleLowerCase("pt-BR");
+
+if (nicknameKey) {
+if (seenNicknames.has(nicknameKey)) {
+repeatedNicknames.add(nickname);
+} else {
+seenNicknames.set(nicknameKey, true);
+}
+}
+
+return {
+row: index + 2,
+values
+};
+});
+
+if (repeatedNicknames.size) {
+throw new Error(
+`Nickname duplicado: ${Array.from(repeatedNicknames).join(
+", "
+)}. Corrija ou remova a repetição antes de salvar.`
+);
+}
+
+return rows;
+}
+
+async function persistCompactMemberList(members) {
+const rows = buildCompactMemberRows(members);
+await requestRondList("organizeData", { rows });
+return rows;
+}
+
+function filteredMembers() {
+const term = appState.search.trim().toLocaleLowerCase("pt-BR");
+if (!term) return appState.rows;
+
+return appState.rows.filter((row) =>
+memberDraft(row).some((value) =>
+String(value || "").toLocaleLowerCase("pt-BR").includes(term)
+)
+);
+}
+
+function booleanState(value) {
+const normalized = String(value ?? "").trim().toLowerCase();
+if (normalized === "true") return "true";
+if (normalized === "false") return "false";
+return "empty";
+}
+
+function detectBooleanColumns() {
+const columns = new Set();
+
+appState.headers.forEach((_, index) => {
+const header = String(appState.headers[index] || "")
+.trim()
+.toUpperCase();
+const populated = appState.rows
+.map((row) => booleanState(row.values[index]))
+.filter((state) => state !== "empty");
+
+if (
+["G", "RL", "REB"].includes(header) ||
+(populated.length &&
+populated.every(
+(state) => state === "true" || state === "false"
+))
+) {
+columns.add(index);
+}
+});
+
+return columns;
+}
+
+function memberDraft(row) {
+return appState.memberDrafts.get(row.row) || row.values;
+}
+
+function memberEditableValues(row) {
+return row.hasSaved && Array.isArray(row.saved)
+? row.saved
+: row.values;
+}
+
+function isMemberRowDirty(row) {
+const draft = appState.memberDrafts.get(row.row);
+if (!draft) return false;
+const baseline = memberEditableValues(row);
+
+return draft.some(
+(value, index) =>
+String(value ?? "").trim() !==
+String(baseline[index] ?? "").trim()
+);
+}
+
+function updateBooleanToggle(button, state, columnIndex) {
+const labels = {
+true: "Selecionado",
+false: "Desmarcado",
+empty: "Sem valor"
+};
+const header = appState.headers[columnIndex] || `Campo ${columnIndex + 1}`;
+
+button.dataset.state = state;
+button.textContent = "";
+button.setAttribute("aria-pressed", String(state === "true"));
+button.setAttribute("aria-label", `${header}: ${labels[state]}`);
+button.title =
+state === "empty"
+? "Sem valor definido"
+: state === "true"
+? "Selecionado"
+: "Desmarcado";
+}
+
+function createRoleSelect(value, options = {}) {
+const select = document.createElement("select");
+const selectedValue = canonicalRoleName(value);
+select.className = options.className || "table-select";
+if (options.id) select.id = options.id;
+if (options.index !== undefined) select.dataset.index = options.index;
+if (options.disabled) select.disabled = true;
+select.setAttribute(
+"aria-label",
+options.label || "Selecionar cargo"
+);
+
+const blank = document.createElement("option");
+blank.value = "";
+blank.textContent = "Selecione";
+select.appendChild(blank);
+
+if (selectedValue && !ROLE_OPTIONS.includes(selectedValue)) {
+const current = document.createElement("option");
+current.value = selectedValue;
+current.textContent = selectedValue;
+select.appendChild(current);
+}
+
+ROLE_OPTIONS.forEach((role) => {
+const option = document.createElement("option");
+option.value = role;
+option.textContent = role;
+select.appendChild(option);
+});
+
+select.value = selectedValue;
+if (options.onChange) {
+select.addEventListener("change", () =>
+options.onChange(select.value, select)
+);
+}
+return select;
+}
+
+function createDateControl(value, options = {}) {
+const control = document.createElement("div");
+const formatted = formatNexusDate(value);
+control.className = `date-control${formatted ? "" : " is-empty"}`;
+if (options.calculated) control.classList.add("is-calculated");
+control.dataset.value = formatted;
+
+const display = document.createElement("span");
+display.className = "date-control__value";
+display.textContent = formatted || "—";
+
+const calendar = document.createElement("span");
+calendar.className = "date-control__calendar";
+calendar.setAttribute("aria-hidden", "true");
+
+const input = document.createElement("input");
+input.className = "date-control__native";
+input.type = "date";
+input.value = nexusDateToIso(value);
+input.disabled = Boolean(options.disabled);
+input.setAttribute("aria-label", options.label || "Selecionar data");
+if (options.id) input.id = options.id;
+if (options.index !== undefined) input.dataset.index = options.index;
+
+input.addEventListener("change", () => {
+const nextValue = formatNexusDate(input.value);
+control.dataset.value = nextValue;
+display.textContent = nextValue || "—";
+control.classList.toggle("is-empty", !nextValue);
+if (options.onChange) options.onChange(nextValue, input);
+});
+
+control.append(display, calendar, input);
+return control;
+}
+
+function setDateControlValue(control, value) {
+if (!control) return;
+const formatted = formatNexusDate(value);
+const display = control.querySelector(".date-control__value");
+const input = control.querySelector(".date-control__native");
+control.dataset.value = formatted;
+control.classList.toggle("is-empty", !formatted);
+if (display) display.textContent = formatted || "—";
+if (input) input.value = nexusDateToIso(formatted);
+}
+
+function createMemberRoleSelect(value, row, columnIndex) {
+return createRoleSelect(value, {
+index: columnIndex,
+disabled: appState.savingMembers,
+label: `Cargo de ${row.values[1] || "membro"}`,
+onChange: (nextRole) => {
+const draft = memberDraft(row).slice();
+draft[columnIndex] = nextRole;
+appState.memberDrafts.set(
+row.row,
+normalizeConsultantValues(draft)
+);
+renderMembers();
+}
+});
+}
+
+function updateMemberCalculatedReturn(row, draft) {
+const indexes = memberFieldIndexes();
+const calculatedDraft = applyCalculatedReturnDate(draft, {
+clearIncomplete: true
+});
+appState.memberDrafts.set(row.row, calculatedDraft);
+
+if (indexes.licenseReturn >= 0) {
+const tableRow = document.querySelector(
+`[data-member-row="${row.row}"]`
+);
+const returnInput = tableRow?.querySelector(
+`.date-control__native[data-index="${indexes.licenseReturn}"]`
+);
+setDateControlValue(
+returnInput?.closest(".date-control"),
+calculatedDraft[indexes.licenseReturn]
+);
+tableRow?.classList.toggle("is-dirty", isMemberRowDirty(row));
+}
+return calculatedDraft;
+}
+
+function createMemberDateControl(value, row, columnIndex) {
+const indexes = memberFieldIndexes();
+const calculated = columnIndex === indexes.licenseReturn;
+return createDateControl(value, {
+disabled: appState.savingMembers || calculated,
+calculated,
+index: columnIndex,
+label: `${
+appState.headers[columnIndex] || `Campo ${columnIndex + 1}`
+} de ${row.values[1] || "membro"}`,
+onChange: (nextValue) => {
+const draft = memberDraft(row).slice();
+draft[columnIndex] = nextValue;
+if (columnIndex === indexes.licenseStart) {
+updateMemberCalculatedReturn(row, draft);
+} else {
+appState.memberDrafts.set(row.row, draft);
+}
+const tableRow = document
+.querySelector(`[data-member-row="${row.row}"]`);
+if (tableRow) {
+tableRow.classList.toggle("is-dirty", isMemberRowDirty(row));
+}
+}
+});
+}
+
+function createBooleanToggle(value, row, columnIndex, editable) {
+const button = document.createElement("button");
+button.className = "boolean-toggle";
+button.type = "button";
+button.disabled = !editable || appState.savingMembers;
+updateBooleanToggle(button, booleanState(value), columnIndex);
+
+if (editable && !appState.savingMembers) {
+button.addEventListener("click", () => {
+const nextState =
+button.dataset.state === "true" ? "false" : "true";
+const draft = memberDraft(row).slice();
+draft[columnIndex] = nextState.toUpperCase();
+appState.memberDrafts.set(row.row, draft);
+updateBooleanToggle(button, nextState, columnIndex);
+button.closest("tr").classList.toggle(
+"is-dirty",
+isMemberRowDirty(row)
+);
+});
+}
+
+return button;
+}
+
+function createMemberInput(value, row, columnIndex) {
+const indexes = memberFieldIndexes();
+const input = document.createElement("input");
+input.className = "table-input";
+input.type = columnIndex === indexes.licenseDays ? "number" : "text";
+if (columnIndex === indexes.licenseDays) {
+input.min = "0";
+input.step = "1";
+input.inputMode = "numeric";
+}
+input.value = value ?? "";
+input.disabled = appState.savingMembers;
+input.setAttribute(
+"aria-label",
+appState.headers[columnIndex] || `Campo ${columnIndex + 1}`
+);
+
+input.addEventListener("input", () => {
+const draft = memberDraft(row).slice();
+draft[columnIndex] = input.value;
+if (columnIndex === indexes.licenseDays) {
+updateMemberCalculatedReturn(row, draft);
+} else {
+appState.memberDrafts.set(row.row, draft);
+}
+input.closest("tr").classList.toggle(
+"is-dirty",
+isMemberRowDirty(row)
+);
+});
+
+return input;
+}
+
+function createMemberSelection(row) {
+const checkbox = document.createElement("input");
+const label = row.values[1] || row.values[0] || "registro selecionado";
+checkbox.className = "member-select";
+checkbox.type = "checkbox";
+checkbox.checked = appState.selectedMemberRows.has(row.row);
+checkbox.disabled = appState.savingMembers;
+checkbox.setAttribute("aria-label", `Selecionar ${label}`);
+checkbox.addEventListener("change", () => {
+if (checkbox.checked) {
+appState.selectedMemberRows.add(row.row);
+} else {
+appState.selectedMemberRows.delete(row.row);
+}
+updateMemberEditControls();
+renderMembers();
+});
+return checkbox;
+}
+
+function renderMembers() {
+const table = document.getElementById("members-table");
+const head = document.getElementById("members-table-head");
+const body = document.getElementById("members-table-body");
+const tableState = document.getElementById("table-state");
+const resultLabel = document.getElementById("table-result");
+const rows = filteredMembers();
+
+head.replaceChildren();
+body.replaceChildren();
+
+if (appState.removingMembers) {
+const selectionHeader = document.createElement("th");
+selectionHeader.scope = "col";
+selectionHeader.className = "member-selection-cell";
+
+const selectAll = document.createElement("input");
+const selectedVisible = rows.filter((row) =>
+appState.selectedMemberRows.has(row.row)
+).length;
+selectAll.className = "member-select";
+selectAll.type = "checkbox";
+selectAll.checked = Boolean(rows.length) && selectedVisible === rows.length;
+selectAll.indeterminate =
+selectedVisible > 0 && selectedVisible < rows.length;
+selectAll.disabled = appState.savingMembers || !rows.length;
+selectAll.setAttribute("aria-label", "Selecionar registros visíveis");
+selectAll.addEventListener("change", () => {
+rows.forEach((row) => {
+if (selectAll.checked) {
+appState.selectedMemberRows.add(row.row);
+} else {
+appState.selectedMemberRows.delete(row.row);
+}
+});
+updateMemberEditControls();
+renderMembers();
+});
+
+selectionHeader.appendChild(selectAll);
+head.appendChild(selectionHeader);
+}
+
+appState.headers.forEach((header, index) => {
+const cell = document.createElement("th");
+cell.scope = "col";
+cell.textContent = header || `Campo ${index + 1}`;
+cell.title = cell.textContent;
+if (appState.booleanColumns.has(index)) {
+cell.classList.add("is-boolean-column");
+}
+head.appendChild(cell);
+});
+
+const indexes = memberFieldIndexes();
+rows.forEach((row) => {
+const tableRow = document.createElement("tr");
+tableRow.dataset.memberRow = row.row;
+if (row.hasSaved) tableRow.classList.add("is-saved");
+if (isMemberRowDirty(row)) tableRow.classList.add("is-dirty");
+if (appState.selectedMemberRows.has(row.row)) {
+tableRow.classList.add("is-selected");
+}
+
+if (appState.removingMembers) {
+const selectionCell = document.createElement("td");
+selectionCell.className = "member-selection-cell";
+selectionCell.appendChild(createMemberSelection(row));
+tableRow.appendChild(selectionCell);
+}
+
+appState.headers.forEach((_, index) => {
+const cell = document.createElement("td");
+const value = memberDraft(row)[index] ?? "";
+const consultant = isConsultantRole(
+memberDraft(row)[indexes.role]
+);
+const consultantField =
+consultant &&
+index !== indexes.role &&
+index !== indexes.nickname;
+
+if (appState.booleanColumns.has(index)) {
+cell.classList.add("is-boolean-column");
+}
+
+if (consultantField) {
+const content = document.createElement("span");
+content.className = "table-cell is-empty";
+content.textContent = "—";
+content.title = "Não se aplica a Consultor(a)";
+cell.appendChild(content);
+} else if (appState.editingMembers) {
+cell.appendChild(
+appState.booleanColumns.has(index)
+? createBooleanToggle(value, row, index, true)
+: index === indexes.role
+? createMemberRoleSelect(value, row, index)
+: isDateColumn(index)
+? createMemberDateControl(value, row, index)
+: createMemberInput(value, row, index)
+);
+} else if (booleanState(value) !== "empty") {
+cell.appendChild(createBooleanToggle(value, row, index, false));
+} else {
+const content = document.createElement("span");
+const displayValue =
+index === indexes.role
+? canonicalRoleName(value)
+: isDateColumn(index)
+? formatNexusDate(value)
+: value;
+content.className = "table-cell";
+content.textContent = displayValue || "—";
+content.title = displayValue;
+if (!displayValue) content.classList.add("is-empty");
+cell.appendChild(content);
+}
+
+tableRow.appendChild(cell);
+});
+
+body.appendChild(tableRow);
+});
+
+const resultText = appState.search
+? `${formatCount(rows.length)} de ${formatCount(appState.rows.length)} registros`
+: `${formatCount(rows.length)} registros`;
+if (appState.editingMembers) {
+resultLabel.textContent = `${resultText} · edição ativa`;
+} else if (appState.removingMembers) {
+resultLabel.textContent = `${resultText} · ${formatCount(
+appState.selectedMemberRows.size
+)} selecionado${
+appState.selectedMemberRows.size === 1 ? "" : "s"
+}`;
+} else {
+resultLabel.textContent = resultText;
+}
+
+if (!rows.length) {
+table.hidden = true;
+tableState.hidden = false;
+tableState.textContent = appState.search
+? "Nenhum membro corresponde à busca."
+: "Nenhum registro foi encontrado.";
+} else {
+tableState.hidden = true;
+table.hidden = false;
+}
+}
+
+function updateMemberEditControls() {
+const editButton = document.getElementById("edit-members");
+const saveButton = document.getElementById("save-members-edit");
+const cancelEditButton = document.getElementById("cancel-members-edit");
+const addButton = document.getElementById("add-member");
+const requirementsButton = document.getElementById("open-requirements");
+const publishingButton = document.getElementById("open-publishing");
+const organizeButton = document.getElementById("organize-members");
+const removeButton = document.getElementById("remove-members");
+const confirmRemoveButton = document.getElementById(
+"confirm-members-remove"
+);
+const cancelRemoveButton = document.getElementById(
+"cancel-members-remove"
+);
+const isEditing = appState.editingMembers;
+const isRemoving = appState.removingMembers;
+const canEdit = canCurrentUserEdit();
+const isBusy =
+appState.loading ||
+appState.savingMembers ||
+appState.addingMember ||
+appState.requirementsBusy ||
+appState.publishingBusy;
+
+editButton.hidden = !canEdit || isEditing || isRemoving;
+addButton.hidden = !canEdit || isEditing || isRemoving;
+requirementsButton.hidden = !canEdit || isEditing || isRemoving;
+publishingButton.hidden = !canEdit || isEditing || isRemoving;
+organizeButton.hidden = !canEdit || isEditing || isRemoving;
+removeButton.hidden = !canEdit || isEditing || isRemoving;
+saveButton.hidden = !canEdit || !isEditing;
+cancelEditButton.hidden = !canEdit || !isEditing;
+confirmRemoveButton.hidden = !canEdit || !isRemoving;
+cancelRemoveButton.hidden = !canEdit || !isRemoving;
+
+editButton.disabled = !canEdit || isBusy || !appState.loaded;
+addButton.disabled = !canEdit || isBusy || !appState.loaded;
+requirementsButton.disabled =
+!canEdit ||
+isBusy ||
+!appState.loaded ||
+!hasRequirementConfiguration();
+publishingButton.disabled =
+!canEdit || isBusy || !appState.loaded || !hasPublishingData();
+organizeButton.disabled =
+!canEdit || isBusy || !appState.loaded || !appState.rows.length;
+removeButton.disabled =
+!canEdit || isBusy || !appState.loaded || !appState.rows.length;
+saveButton.disabled = !canEdit || appState.savingMembers;
+cancelEditButton.disabled = appState.savingMembers;
+confirmRemoveButton.disabled =
+appState.savingMembers || !appState.selectedMemberRows.size;
+cancelRemoveButton.disabled = appState.savingMembers;
+const organizeLabel = appState.organizingMembers
+? "Organizando lista"
+: "Organizar lista";
+organizeButton.setAttribute("aria-label", organizeLabel);
+organizeButton.title = organizeLabel;
+organizeButton.classList.toggle(
+"is-loading",
+appState.organizingMembers
+);
+
+const saveLabel = appState.savingMembers
+? "Salvando alterações"
+: "Salvar alterações";
+saveButton.setAttribute("aria-label", saveLabel);
+saveButton.title = saveLabel;
+saveButton.classList.toggle(
+"is-loading",
+appState.savingMembers && isEditing
+);
+
+const removeCount = appState.selectedMemberRows.size;
+const confirmRemoveLabel = appState.savingMembers
+? "Removendo membros"
+: removeCount
+? `Remover ${formatCount(removeCount)} selecionado${
+removeCount === 1 ? "" : "s"
+}`
+: "Remover selecionados";
+confirmRemoveButton.setAttribute("aria-label", confirmRemoveLabel);
+confirmRemoveButton.title = confirmRemoveLabel;
+confirmRemoveButton.classList.toggle(
+"is-loading",
+appState.savingMembers && isRemoving
+);
+
+document.getElementById("refresh-members").disabled =
+isBusy || isEditing || isRemoving;
+}
+
+function beginMemberEditing() {
+if (!requireEditAccess()) return;
+if (
+!appState.loaded ||
+appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember
+) {
+return;
+}
+
+appState.memberDrafts = new Map(
+appState.rows.map((row) => [
+row.row,
+applyCalculatedReturnDate(memberEditableValues(row))
+])
+);
+appState.booleanColumns = detectBooleanColumns();
+appState.editingMembers = true;
+setWorkspaceState("", "Editando");
+updateMemberEditControls();
+renderMembers();
+}
+
+function cancelMemberEditing() {
+if (appState.savingMembers) return;
+
+appState.editingMembers = false;
+appState.memberDrafts.clear();
+setWorkspaceState("ready", "Sincronizado");
+updateMemberEditControls();
+renderMembers();
+}
+
+async function organizeMemberList() {
+if (!requireEditAccess()) return;
+if (
+!appState.loaded ||
+!appState.rows.length ||
+appState.loading ||
+appState.savingMembers ||
+appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember
+) {
+return;
+}
+
+appState.savingMembers = true;
+appState.organizingMembers = true;
+setWorkspaceState("", "Organizando");
+updateMemberEditControls();
+renderMembers();
+
+try {
+const rows = await persistCompactMemberList(
+appState.rows.map((row) => ({
+...row,
+values: memberEditableValues(row).slice()
+}))
+);
+appState.selectedMemberRows.clear();
+updateDataTimestamp();
+setWorkspaceState("ready", "Sincronizado");
+showToast(
+`${formatCount(rows.length)} registro${
+rows.length === 1 ? "" : "s"
+} organizado${rows.length === 1 ? "" : "s"} e atualizado${
+rows.length === 1 ? "" : "s"
+}.`,
+"success"
+);
+} catch (error) {
+setWorkspaceState("error", "Falha ao organizar");
+showToast(error.message, "error");
+} finally {
+appState.savingMembers = false;
+appState.organizingMembers = false;
+updateMemberEditControls();
+renderMembers();
+}
+}
+
+async function saveMemberList() {
+if (!requireEditAccess()) return;
+if (!appState.editingMembers || appState.savingMembers) return;
+
+const changedRows = appState.rows
+.filter(isMemberRowDirty)
+.map((row) => ({
+row: row.row,
+values: prepareMemberValues(memberDraft(row)).map((value) =>
+String(value ?? "").trim()
+)
+}));
+
+if (!changedRows.length) {
+cancelMemberEditing();
+showToast("Nenhuma alteração para salvar.", "info");
+return;
+}
+
+appState.savingMembers = true;
+setWorkspaceState("", "Salvando");
+updateMemberEditControls();
+renderMembers();
+
+try {
+await requestRondList("saveData", { rows: changedRows });
+changedRows.forEach((item) => {
+const row = appState.rows.find((entry) => entry.row === item.row);
+if (!row) return;
+row.saved = item.values.slice();
+row.hasSaved = true;
+if (
+!Array.isArray(row.source) ||
+!row.source.some((value) => String(value ?? "").trim())
+) {
+row.values = item.values.slice();
+}
+});
+appState.editingMembers = false;
+appState.memberDrafts.clear();
+updateDataTimestamp();
+setWorkspaceState("ready", "Sincronizado");
+showToast(
+`${formatCount(changedRows.length)} registro${
+changedRows.length === 1 ? "" : "s"
+} salvo${changedRows.length === 1 ? "" : "s"}.`,
+"success"
+);
+} catch (error) {
+setWorkspaceState("error", "Falha ao salvar");
+showToast(error.message, "error");
+} finally {
+appState.savingMembers = false;
+updateMemberEditControls();
+renderMembers();
+}
+}
+
+function createAddBooleanField(label, index) {
+const wrapper = document.createElement("div");
+wrapper.className = "form-field";
+wrapper.dataset.addMemberIndex = String(index);
+
+const buttonId = `add-member-boolean-${index}`;
+const fieldLabel = document.createElement("label");
+fieldLabel.htmlFor = buttonId;
+fieldLabel.textContent = label;
+
+const button = document.createElement("button");
+button.id = buttonId;
+button.className = "boolean-toggle";
+button.type = "button";
+button.dataset.addBooleanIndex = String(index);
+updateBooleanToggle(button, "empty", index);
+button.addEventListener("click", () => {
+const nextState =
+button.dataset.state === "true" ? "false" : "true";
+updateBooleanToggle(button, nextState, index);
+});
+
+wrapper.append(fieldLabel, button);
+return wrapper;
+}
+
+function createAddRoleField(label, index) {
+const wrapper = document.createElement("div");
+wrapper.className = "form-field";
+wrapper.dataset.addMemberIndex = String(index);
+
+const fieldLabel = document.createElement("label");
+fieldLabel.htmlFor = "add-member-role";
+fieldLabel.textContent = label;
+
+const select = createRoleSelect("", {
+id: "add-member-role",
+index,
+className: "form-select",
+label,
+onChange: updateAddMemberFieldVisibility
+});
+wrapper.append(fieldLabel, select);
+return wrapper;
+}
+
+function createAddDateField(label, index) {
+const wrapper = document.createElement("div");
+wrapper.className = "form-field";
+wrapper.dataset.addMemberIndex = String(index);
+const indexes = memberFieldIndexes();
+const calculated = index === indexes.licenseReturn;
+
+const inputId = `add-member-date-${index}`;
+const fieldLabel = document.createElement("label");
+fieldLabel.htmlFor = inputId;
+fieldLabel.textContent = label;
+
+wrapper.append(
+fieldLabel,
+createDateControl("", {
+id: inputId,
+index,
+label,
+disabled: calculated,
+calculated,
+onChange:
+index === indexes.licenseStart
+? updateAddMemberReturnDate
+: undefined
+})
+);
+return wrapper;
+}
+
+function updateAddMemberReturnDate() {
+const indexes = memberFieldIndexes();
+if (
+indexes.licenseStart < 0 ||
+indexes.licenseDays < 0 ||
+indexes.licenseReturn < 0
+) {
+return;
+}
+
+const startControl = document
+.getElementById(`add-member-date-${indexes.licenseStart}`)
+?.closest(".date-control");
+const daysInput = document.getElementById(
+`add-member-field-${indexes.licenseDays}`
+);
+const returnControl = document
+.getElementById(`add-member-date-${indexes.licenseReturn}`)
+?.closest(".date-control");
+setDateControlValue(
+returnControl,
+calculateMemberReturnDate(
+startControl?.dataset.value || "",
+daysInput?.value || ""
+)
+);
+}
+
+function updateAddMemberFieldVisibility() {
+const role = document.getElementById("add-member-role");
+if (!role) return;
+const indexes = memberFieldIndexes();
+const consultant = isConsultantRole(role.value);
+
+document
+.querySelectorAll("[data-add-member-index]")
+.forEach((field) => {
+const index = Number(field.dataset.addMemberIndex);
+field.hidden =
+consultant &&
+index !== indexes.role &&
+index !== indexes.nickname;
+});
+
+const booleanGroup = document.getElementById(
+"add-member-boolean-group"
+);
+if (booleanGroup) booleanGroup.hidden = consultant;
+}
+
+function openAddMemberEditor() {
+if (!requireEditAccess()) return;
+if (
+!appState.loaded ||
+appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember
+) {
+return;
+}
+
+appState.addingMember = true;
+appState.booleanColumns = detectBooleanColumns();
+const fields = document.getElementById("add-member-fields");
+fields.replaceChildren();
+const indexes = memberFieldIndexes();
+const booleanGroup = document.createElement("div");
+booleanGroup.id = "add-member-boolean-group";
+booleanGroup.className = "add-member-boolean-group";
+
+appState.headers.forEach((header, index) => {
+const label = header || `Campo ${index + 1}`;
+let field;
+
+if (index === indexes.role) {
+field = createAddRoleField(label, index);
+} else if (appState.booleanColumns.has(index)) {
+field = createAddBooleanField(label, index);
+} else if (isDateColumn(index)) {
+field = createAddDateField(label, index);
+} else {
+const isDaysField = index === indexes.licenseDays;
+field = createFormField(label, "", index, {
+id: `add-member-field-${index}`,
+placeholder: isDaysField
+? "Informe a quantidade de dias"
+: "Preencha este campo",
+type: isDaysField ? "number" : "text",
+min: isDaysField ? 0 : undefined
+});
+field.dataset.addMemberIndex = String(index);
+}
+
+if (appState.booleanColumns.has(index)) {
+booleanGroup.appendChild(field);
+} else {
+fields.appendChild(field);
+}
+});
+
+if (booleanGroup.childElementCount) {
+fields.appendChild(booleanGroup);
+}
+
+const daysInput = document.getElementById(
+`add-member-field-${indexes.licenseDays}`
+);
+if (daysInput) {
+daysInput.step = "1";
+daysInput.inputMode = "numeric";
+daysInput.addEventListener("input", updateAddMemberReturnDate);
+}
+
+updateAddMemberFieldVisibility();
+updateMemberEditControls();
+document.getElementById("add-member-editor").showModal();
+}
+
+function closeAddMemberEditor() {
+if (appState.savingMembers) return;
+appState.addingMember = false;
+document.getElementById("add-member-editor").close();
+updateMemberEditControls();
+}
+
+async function saveNewMember(event) {
+event.preventDefault();
+if (!requireEditAccess()) return;
+if (!appState.addingMember || appState.savingMembers) return;
+
+const indexes = memberFieldIndexes();
+const values = prepareMemberValues(
+appState.headers.map((_, index) => {
+if (index === indexes.role) {
+return document.getElementById("add-member-role").value;
+}
+if (appState.booleanColumns.has(index)) {
+const button = document.getElementById(
+`add-member-boolean-${index}`
+);
+return button.dataset.state === "empty"
+? ""
+: button.dataset.state.toUpperCase();
+}
+if (isDateColumn(index)) {
+return document
+.getElementById(`add-member-date-${index}`)
+.closest(".date-control").dataset.value;
+}
+
+return document
+.getElementById(`add-member-field-${index}`)
+.value.trim();
+})
+);
+
+if (!values.some(Boolean)) {
+showToast("Preencha ao menos um campo para adicionar.", "warning");
+return;
+}
+
+const newRowNumber = Math.max(appState.maxDataRow, 1) + 1;
+const button = document.getElementById("save-new-member");
+appState.savingMembers = true;
+button.disabled = true;
+button.textContent = "Adicionando…";
+updateMemberEditControls();
+
+try {
+await requestRondList("saveData", {
+rows: [{ row: newRowNumber, values }]
+});
+appState.rows.push({
+row: newRowNumber,
+source: Array(appState.headers.length).fill(""),
+saved: values.slice(),
+values: values.slice(),
+hasSaved: true
+});
+appState.maxDataRow = Math.max(appState.maxDataRow, newRowNumber);
+sortMembers();
+appState.addingMember = false;
+document.getElementById("add-member-editor").close();
+renderMembers();
+updateDataTimestamp();
+setWorkspaceState("ready", "Sincronizado");
+showToast("Novo membro adicionado.", "success");
+} catch (error) {
+showToast(error.message, "error");
+} finally {
+appState.savingMembers = false;
+button.disabled = false;
+button.textContent = "Adicionar membro";
+updateMemberEditControls();
+}
+}
+
+function beginMemberRemoval() {
+if (!requireEditAccess()) return;
+if (
+!appState.loaded ||
+!appState.rows.length ||
+appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember
+) {
+return;
+}
+
+appState.removingMembers = true;
+appState.selectedMemberRows.clear();
+setWorkspaceState("", "Selecionando");
+updateMemberEditControls();
+renderMembers();
+}
+
+function cancelMemberRemoval() {
+if (appState.savingMembers) return;
+appState.removingMembers = false;
+appState.selectedMemberRows.clear();
+setWorkspaceState("ready", "Sincronizado");
+updateMemberEditControls();
+renderMembers();
+}
+
+async function confirmMemberRemoval() {
+if (!requireEditAccess()) return;
+if (
+!appState.removingMembers ||
+appState.savingMembers ||
+!appState.selectedMemberRows.size
+) {
+return;
+}
+
+const selected = new Set(appState.selectedMemberRows);
+const rows = Array.from(selected);
+appState.savingMembers = true;
+setWorkspaceState("", "Removendo");
+updateMemberEditControls();
+renderMembers();
+
+try {
+await requestRondList("removeData", {
+rows: rows.map((row) => ({ row }))
+});
+appState.rows = appState.rows.filter(
+(row) => !selected.has(row.row)
+);
+appState.removingMembers = false;
+appState.selectedMemberRows.clear();
+updateDataTimestamp();
+setWorkspaceState("ready", "Sincronizado");
+showToast(
+`${formatCount(rows.length)} membro${
+rows.length === 1 ? "" : "s"
+} removido${rows.length === 1 ? "" : "s"} da RondList.`,
+"success"
+);
+} catch (error) {
+setWorkspaceState("error", "Falha ao remover");
+showToast(error.message, "error");
+} finally {
+appState.savingMembers = false;
+updateMemberEditControls();
+renderMembers();
+}
+}
+
+function renderSettings() {
+const list = document.getElementById("role-list");
+list.replaceChildren();
+const roles = appState.settings.filter(
+(item) =>
+String(item.role || "").trim() ||
+String(item.vacancies ?? "").trim()
+);
+roles.sort((left, right) => {
+const rankDifference = roleRank(left.role) - roleRank(right.role);
+if (rankDifference) return rankDifference;
+return roleOptionIndex(left.role) - roleOptionIndex(right.role);
+});
+
+if (!roles.length) {
+const empty = document.createElement("p");
+empty.className = "role-list__empty";
+empty.textContent = "Nenhum cargo configurado.";
+list.appendChild(empty);
+} else {
+roles.forEach((item) => {
+const card = document.createElement("article");
+card.className = "role-card";
+
+const top = document.createElement("div");
+top.className = "role-card__top";
+
+const name = document.createElement("strong");
+name.className = "role-card__name";
+name.textContent =
+canonicalRoleName(item.role) || "Cargo sem nome";
+name.title = name.textContent;
+
+const meta = document.createElement("div");
+meta.className = "role-card__meta";
+
+const vacancies = document.createElement("span");
+vacancies.className = "role-card__vacancies";
+vacancies.textContent =
+item.vacancies === "" || item.vacancies === null
+? "Vagas não definidas"
+: `${formatCount(item.vacancies)} vaga${
+Number(item.vacancies) === 1 ? "" : "s"
+}`;
+
+const editButton = document.createElement("button");
+editButton.className = "text-button";
+editButton.type = "button";
+editButton.textContent = "Editar";
+editButton.addEventListener("click", () =>
+openSettingsEditor(item.row)
+);
+
+top.append(name);
+meta.append(vacancies);
+if (canCurrentUserEdit()) meta.append(editButton);
+card.append(top, meta);
+list.appendChild(card);
+});
+}
+
+renderLayoutResources();
+}
+
+function renderAdditionalAccess() {
+const container = document.getElementById("additional-access-list");
+container.replaceChildren();
+
+if (
+!appState.additionalAccess.length &&
+!appState.additionalAccessRoles.length
+) {
+const empty = document.createElement("p");
+empty.className = "layout-resources__empty";
+empty.textContent = "Nenhum acesso adicional.";
+container.appendChild(empty);
+return;
+}
+
+appState.additionalAccess
+.slice()
+.sort((left, right) =>
+left.localeCompare(right, "pt-BR", { sensitivity: "base" })
+)
+.forEach((nickname) => {
+container.appendChild(
+createAdditionalAccessChip(
+`Nickname: ${nickname}`,
+"nickname",
+nickname,
+`Acesso explícito de ${nickname}`
+)
+);
+});
+
+appState.additionalAccessRoles
+.slice()
+.sort((left, right) =>
+left.localeCompare(right, "pt-BR", { sensitivity: "base" })
+)
+.forEach((role) => {
+container.appendChild(
+createAdditionalAccessChip(
+`Cargo: ${role}`,
+"cargo",
+role,
+`Acesso dinâmico para o cargo ${role}`
+)
+);
+});
+}
+
+function createAdditionalAccessChip(label, accessType, value, title) {
+const chip = document.createElement("span");
+chip.className = "additional-access-chip";
+chip.title = title;
+
+const text = document.createElement("span");
+text.className = "additional-access-chip__text";
+text.textContent = label;
+
+const removeButton = document.createElement("button");
+removeButton.className = "additional-access-chip__remove";
+removeButton.type = "button";
+removeButton.textContent = "×";
+removeButton.setAttribute("aria-label", `Remover ${label}`);
+removeButton.title = `Remover ${label}`;
+removeButton.addEventListener("click", () =>
+removeAdditionalAccess(accessType, value, removeButton)
+);
+
+chip.append(text, removeButton);
+return chip;
+}
+
+function applyAdditionalAccessState(result) {
+appState.additionalAccess = Array.isArray(result.nicknames)
+? result.nicknames.slice()
+: appState.additionalAccess;
+appState.additionalAccessRoles = Array.isArray(result.roles)
+? result.roles.slice()
+: appState.additionalAccessRoles;
+appState.availableAccessRoles = Array.isArray(result.availableRoles)
+? result.availableRoles.map((entry) => ({
+role: String(entry.role || "")
+}))
+: appState.availableAccessRoles;
+renderAdditionalAccess();
+updateAdditionalAccessRoleOptions();
+}
+
+async function removeAdditionalAccess(accessType, value, button) {
+if (!requireManageAccess()) return;
+button.disabled = true;
+
+try {
+const response = await requestRondList(
+"removeAdditionalAccess",
+{ accessType, value }
+);
+applyAdditionalAccessState(response.additionalAccess || {});
+showToast(
+`${accessType === "cargo" ? "Cargo" : "Nickname"} removido dos acessos adicionais.`,
+"success"
+);
+revalidateAuthentication().catch(() => {});
+} catch (error) {
+button.disabled = false;
+showToast(error.message, "error");
+}
+}
+
+function updateAdditionalAccessRoleOptions() {
+const select = document.getElementById("additional-access-role");
+const previous = select.value;
+select.replaceChildren();
+
+const placeholder = document.createElement("option");
+placeholder.value = "";
+placeholder.textContent = appState.availableAccessRoles.length
+? "Selecione um cargo"
+: "Nenhum cargo disponível";
+select.appendChild(placeholder);
+
+appState.availableAccessRoles.forEach((entry) => {
+const option = document.createElement("option");
+option.value = entry.role;
+option.textContent = entry.role;
+select.appendChild(option);
+});
+
+if (
+Array.from(select.options).some((option) => option.value === previous)
+) {
+select.value = previous;
+}
+}
+
+function updateAdditionalAccessField() {
+const type = document.getElementById("additional-access-type").value;
+const nicknameField = document.getElementById(
+"additional-access-nickname-field"
+);
+const roleField = document.getElementById(
+"additional-access-role-field"
+);
+const input = document.getElementById("additional-access-value");
+const roleSelect = document.getElementById("additional-access-role");
+const byRole = type === "cargo";
+nicknameField.hidden = byRole;
+roleField.hidden = !byRole;
+input.placeholder = "Informe o nickname";
+input.disabled = byRole;
+input.required = !byRole;
+roleSelect.disabled = !byRole;
+roleSelect.required = byRole;
+if (byRole) {
+roleSelect.focus();
+} else {
+input.focus();
+}
+}
+
+async function saveAdditionalAccess(event) {
+event.preventDefault();
+if (!requireManageAccess()) return;
+
+const accessType = document.getElementById(
+"additional-access-type"
+).value;
+const input = document.getElementById("additional-access-value");
+const roleSelect = document.getElementById("additional-access-role");
+const value = (accessType === "cargo"
+? roleSelect.value
+: input.value
+).trim();
+if (!value) return;
+
+const button = document.getElementById("save-additional-access");
+button.disabled = true;
+button.textContent = "Adicionando…";
+
+try {
+const response = await requestRondList("addAdditionalAccess", {
+accessType,
+value
+});
+const result = response.additionalAccess || {};
+applyAdditionalAccessState(result);
+input.value = "";
+roleSelect.value = "";
+const addedCount = Array.isArray(result.added)
+? result.added.length
+: 1;
+if (addedCount) {
+showToast(
+`${result.addedType === "cargo" ? "Cargo" : "Nickname"} adicionado aos acessos adicionais.`,
+"success"
+);
+} else {
+showToast("Este acesso adicional já está configurado.", "info");
+}
+} catch (error) {
+showToast(error.message, "error");
+} finally {
+button.disabled = false;
+button.textContent = "Adicionar acesso";
+}
+}
+
+function getLayoutOwner() {
+return (
+appState.settings.find(
+(item) =>
+String(item.banner || "").trim() ||
+(item.links || []).some((link) => String(link || "").trim())
+) ||
+appState.settings[0] ||
+null
+);
+}
+
+function displayHostname(value) {
+if (!value) return "Ainda não configurado";
+try {
+return new URL(value).hostname;
+} catch {
+return value;
+}
+}
+
+function createLayoutResource(label, value, meta) {
+const card = document.createElement("article");
+card.className = "layout-resource";
+
+const labelElement = document.createElement("span");
+labelElement.className = "layout-resource__label";
+labelElement.textContent = label;
+
+const valueElement = document.createElement("strong");
+valueElement.className = "layout-resource__value";
+valueElement.textContent = value;
+valueElement.title = value;
+
+const metaElement = document.createElement("span");
+metaElement.className = "layout-resource__meta";
+metaElement.textContent = meta;
+metaElement.title = meta;
+
+card.append(labelElement, valueElement, metaElement);
+return card;
+}
+
+function renderLayoutResources() {
+const container = document.getElementById("layout-resources");
+const editButton = document.getElementById("edit-layout");
+const owner = getLayoutOwner();
+container.replaceChildren();
+editButton.disabled = appState.loading || !owner;
+
+if (!owner) {
+const empty = document.createElement("p");
+empty.className = "layout-resources__empty";
+empty.textContent = "Nenhuma configuração disponível.";
+container.appendChild(empty);
+return;
+}
+
+const bannerCard = createLayoutResource(
+"Banner",
+owner.banner ? "Banner configurado" : "Sem banner",
+displayHostname(owner.banner)
+);
+
+const colors = appState.settings
+.map((item, index) => ({
+row: item.row,
+title:
+String(item.colorTitle || "").trim() || `Cor ${index + 1}`,
+value: String(item.color || "").trim()
+}))
+.filter((item) => item.value);
+const paletteCard = document.createElement("article");
+paletteCard.className = "layout-resource";
+const paletteLabel = document.createElement("span");
+paletteLabel.className = "layout-resource__label";
+paletteLabel.textContent = "Paleta";
+const palette = document.createElement("div");
+palette.className = "layout-palette";
+
+if (colors.length) {
+colors.forEach((color) => {
+const swatch = document.createElement("span");
+swatch.className = "layout-palette__swatch";
+swatch.title = `${color.title} — ${color.value}`;
+swatch.setAttribute(
+"aria-label",
+`${color.title}: ${color.value}`
+);
+if (
+window.CSS &&
+CSS.supports("color", color.value)
+) {
+swatch.style.setProperty("--layout-color", color.value);
+} else if (
+color.row === 18 &&
+window.CSS &&
+CSS.supports("box-shadow", color.value)
+) {
+swatch.style.setProperty("--layout-color", "var(--surface-muted)");
+swatch.style.boxShadow = color.value;
+}
+palette.appendChild(swatch);
+});
+} else {
+const value = document.createElement("strong");
+value.className = "layout-resource__value";
+value.textContent = "Sem cores";
+palette.appendChild(value);
+}
+
+const paletteMeta = document.createElement("span");
+paletteMeta.className = "layout-resource__meta";
+paletteMeta.textContent = colors.length
+? `${formatCount(colors.length)} recurso${colors.length === 1 ? "" : "s"} ${colors.length === 1 ? "visual configurado" : "visuais configurados"}`
+: "Os recursos serão usados na composição visual";
+paletteCard.append(paletteLabel, palette, paletteMeta);
+
+const links = (owner.links || []).filter((link) =>
+String(link || "").trim()
+);
+const topicIds = (owner.topicIds || []).map((topicId) =>
+String(topicId || "").trim()
+);
+const topicsCard = createLayoutResource(
+"Tópicos",
+topicIds.filter(Boolean).length
+? `${formatCount(topicIds.filter(Boolean).length)} IDs configurados`
+: "Sem IDs",
+`Listagem: ${topicIds[0] || "—"} · Consulta: ${
+topicIds[1] || "—"
+} · Backup: ${topicIds[2] || "—"}`
+);
+const linksCard = createLayoutResource(
+"Links importantes",
+links.length
+? `${formatCount(links.length)} link${links.length === 1 ? "" : "s"}`
+: "Sem links",
+links.length
+? links.map(displayHostname).join(" · ")
+: "Nenhum link configurado"
+);
+
+container.append(bannerCard, paletteCard, topicsCard, linksCard);
+}
+
+function updateDataTimestamp(isoDate) {
+const target = document.getElementById("data-updated");
+const date = isoDate ? new Date(isoDate) : new Date();
+target.textContent = `Sincronizado às ${date.toLocaleTimeString("pt-BR", {
+hour: "2-digit",
+minute: "2-digit"
+})}`;
+}
+
+function hasRequirementConfiguration() {
+const publishing = appState.publishing;
+return Boolean(
+publishing &&
+/^\d+$/.test(String(publishing.requirementsTopicId || "").trim()) &&
+/\{TAG\}/i.test(String(publishing.requirementsStampBbcode || ""))
+);
+}
+
+async function publishRequirementStamp(topicId, bbcode, transport) {
+if (transport.sameForumOrigin) {
+return replyForumTopic(topicId, bbcode);
+}
+return publishThroughForumBridge(transport.popup, {
+type: "RONDLIST_FORUM_ACTION",
+requestId: createPublishingRequestId(),
+action: "reply",
+topicId,
+bbcode
+});
+}
+
+function requirementTagInputs() {
+return [1, 2, 3].map((index) =>
+document.getElementById(`requirements-tag-${index}`)
+);
+}
+
+function requirementTagValue() {
+return requirementTagInputs()
+.map((input) => input.value)
+.join("");
+}
+
+function updateRequirementStampControls() {
+const button = document.getElementById("post-requirements-stamp");
+const complete = Array.from(requirementTagValue()).length === 3;
+button.disabled =
+appState.requirementsBusy ||
+!complete ||
+!hasRequirementConfiguration();
+button.textContent = appState.requirementsBusy
+? "Publicando…"
+: "Publicar carimbo";
+}
+
+function handleRequirementTagInput(event) {
+const inputs = requirementTagInputs();
+const index = inputs.indexOf(event.currentTarget);
+const character =
+Array.from(
+String(event.currentTarget.value || "")
+.replace(/\s/g, "")
+)[0] || "";
+event.currentTarget.value = character;
+if (character && inputs[index + 1]) inputs[index + 1].focus();
+updateRequirementStampControls();
+}
+
+function handleRequirementTagPaste(event) {
+const characters = Array.from(
+String(event.clipboardData?.getData("text") || "")
+.replace(/\s/g, "")
+).slice(0, 3);
+if (!characters.length) return;
+event.preventDefault();
+const inputs = requirementTagInputs();
+inputs.forEach((input, index) => {
+input.value = characters[index] || "";
+});
+inputs[Math.min(characters.length, 3) - 1].focus();
+updateRequirementStampControls();
+}
+
+function handleRequirementTagKeydown(event) {
+if (event.key !== "Backspace" || event.currentTarget.value) return;
+const inputs = requirementTagInputs();
+const index = inputs.indexOf(event.currentTarget);
+if (inputs[index - 1]) inputs[index - 1].focus();
+}
+
+function openStampDialog() {
+if (!requireEditAccess()) return;
+if (!hasRequirementConfiguration()) {
+showToast(
+"Configure o tópico e o modelo do carimbo antes de continuar.",
+"warning"
+);
+return;
+}
+requirementTagInputs().forEach((input) => {
+input.value = "";
+});
+document.getElementById("requirements-status").textContent =
+"Informe a TAG de três caracteres para publicar o carimbo.";
+document.getElementById("requirements-dialog").showModal();
+requirementTagInputs()[0].focus();
+updateRequirementStampControls();
+}
+
+function closeRequirementsDialog() {
+if (appState.requirementsBusy) return;
+document.getElementById("requirements-dialog").close();
+}
+
+function requireTopicId(value, label) {
+const topicId = String(value || "").trim();
+if (!/^\d+$/.test(topicId)) {
+throw new Error(`${label} precisa ter um ID numérico válido.`);
+}
+return topicId;
+}
+
+async function postRequirementsStamp() {
+if (!requireEditAccess() || appState.requirementsBusy) return;
+const tag = requirementTagValue();
+if (Array.from(tag).length !== 3) {
+showToast("A TAG deve ter exatamente três caracteres.", "warning");
+return;
+}
+
+const topicId = requireTopicId(
+appState.publishing?.requirementsTopicId,
+"O tópico de requerimentos"
+);
+const bbcode = String(
+appState.publishing?.requirementsStampBbcode || ""
+).replace(/\{TAG\}/gi, tag);
+const transport = createPublishingTransport(
+{ topicId },
+`rondlist-requirements-${topicId}`
+);
+if (!transport) return;
+
+appState.requirementsBusy = true;
+document.getElementById("requirements-status").textContent =
+"Publicando carimbo…";
+updateRequirementStampControls();
+updateMemberEditControls();
+
+try {
+await publishRequirementStamp(topicId, bbcode, transport);
+document.getElementById("requirements-status").textContent =
+"Carimbo publicado com sucesso.";
+showToast("Carimbo publicado com sucesso.", "success");
+} catch (error) {
+document.getElementById("requirements-status").textContent =
+error.message;
+showToast(error.message, "error");
+} finally {
+appState.requirementsBusy = false;
+updateRequirementStampControls();
+updateMemberEditControls();
+}
+}
+
+function forumTopicUrl(topicId) {
+return `${CONFIG.forum.origin}/t${topicId}-`;
+}
+
+function parseForumDocument(html) {
+return new DOMParser().parseFromString(html, "text/html");
+}
+
+function forumLoginRequired(documentNode, responseUrl) {
+return (
+/\/login(?:\?|$)/i.test(responseUrl || "") ||
+Boolean(
+documentNode.querySelector(
+'form[action*="/login"] input[name="username"]'
+)
+)
+);
+}
+
+async function fetchForumDocument(url) {
+const response = await fetch(url, {
+credentials: "include",
+redirect: "follow",
+cache: "no-store"
+});
+const html = await response.text();
+const documentNode = parseForumDocument(html);
+
+if (!response.ok) {
+throw new Error(`O fórum respondeu com status ${response.status}.`);
+}
+if (forumLoginRequired(documentNode, response.url)) {
+throw new Error("Entre no fórum antes de usar a postagem automática.");
+}
+
+return {
+document: documentNode,
+url: response.url || url
+};
+}
+
+function findForumPostingForm(documentNode) {
+return Array.from(documentNode.forms).find((form) =>
+form.querySelector(
+'textarea[name="message"], textarea#text_editor_textarea, textarea'
+)
+);
+}
+
+function createForumSubmissionBody(form, textarea, bbcode, options = {}) {
+if (options.clearEditReason) {
+form
+.querySelectorAll('[name="edit_reason"]')
+.forEach((control) => control.remove());
+}
+
+const body = new FormData(form);
+body.set(textarea.name || "message", bbcode);
+body.delete("preview");
+body.set("post", "Enviar");
+
+if (options.clearEditReason) {
+body.delete("edit_reason");
+}
+
+if (options.disableHtml) {
+const disableHtmlControl = form.querySelector(
+'input[name="disable_html"]'
+);
+body.set(
+disableHtmlControl?.name || "disable_html",
+disableHtmlControl?.value || "1"
+);
+}
+
+return body;
+}
+
+async function submitForumPostingForm(formUrl, bbcode, options = {}) {
+const page = await fetchForumDocument(formUrl);
+const form = findForumPostingForm(page.document);
+if (!form) {
+throw new Error(
+"O formulário de postagem não foi encontrado. Verifique sua permissão."
+);
+}
+
+const textarea = form.querySelector(
+'textarea[name="message"], textarea#text_editor_textarea, textarea'
+);
+const body = createForumSubmissionBody(form, textarea, bbcode, options);
+
+const action = new URL(
+form.getAttribute("action") || "/post",
+CONFIG.forum.origin
+);
+if (action.origin !== CONFIG.forum.origin) {
+throw new Error("O formulário do fórum apontou para uma origem inesperada.");
+}
+const response = await fetch(action, {
+method: "POST",
+credentials: "include",
+redirect: "follow",
+body
+});
+const html = await response.text();
+const resultDocument = parseForumDocument(html);
+
+if (!response.ok) {
+throw new Error(`O fórum recusou o envio com status ${response.status}.`);
+}
+if (forumLoginRequired(resultDocument, response.url)) {
+throw new Error("Sua sessão do fórum expirou. Entre novamente.");
+}
+if (
+/\/post(?:\?|$)/i.test(response.url || "") &&
+findForumPostingForm(resultDocument)
+) {
+const error =
+resultDocument.querySelector(
+".message-die, .error, .panel .error, .block-error"
+)?.textContent || "O fórum não confirmou a publicação.";
+throw new Error(error.trim());
+}
+
+return response.url;
+}
+
+async function replyForumTopic(topicId, bbcode) {
+const replyUrl = new URL("/post", CONFIG.forum.origin);
+replyUrl.searchParams.set("t", topicId);
+replyUrl.searchParams.set("mode", "reply");
+return submitForumPostingForm(replyUrl, bbcode, {
+disableHtml: true
+});
+}
+
+async function editForumTopic(topicId, bbcode) {
+const topic = await fetchForumDocument(forumTopicUrl(topicId));
+const editLink = topic.document.querySelector(
+'a.btn-edit[href*="mode=editpost"], a[href*="mode=editpost"]'
+);
+
+if (!editLink) {
+throw new Error(
+"O botão de editar não foi encontrado. Confirme o login e a permissão."
+);
+}
+
+return submitForumPostingForm(
+new URL(editLink.getAttribute("href"), CONFIG.forum.origin),
+bbcode,
+{ clearEditReason: true }
+);
+}
+
+function createPublishingRequestId() {
+if (window.crypto && typeof window.crypto.randomUUID === "function") {
+return window.crypto.randomUUID();
+}
+return `rondlist-${Date.now()}-${Math.random()
+.toString(16)
+.slice(2)}`;
+}
+
+function publishThroughForumBridge(popup, request) {
+return new Promise((resolve, reject) => {
+const timeout = window.setTimeout(() => {
+cleanup();
+reject(
+new Error(
+"A ponte do Forumeiros não respondeu. Instale ou atualize o script RondList-Forumeiros-Bridge.js."
+)
+);
+}, CONFIG.forum.bridgeTimeoutMs);
+const interval = window.setInterval(() => {
+if (popup.closed) {
+cleanup();
+reject(new Error("A janela do fórum foi fechada antes do envio."));
+return;
+}
+popup.postMessage(request, CONFIG.forum.origin);
+}, 900);
+
+function cleanup() {
+window.clearTimeout(timeout);
+window.clearInterval(interval);
+window.removeEventListener("message", onMessage);
+}
+
+function onMessage(event) {
+if (
+event.origin !== CONFIG.forum.origin ||
+event.source !== popup ||
+!event.data ||
+event.data.type !== "RONDLIST_FORUM_RESULT" ||
+event.data.requestId !== request.requestId
+) {
+return;
+}
+
+cleanup();
+if (event.data.ok) {
+resolve(event.data);
+} else {
+reject(new Error(event.data.error || "Falha ao publicar no fórum."));
+}
+}
+
+window.addEventListener("message", onMessage);
+popup.postMessage(request, CONFIG.forum.origin);
+});
+}
+
+function createPublishingTransport(action, windowName) {
+const sameForumOrigin =
+window.location.origin === CONFIG.forum.origin;
+const popup = sameForumOrigin
+? null
+: window.open(
+forumTopicUrl(action.topicId),
+windowName
+);
+
+if (!sameForumOrigin && !popup) {
+showToast(
+"Permita a abertura da janela do fórum para continuar.",
+"warning"
+);
+return null;
+}
+
+return { sameForumOrigin, popup };
+}
+
+function createPublishingResults() {
+return {
+listing: { status: "idle", message: "Aguardando", url: "" },
+consultation: { status: "idle", message: "Aguardando", url: "" },
+backup: { status: "idle", message: "Aguardando", url: "" }
+};
+}
+
+function hasPublishingData() {
+const publishing = appState.publishing;
+return Boolean(
+publishing &&
+String(publishing.listingTopicId || "").trim() &&
+String(publishing.consultationTopicId || "").trim() &&
+String(publishing.backupTopicId || "").trim() &&
+String(publishing.listingBbcode || "").trim() &&
+String(publishing.consultationBbcode || "").trim()
+);
+}
+
+function currentRondListDate() {
+const parts = new Intl.DateTimeFormat("en-CA", {
+timeZone: "America/Fortaleza",
+day: "2-digit",
+month: "2-digit",
+year: "numeric"
+})
+.formatToParts(new Date())
+.reduce((result, part) => {
+result[part.type] = part.value;
+return result;
+}, {});
+
+return `${parts.day} ${NEXUS_MONTHS[Number(parts.month) - 1]} ${
+parts.year
+}`;
+}
+
+function publishingBackupBbcode() {
+const consultation = String(
+(appState.publishing && appState.publishing.consultationBbcode) || ""
+);
+return `[spoiler="${currentRondListDate()}"]${consultation}[/spoiler]`;
+}
+
+function publishingText(kind) {
+if (!appState.publishing) return "";
+if (kind === "listing") return appState.publishing.listingBbcode || "";
+if (kind === "consultation") {
+return appState.publishing.consultationBbcode || "";
+}
+if (kind === "backup") return publishingBackupBbcode();
+return "";
+}
+
+function renderPublishingDialog() {
+document.getElementById("publish-listing-code").value =
+publishingText("listing");
+document.getElementById("publish-consultation-code").value =
+publishingText("consultation");
+document.getElementById("publish-backup-code").value =
+publishingText("backup");
+
+document.querySelectorAll("[data-publish-action]").forEach((button) => {
+button.disabled = appState.publishingBusy || !hasPublishingData();
+});
+
+document.getElementById("publish-all-actions").disabled =
+appState.publishingBusy || !hasPublishingData();
+
+Object.entries(appState.publishingResults).forEach(([kind, result]) => {
+const card = document.querySelector(`[data-publish-card="${kind}"]`);
+const state = document.querySelector(`[data-publish-state="${kind}"]`);
+const openLink = document.querySelector(`[data-publish-open="${kind}"]`);
+if (!card || !state || !openLink) return;
+
+card.classList.remove(
+"is-running",
+"is-waiting",
+"is-success",
+"is-error"
+);
+if (result.status !== "idle") {
+card.classList.add(`is-${result.status}`);
+}
+
+state.textContent = result.message || "Aguardando";
+openLink.hidden = result.status !== "success" || !result.url;
+if (!openLink.hidden) {
+openLink.href = result.url;
+} else {
+openLink.removeAttribute("href");
+}
+});
+}
+
+function resetPublishingResults() {
+appState.publishingResults = createPublishingResults();
+}
+
+function setPublishingResult(kind, status, message, url = "") {
+if (!Object.prototype.hasOwnProperty.call(appState.publishingResults, kind)) {
+return;
+}
+
+appState.publishingResults[kind] = {
+status,
+message,
+url
+};
+renderPublishingDialog();
+}
+
+function setPublishingMode(mode) {
+const manual = mode !== "automatic";
+const manualButton = document.getElementById("publish-mode-manual");
+const automaticButton = document.getElementById("publish-mode-auto");
+
+manualButton.classList.toggle("is-active", manual);
+automaticButton.classList.toggle("is-active", !manual);
+manualButton.setAttribute("aria-selected", String(manual));
+automaticButton.setAttribute("aria-selected", String(!manual));
+document.getElementById("publish-manual-panel").hidden = !manual;
+document.getElementById("publish-auto-panel").hidden = manual;
+}
+
+function openPublishingDialog() {
+if (!requireEditAccess()) return;
+if (!hasPublishingData()) {
+showToast(
+"Configure os tópicos e os conteúdos de publicação antes de continuar.",
+"warning"
+);
+return;
+}
+
+setPublishingMode("manual");
+resetPublishingResults();
+document.getElementById("publish-status").textContent =
+"Selecione uma ação para iniciar.";
+renderPublishingDialog();
+document.getElementById("publishing-dialog").showModal();
+}
+
+function closePublishingDialog() {
+if (appState.publishingBusy) {
+showToast("Aguarde a publicação em andamento.", "warning");
+return;
+}
+document.getElementById("publishing-dialog").close();
+}
+
+async function copyPublishingText(kind) {
+const text = publishingText(kind);
+if (!text) {
+showToast("Não há BBCode disponível para copiar.", "warning");
+return;
+}
+
+try {
+if (navigator.clipboard && window.isSecureContext) {
+await navigator.clipboard.writeText(text);
+} else {
+const field = document.getElementById(`publish-${kind}-code`);
+field.focus();
+field.select();
+if (!document.execCommand("copy")) {
+throw new Error("A cópia automática não está disponível.");
+}
+}
+showToast("BBCode copiado.", "success");
+} catch (error) {
+showToast(error.message, "error");
+}
+}
+
+function automaticPublishingActions() {
+const publishing = appState.publishing;
+return {
+listing: {
+kind: "listing",
+label: "Atualização da listagem",
+bridgeAction: "edit",
+topicId: requireTopicId(
+publishing.listingTopicId,
+"O tópico da listagem"
+),
+bbcode: publishingText("listing")
+},
+consultation: {
+kind: "consultation",
+label: "Atualização da consulta",
+bridgeAction: "edit",
+topicId: requireTopicId(
+publishing.consultationTopicId,
+"O tópico da consulta"
+),
+bbcode: publishingText("consultation")
+},
+backup: {
+kind: "backup",
+label: "Publicação do backup",
+bridgeAction: "reply",
+topicId: requireTopicId(
+publishing.backupTopicId,
+"O tópico de backup"
+),
+bbcode: publishingText("backup")
+}
+};
+}
+
+async function executeAutomaticPublishingAction(action, transport) {
+document.getElementById("publish-status").textContent =
+`${action.label}: enviando…`;
+setPublishingResult(action.kind, "running", "Enviando…", "");
+
+try {
+if (transport.sameForumOrigin) {
+if (action.bridgeAction === "edit") {
+await editForumTopic(action.topicId, action.bbcode);
+} else {
+await replyForumTopic(action.topicId, action.bbcode);
+}
+} else {
+await publishThroughForumBridge(transport.popup, {
+type: "RONDLIST_FORUM_ACTION",
+requestId: createPublishingRequestId(),
+action: action.bridgeAction,
+topicId: action.topicId,
+bbcode: action.bbcode
+});
+}
+
+const topicUrl = forumTopicUrl(action.topicId);
+setPublishingResult(
+action.kind,
+"success",
+"Concluído",
+topicUrl
+);
+return topicUrl;
+} catch (error) {
+setPublishingResult(
+action.kind,
+"error",
+"Falhou",
+""
+);
+throw error;
+}
+}
+
+function beginPublishing() {
+appState.publishingBusy = true;
+updateMemberEditControls();
+renderPublishingDialog();
+}
+
+function finishPublishing() {
+appState.publishingBusy = false;
+updateMemberEditControls();
+renderPublishingDialog();
+}
+
+function waitForPublishingDelay(action) {
+const seconds = Math.ceil(CONFIG.forum.automaticDelayMs / 1000);
+const status = document.getElementById("publish-status");
+
+return new Promise((resolve) => {
+let remaining = seconds;
+status.textContent = `${action.label} em ${remaining}s…`;
+setPublishingResult(
+action.kind,
+"waiting",
+`Em ${remaining} s`,
+""
+);
+const timer = window.setInterval(() => {
+remaining -= 1;
+if (remaining <= 0) {
+window.clearInterval(timer);
+resolve();
+return;
+}
+status.textContent = `${action.label} em ${remaining}s…`;
+setPublishingResult(
+action.kind,
+"waiting",
+`Em ${remaining} s`,
+""
+);
+}, 1000);
+});
+}
+
+async function runAutomaticPublishing(kind) {
+if (appState.publishingBusy || !hasPublishingData()) return;
+
+const actions = automaticPublishingActions();
+const action = actions[kind];
+if (!action) return;
+const transport = createPublishingTransport(
+action,
+`rondlist-forum-${action.topicId}`
+);
+if (!transport) return;
+
+setPublishingResult(kind, "idle", "Aguardando", "");
+beginPublishing();
+
+try {
+await waitForPublishingDelay(action);
+await executeAutomaticPublishingAction(action, transport);
+document.getElementById("publish-status").textContent =
+`${action.label} concluída.`;
+showToast(`${action.label} concluída no fórum.`, "success");
+} catch (error) {
+document.getElementById("publish-status").textContent = error.message;
+showToast(error.message, "error");
+} finally {
+finishPublishing();
+}
+}
+
+async function runAutomaticPublishingSequence() {
+if (appState.publishingBusy || !hasPublishingData()) return;
+
+const actions = automaticPublishingActions();
+const sequence = [
+actions.listing,
+actions.consultation,
+actions.backup
+];
+const transport = createPublishingTransport(
+sequence[0],
+"rondlist-forum-sequence"
+);
+if (!transport) return;
+
+resetPublishingResults();
+beginPublishing();
+
+try {
+for (let index = 0; index < sequence.length; index += 1) {
+const action = sequence[index];
+if (index > 0) {
+await waitForPublishingDelay(action);
+}
+await executeAutomaticPublishingAction(action, transport);
+}
+
+document.getElementById("publish-status").textContent =
+"Atualização completa concluída.";
+showToast(
+"Listagem, consulta e backup atualizados no fórum.",
+"success"
+);
+} catch (error) {
+document.getElementById("publish-status").textContent = error.message;
+showToast(error.message, "error");
+} finally {
+finishPublishing();
+}
+}
+
+async function loadRondList(options = {}) {
+const { quiet = false, forceSource = false } = options;
+setDataLoading(true);
+setWorkspaceState("", "Sincronizando");
+
+if (!appState.loaded) {
+const table = document.getElementById("members-table");
+const tableState = document.getElementById("table-state");
+table.hidden = true;
+tableState.hidden = false;
+tableState.textContent = "Carregando a base de membros…";
+}
+
+try {
+const response = await requestRondList(
+"bootstrap",
+null,
+forceSource ? { forceRefresh: true } : {}
+);
+const responseRows = response.data.rows || [];
+const incomingRows = forceSource
+? responseRows.filter(
+(row) =>
+(Array.isArray(row.source) &&
+row.source.some((value) => String(value ?? "").trim())) ||
+(Array.isArray(row.saved) &&
+row.saved.some((value) => String(value ?? "").trim()))
+)
+: responseRows;
+appState.headers =
+forceSource && Array.isArray(response.data.sourceHeaders)
+? response.data.sourceHeaders.slice()
+: response.data.headers || [];
+appState.maxDataRow = incomingRows.reduce(
+(maximum, row) => Math.max(maximum, Number(row.row) || 1),
+1
+);
+const roleIndex = memberFieldIndexes().role;
+appState.rows = incomingRows.map((row) => {
+const normalizedRow = { ...row };
+if (forceSource) {
+const sourceValues = Array.isArray(row.source)
+? row.source.slice()
+: [];
+const savedValues = Array.isArray(row.saved)
+? row.saved.slice()
+: [];
+const hasSource = sourceValues.some((value) =>
+String(value ?? "").trim()
+);
+normalizedRow.source = sourceValues.slice();
+normalizedRow.saved = savedValues.slice();
+normalizedRow.values = hasSource
+? sourceValues.slice()
+: savedValues.slice();
+normalizedRow.hasSaved = savedValues.some((value) =>
+String(value ?? "").trim()
+);
+}
+["source", "saved", "values"].forEach((key) => {
+if (!Array.isArray(row[key])) return;
+normalizedRow[key] = row[key].slice();
+if (roleIndex >= 0) {
+normalizedRow[key][roleIndex] = canonicalRoleName(
+normalizedRow[key][roleIndex]
+);
+}
+});
+return normalizedRow;
+});
+appState.settings = (response.settings.rows || []).map((item) => ({
+...item,
+role: canonicalRoleName(item.role)
+}));
+appState.additionalAccess = Array.isArray(
+response.additionalAccess && response.additionalAccess.nicknames
+)
+? response.additionalAccess.nicknames.slice()
+: [];
+appState.additionalAccessRoles = Array.isArray(
+response.additionalAccess && response.additionalAccess.roles
+)
+? response.additionalAccess.roles.slice()
+: [];
+appState.availableAccessRoles = Array.isArray(
+response.additionalAccess &&
+response.additionalAccess.availableRoles
+)
+? response.additionalAccess.availableRoles.map((entry) => ({
+role: String(entry.role || "")
+}))
+: [];
+appState.publishing = response.publishing || null;
+appState.booleanColumns = detectBooleanColumns();
+sortMembers();
+appState.selectedMemberRows.clear();
+appState.loaded = true;
+
+renderMembers();
+renderSettings();
+renderAdditionalAccess();
+updateAdditionalAccessRoleOptions();
+document.getElementById("data-origin").textContent = forceSource
+? "Dados recarregados"
+: "Dados sincronizados";
+updateDataTimestamp(response.meta && response.meta.generatedAt);
+setWorkspaceState("ready", "Sincronizado");
+
+if (!quiet) {
+showToast(
+forceSource
+? `${formatCount(appState.rows.length)} registros recarregados.`
+: `${formatCount(appState.rows.length)} registros atualizados.`,
+"success"
+);
+}
+} catch (error) {
+setWorkspaceState("error", "Conexão pendente");
+document.getElementById("members-table").hidden = true;
+const tableState = document.getElementById("table-state");
+tableState.hidden = false;
+tableState.textContent = error.message;
+document.getElementById("table-result").textContent =
+"Não foi possível carregar";
+showToast(error.message, "error");
+} finally {
+setDataLoading(false);
+}
+}
+
+function createFormField(label, value, index, options = {}) {
+const wrapper = document.createElement("div");
+wrapper.className = `form-field${options.wide ? " form-field--wide" : ""}`;
+
+const inputId =
+options.id || `${options.prefix || "field"}-${index}`;
+const fieldLabel = document.createElement("label");
+fieldLabel.htmlFor = inputId;
+fieldLabel.textContent = label;
+
+const input = document.createElement("input");
+input.id = inputId;
+input.name = inputId;
+input.type = options.type || "text";
+input.value = value ?? "";
+input.dataset.index = index;
+if (options.placeholder) input.placeholder = options.placeholder;
+if (options.min !== undefined) input.min = options.min;
+if (options.dataset) {
+Object.entries(options.dataset).forEach(([key, datasetValue]) => {
+input.dataset[key] = datasetValue;
+});
+}
+
+wrapper.append(fieldLabel, input);
+return wrapper;
+}
+
+function openSettingsEditor(rowNumber) {
+if (!requireEditAccess()) return;
+const item = appState.settings.find((entry) => entry.row === rowNumber);
+if (!item) return;
+
+appState.editingSettingsRow = rowNumber;
+document.getElementById("settings-editor-eyebrow").textContent =
+"Configuração do cargo";
+const fields = document.getElementById("settings-editor-fields");
+fields.replaceChildren();
+
+const roleField = document.createElement("div");
+roleField.className = "form-field";
+const roleLabel = document.createElement("label");
+roleLabel.htmlFor = "settings-field-0";
+roleLabel.textContent = "Cargo";
+roleField.append(
+roleLabel,
+createRoleSelect(item.role, {
+id: "settings-field-0",
+index: 0,
+className: "form-select",
+label: "Cargo"
+})
+);
+
+const vacanciesField = createFormField(
+"Quantidade de vagas",
+item.vacancies,
+1,
+{
+id: "settings-field-1",
+type: "number",
+placeholder: "0",
+min: 0
+}
+);
+fields.append(roleField, vacanciesField);
+
+document.getElementById("settings-editor").showModal();
+}
+
+function closeSettingsEditor() {
+appState.editingSettingsRow = null;
+document.getElementById("settings-editor").close();
+}
+
+async function saveRoleSettings(event) {
+event.preventDefault();
+if (!requireEditAccess()) return;
+const item = appState.settings.find(
+(entry) => entry.row === appState.editingSettingsRow
+);
+if (!item) return;
+
+const button = document.getElementById("save-settings");
+const inputs = Array.from(
+document.querySelectorAll(
+"#settings-editor-fields input, #settings-editor-fields select"
+)
+).sort((left, right) => Number(left.dataset.index) - Number(right.dataset.index));
+const values = inputs.map((input) => input.value.trim());
+
+button.disabled = true;
+button.textContent = "Salvando…";
+
+try {
+await requestRondList("saveSettings", {
+rows: [
+{
+row: item.row,
+role: values[0],
+vacancies: values[1]
+}
+]
+});
+
+item.role = values[0];
+item.vacancies = values[1] === "" ? "" : Number(values[1]);
+closeSettingsEditor();
+renderSettings();
+updateDataTimestamp();
+showToast("Cargo e vagas atualizados.", "success");
+} catch (error) {
+showToast(error.message, "error");
+} finally {
+button.disabled = false;
+button.textContent = "Salvar cargo";
+}
+}
+
+function createEditorFieldset(title, description) {
+const section = document.createElement("section");
+section.className = "editor-fieldset";
+
+const heading = document.createElement("h3");
+heading.className = "editor-fieldset__title";
+heading.textContent = title;
+
+const copy = document.createElement("p");
+copy.className = "editor-fieldset__description";
+copy.textContent = description;
+
+const grid = document.createElement("div");
+grid.className = "editor-grid";
+section.append(heading, copy, grid);
+return { section, grid };
+}
+
+function normalizeLayoutStyleValue(value) {
+return String(value || "").trim();
+}
+
+function validPreviewStyleValue(value, property) {
+if (!value || !window.CSS || typeof CSS.supports !== "function") {
+return false;
+}
+return property === "--directory-shadow"
+? CSS.supports("box-shadow", value)
+: CSS.supports("color", value);
+}
+
+function previewTextColor(value) {
+let hex = String(value || "").replace("#", "");
+if (hex.length === 3 || hex.length === 4) {
+hex = hex
+.slice(0, 3)
+.split("")
+.map((digit) => digit + digit)
+.join("");
+} else {
+hex = hex.slice(0, 6);
+}
+
+if (!/^[0-9A-F]{6}$/i.test(hex)) return "#FFFFFF";
+const channels = [0, 2, 4].map((offset) =>
+parseInt(hex.slice(offset, offset + 2), 16)
+);
+const luminance =
+(channels[0] * 299 + channels[1] * 587 + channels[2] * 114) /
+255000;
+return luminance > 0.62 ? "#171717" : "#FFFFFF";
+}
+
+function updateLayoutBannerPreview() {
+const input = document.getElementById("layout-banner");
+const image = document.getElementById("layout-preview-banner");
+const placeholder = document.getElementById(
+"layout-preview-banner-placeholder"
+);
+if (!input || !image || !placeholder) return;
+
+const value = input.value.trim();
+image.hidden = true;
+placeholder.hidden = false;
+
+if (!value) {
+image.removeAttribute("src");
+image.dataset.previewSource = "";
+placeholder.textContent =
+"Adicione o link do banner para visualizá-lo.";
+return;
+}
+
+let source;
+try {
+const parsed = new URL(value);
+if (!["http:", "https:"].includes(parsed.protocol)) {
+throw new Error("Protocolo inválido");
+}
+source = parsed.toString();
+} catch {
+image.removeAttribute("src");
+image.dataset.previewSource = "";
+placeholder.textContent = "Insira um link válido para o banner.";
+return;
+}
+
+placeholder.textContent = "Carregando banner…";
+image.dataset.previewSource = source;
+image.onload = () => {
+if (image.dataset.previewSource !== source) return;
+image.hidden = false;
+placeholder.hidden = true;
+};
+image.onerror = () => {
+if (image.dataset.previewSource !== source) return;
+image.hidden = true;
+placeholder.hidden = false;
+placeholder.textContent = "Não foi possível carregar este banner.";
+};
+
+if (image.src !== source) {
+image.src = source;
+} else if (image.complete) {
+if (image.naturalWidth) {
+image.hidden = false;
+placeholder.hidden = true;
+} else {
+placeholder.textContent = "Não foi possível carregar este banner.";
+}
+}
+}
+
+function updateLayoutColorPreview() {
+const canvas = document.getElementById("layout-preview-canvas");
+const palette = document.getElementById("layout-preview-palette");
+if (!canvas || !palette) return;
+
+const definitions = [
+{ property: "--directory-purple", label: "Roxo principal", fallback: "#821f88" },
+{ property: "--directory-purple-dark", label: "Roxo escuro", fallback: "#57125b" },
+{ property: "--directory-purple-deep", label: "Roxo profundo", fallback: "#500b59" },
+{ property: "--directory-purple-bright", label: "Roxo brilhante", fallback: "#a22ca9" },
+{ property: "--directory-purple-role", label: "Roxo dos cargos", fallback: "#8a188c" },
+{ property: "--directory-lilac", label: "Lilás", fallback: "#dacbdb" },
+{ property: "--directory-lilac-soft", label: "Lilás suave", fallback: "#f0f0f0" },
+{ property: "--directory-lilac-muted", label: "Lilás secundário", fallback: "#c8b9c9" },
+{ property: "--directory-ink", label: "Texto", fallback: "#352838" },
+{ property: "--directory-white", label: "Branco", fallback: "#ffffff" },
+{ property: "--directory-green", label: "WhatsApp", fallback: "#1ca14e" },
+{ property: "--directory-discord", label: "Discord", fallback: "#5865f2" },
+{ property: "--directory-project", label: "Projeto aprovado", fallback: "#da70d6" },
+{ property: "--directory-pending", label: "Graduação pendente", fallback: "#b38171" },
+{ property: "--directory-danger", label: "Perigo", fallback: "#b83243" },
+{ property: "--directory-danger-soft", label: "Perigo suave", fallback: "rgba(184, 50, 67, 0.18)" },
+{ property: "--directory-shadow", label: "Sombra", fallback: "0 2px 5px rgba(20, 0, 0, 0.14)" }
+];
+const titles = new Map(
+Array.from(
+document.querySelectorAll("[data-layout-color-title-row]")
+).map((input) => [
+Number(input.dataset.layoutColorTitleRow),
+input.value.trim()
+])
+);
+const entries = Array.from(
+document.querySelectorAll("[data-layout-color-row]")
+)
+.map((input) => {
+const row = Number(input.dataset.layoutColorRow);
+const definition = definitions[row - 2];
+if (!definition) return null;
+const value = normalizeLayoutStyleValue(input.value);
+return {
+...definition,
+row,
+title: titles.get(row) || definition.label,
+value,
+valid: validPreviewStyleValue(value, definition.property)
+};
+})
+.filter(Boolean)
+.sort((left, right) => left.row - right.row);
+
+definitions.forEach((definition) => {
+const entry = entries.find(
+(item) => item.property === definition.property
+);
+canvas.style.setProperty(
+definition.property,
+entry && entry.valid ? entry.value : definition.fallback
+);
+});
+
+palette.replaceChildren();
+entries.forEach((entry) => {
+const item = document.createElement("div");
+item.className = `bbcode-preview-color${
+entry.value && !entry.valid ? " is-invalid" : ""
+}`;
+const displayedValue = entry.valid ? entry.value : entry.fallback;
+if (entry.property === "--directory-shadow") {
+item.style.setProperty("--preview-swatch", "var(--surface-muted)");
+item.style.boxShadow = displayedValue;
+item.style.setProperty("--preview-chip-text", "var(--text)");
+} else {
+item.style.setProperty("--preview-swatch", displayedValue);
+item.style.setProperty(
+"--preview-chip-text",
+previewTextColor(displayedValue)
+);
+}
+item.textContent = entry.title;
+item.title = entry.valid
+? `${entry.title}: ${entry.value}`
+: `${entry.title}: ${
+entry.value ? "valor inválido" : "usando o padrão"
+}`;
+palette.appendChild(item);
+});
+}
+
+function updateLayoutLivePreview() {
+updateLayoutBannerPreview();
+updateLayoutColorPreview();
+}
+
+function openLayoutEditor() {
+if (!requireEditAccess()) return;
+const owner = getLayoutOwner();
+if (!owner) return;
+
+appState.editingLayoutOwnerRow = owner.row;
+const fields = document.getElementById("layout-editor-fields");
+fields.replaceChildren();
+
+const bannerGroup = createEditorFieldset(
+"Banner",
+"Imagem principal que será usada no topo da futura listagem em BBCode."
+);
+bannerGroup.grid.appendChild(
+createFormField("URL do banner", owner.banner, 0, {
+id: "layout-banner",
+type: "url",
+placeholder: "https://...",
+wide: true
+})
+);
+
+const colorGroup = createEditorFieldset(
+"Paleta de cores",
+"Defina os valores visuais na mesma ordem usada pela listagem."
+);
+appState.settings.forEach((item, index) => {
+colorGroup.grid.appendChild(
+createFormField(
+`Título da cor ${index + 1}`,
+item.colorTitle,
+index,
+{
+id: `layout-color-title-${item.row}`,
+placeholder: `Cor ${index + 1}`,
+dataset: { layoutColorTitleRow: String(item.row) }
+}
+)
+);
+colorGroup.grid.appendChild(
+createFormField(
+`Valor de ${String(item.colorTitle || "").trim() || `cor ${index + 1}`}`,
+item.color,
+index,
+{
+id: `layout-color-${item.row}`,
+placeholder:
+item.row === 18
+? "0 2px 5px rgba(20, 0, 0, .14)"
+: "#821F88 ou rgba(...)",
+dataset: { layoutColorRow: String(item.row) }
+}
+)
+);
+});
+
+const topicsGroup = createEditorFieldset(
+"Tópicos de publicação",
+"Informe os IDs numéricos dos tópicos usados na publicação."
+);
+["Listagem", "Consulta", "Backup"].forEach((label, index) => {
+topicsGroup.grid.appendChild(
+createFormField(
+label,
+(owner.topicIds || [])[index] || "",
+index,
+{
+id: `layout-topic-${index}`,
+type: "text",
+placeholder: "1"
+}
+)
+);
+});
+
+const linksGroup = createEditorFieldset(
+"Links importantes",
+"Links complementares usados na composição do BBCode."
+);
+Array.from({ length: 2 }, (_, index) => {
+linksGroup.grid.appendChild(
+createFormField(
+`Link importante ${index + 1}`,
+(owner.links || [])[index] || "",
+index,
+{
+id: `layout-link-${index}`,
+type: "url",
+placeholder: "https://...",
+wide: true
+}
+)
+);
+});
+
+fields.append(
+bannerGroup.section,
+colorGroup.section,
+topicsGroup.section,
+linksGroup.section
+);
+document
+.getElementById("layout-banner")
+.addEventListener("input", updateLayoutBannerPreview);
+fields
+.querySelectorAll(
+"[data-layout-color-row], [data-layout-color-title-row]"
+)
+.forEach((input) =>
+input.addEventListener("input", updateLayoutColorPreview)
+);
+updateLayoutLivePreview();
+document.getElementById("layout-editor").showModal();
+}
+
+function closeLayoutEditor() {
+appState.editingLayoutOwnerRow = null;
+document.getElementById("layout-editor").close();
+}
+
+async function saveLayoutSettings(event) {
+event.preventDefault();
+if (!requireEditAccess()) return;
+const owner = appState.settings.find(
+(item) => item.row === appState.editingLayoutOwnerRow
+);
+if (!owner) return;
+
+const banner = document.getElementById("layout-banner").value.trim();
+const topicIds = Array.from({ length: 3 }, (_, index) =>
+document.getElementById(`layout-topic-${index}`).value.trim()
+);
+const links = Array.from({ length: 2 }, (_, index) =>
+document.getElementById(`layout-link-${index}`).value.trim()
+);
+const colors = new Map(
+Array.from(
+document.querySelectorAll("[data-layout-color-row]")
+).map((input) => [
+Number(input.dataset.layoutColorRow),
+normalizeLayoutStyleValue(input.value)
+])
+);
+const colorTitles = new Map(
+Array.from(
+document.querySelectorAll("[data-layout-color-title-row]")
+).map((input) => [
+Number(input.dataset.layoutColorTitleRow),
+input.value.trim()
+])
+);
+const updates = new Map();
+
+function mergeUpdate(row, fields) {
+updates.set(row, { ...(updates.get(row) || { row }), ...fields });
+}
+
+if (
+banner !== String(owner.banner || "").trim() ||
+topicIds.some(
+(topicId, index) =>
+topicId !== String((owner.topicIds || [])[index] || "").trim()
+) ||
+links.some(
+(link, index) =>
+link !== String((owner.links || [])[index] || "").trim()
+)
+) {
+mergeUpdate(owner.row, { banner, topicIds, links });
+}
+
+appState.settings.forEach((item) => {
+const color = colors.get(item.row) || "";
+const colorTitle = colorTitles.get(item.row) || "";
+const colorChanged =
+color !== normalizeLayoutStyleValue(item.color);
+const titleChanged =
+colorTitle !== String(item.colorTitle || "").trim();
+if (colorChanged || titleChanged) {
+mergeUpdate(item.row, { color, colorTitle });
+}
+});
+
+if (!updates.size) {
+closeLayoutEditor();
+showToast("Nenhuma alteração nos recursos do BBCode.", "info");
+return;
+}
+
+const button = document.getElementById("save-layout");
+button.disabled = true;
+button.textContent = "Salvando…";
+
+try {
+const rows = Array.from(updates.values());
+await requestRondList("saveSettings", { rows });
+
+rows.forEach((update) => {
+const item = appState.settings.find(
+(entry) => entry.row === update.row
+);
+if (!item) return;
+if (Object.prototype.hasOwnProperty.call(update, "banner")) {
+item.banner = update.banner;
+}
+if (Object.prototype.hasOwnProperty.call(update, "color")) {
+item.color = update.color;
+}
+if (Object.prototype.hasOwnProperty.call(update, "colorTitle")) {
+item.colorTitle = update.colorTitle;
+}
+if (Object.prototype.hasOwnProperty.call(update, "topicIds")) {
+item.topicIds = update.topicIds.slice();
+if (appState.publishing) {
+appState.publishing.listingTopicId = update.topicIds[0] || "";
+appState.publishing.consultationTopicId =
+update.topicIds[1] || "";
+appState.publishing.backupTopicId = update.topicIds[2] || "";
+}
+}
+if (Object.prototype.hasOwnProperty.call(update, "links")) {
+item.links = update.links.slice();
+}
+});
+
+closeLayoutEditor();
+renderSettings();
+updateDataTimestamp();
+showToast("Recursos do BBCode atualizados.", "success");
+} catch (error) {
+showToast(error.message, "error");
+} finally {
+button.disabled = false;
+button.textContent = "Salvar recursos";
+}
+}
+
+function cleanCell(value) {
+return String(value || "").replace(/^"|"$/g, "").trim();
+}
+
+async function fetchForumUsername() {
+const runtimeUsername = cleanCell(
+window._userdata && window._userdata.username
+);
+if (
+runtimeUsername &&
+runtimeUsername.toLocaleLowerCase("pt-BR") !== "anônimo"
+) {
+return runtimeUsername;
+}
+
+let response;
+
+try {
+response = await fetch(
+new URL("forum", CONFIG.workerProxy).toString(),
+{
+method: "GET",
+credentials: "omit",
+cache: "no-store"
+}
+);
+} catch {
+throw new Error("Não foi possível consultar sua sessão no fórum.");
+}
+
+if (!response.ok) {
+throw new Error("Não foi possível confirmar seu login no fórum.");
+}
+
+const forumHtml = await response.text();
+const match = forumHtml.match(
+/_userdata\[['"]username['"]\]\s*=\s*['"]([^'"]+)['"]/i
+);
+const username = match ? cleanCell(match[1]) : "";
+
+if (!username || username.toLocaleLowerCase("pt-BR") === "anônimo") {
+const error = new Error(
+"Você precisa estar conectado ao fórum para continuar."
+);
+error.code = "AUTH_DENIED";
+throw error;
+}
+
+return username;
+}
+
+function denyAccess(message) {
+const authScreen = document.getElementById("auth-screen");
+currentUser = null;
+if (authRevalidationTimer) {
+window.clearInterval(authRevalidationTimer);
+authRevalidationTimer = null;
+}
+authScreen.hidden = false;
+authScreen.classList.remove("is-hidden");
+authScreen.classList.add("is-denied");
+document.getElementById("auth-title").textContent = "Acesso negado";
+document.getElementById("auth-message").textContent = message;
+authScreen.setAttribute("role", "alert");
+document.getElementById("topbar-user").classList.remove("is-visible");
+applyAccessMode();
+}
+
+function allowAccess(user, options = {}) {
+currentUser = Object.freeze({ ...user });
+
+const authScreen = document.getElementById("auth-screen");
+const userBlock = document.getElementById("topbar-user");
+const avatar = document.getElementById("user-avatar");
+
+document.getElementById("user-display-name").textContent = user.nick;
+document.getElementById("user-display-role").textContent =
+options.pendingValidation
+? `${user.role} · verificando acesso`
+: canCurrentUserEdit(user)
+? user.role
+: `${user.role} · somente leitura`;
+avatar.src =
+`https://www.habbo.com.br/habbo-imaging/avatarimage?user=${encodeURIComponent(user.nick)}` +
+"&direction=2&head_direction=3&gesture=sml&size=m&headonly=1";
+avatar.alt = `Avatar de ${user.nick}`;
+userBlock.classList.add("is-visible");
+authScreen.classList.add("is-hidden");
+applyAccessMode();
+
+window.setTimeout(() => {
+authScreen.hidden = true;
+}, 250);
+}
+
+function userFromAccess(access, username) {
+return {
+nick: access.nick || username,
+role: canonicalRoleName(access.role) || "Acesso autorizado",
+roles: Array.isArray(access.roles)
+? access.roles.map(canonicalRoleName)
+: [],
+canEdit:
+typeof access.canEdit === "boolean"
+? access.canEdit
+: undefined,
+canManageAccess:
+typeof access.canManageAccess === "boolean"
+? access.canManageAccess
+: undefined
+};
+}
+
+async function validateForumAccess() {
+const username =
+CONFIG.auth.temporaryUser || (await fetchForumUsername());
+const response = await requestRondList("access", { username });
+const access = response.access || {};
+
+if (!access.allowed) {
+const error = new Error(
+access.message ||
+"Seu usuário não possui permissão para acessar a RondList."
+);
+error.code = "AUTH_DENIED";
+throw error;
+}
+
+return userFromAccess(access, username);
+}
+
+function scheduleAuthenticationRevalidation() {
+if (authRevalidationTimer) {
+window.clearInterval(authRevalidationTimer);
+}
+authRevalidationTimer = window.setInterval(() => {
+revalidateAuthentication().catch(() => {});
+}, CONFIG.auth.revalidateIntervalMs);
+}
+
+async function revalidateAuthentication(options = {}) {
+try {
+const user = await validateForumAccess();
+allowAccess(user);
+await saveCachedAuthentication(user);
+scheduleAuthenticationRevalidation();
+
+if (options.reloadData) {
+await loadRondList({ quiet: true, forceSource: true });
+}
+if (
+options.honorInitialHash &&
+window.location.hash === "#configuracoes" &&
+canCurrentUserEdit(user)
+) {
+navigateToView("settings", { force: true });
+}
+if (options.announce) {
+showToast("", "success", `Bem-vindo, ${user.nick}`);
+}
+return user;
+} catch (error) {
+if (currentUser && error && error.code !== "AUTH_DENIED") {
+allowAccess(
+{ ...currentUser, canEdit: false, canManageAccess: false },
+{ pendingValidation: true }
+);
+scheduleAuthenticationRevalidation();
+return null;
+}
+await clearCachedAuthentication();
+denyAccess(
+error && error.message
+? error.message
+: "Não foi possível validar seu acesso."
+);
+throw error;
+}
+}
+
+async function initializeAuthentication() {
+const authScreen = document.getElementById("auth-screen");
+authScreen.hidden = false;
+authScreen.classList.remove("is-hidden", "is-denied");
+authScreen.setAttribute("role", "status");
+document.getElementById("auth-title").textContent = "Verificando acesso";
+document.getElementById("auth-message").textContent =
+"Aguarde enquanto validamos seu login e sua permissão na RondList.";
+
+const cached = await readCachedAuthentication();
+if (cached && cached.user && cached.user.nick) {
+allowAccess(
+{ ...cached.user, canEdit: false, canManageAccess: false },
+{ pendingValidation: true }
+);
+loadRondList({ quiet: true, forceSource: true }).catch(() => {});
+revalidateAuthentication({
+reloadData: true,
+honorInitialHash: true
+}).catch(() => {});
+return;
+}
+
+revalidateAuthentication({
+reloadData: true,
+honorInitialHash: true,
+announce: true
+}).catch(() => {});
+}
+
+function showToast(message, type = "info", title = "") {
+const styles = {
+success: {
+title: "Sucesso",
+icon: `
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="8.5"></circle>
+<path class="toast__icon-shape" d="m8 12.2 2.6 2.6L16.5 9"></path>
+</svg>
+`
+},
+error: {
+title: "Erro",
+icon: `
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="8.5"></circle>
+<path class="toast__icon-shape" d="m9 9 6 6M15 9l-6 6"></path>
+</svg>
+`
+},
+warning: {
+title: "Atenção",
+icon: `
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M10.3 4.6 3.4 17a2 2 0 0 0 1.8 3h13.6a2 2 0 0 0 1.8-3L13.7 4.6a2 2 0 0 0-3.4 0Z"></path>
+<path class="toast__icon-shape" d="M12 9v4.2M12 16.5h.01"></path>
+</svg>
+`
+},
+info: {
+title: "Informação",
+icon: `
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="8.5"></circle>
+<path class="toast__icon-shape" d="M12 10.5v5M12 7.5h.01"></path>
+</svg>
+`
+}
+};
+
+const style = styles[type] || styles.info;
+const toast = document.createElement("div");
+toast.className = "toast";
+toast.dataset.type = styles[type] ? type : "info";
+toast.setAttribute("role", type === "error" ? "alert" : "status");
+
+const toastIcon = document.createElement("span");
+toastIcon.className = "toast__icon";
+toastIcon.innerHTML = style.icon;
+
+const toastContent = document.createElement("span");
+toastContent.className = "toast__content";
+const toastTitle = document.createElement("strong");
+toastTitle.className = "toast__title";
+toastTitle.textContent = title || style.title;
+toastContent.appendChild(toastTitle);
+
+if (message) {
+const toastMessage = document.createElement("span");
+toastMessage.className = "toast__message";
+toastMessage.textContent = message;
+toastContent.appendChild(toastMessage);
+}
+
+toast.append(toastIcon, toastContent);
+document.getElementById("toast-container").appendChild(toast);
+
+requestAnimationFrame(() => {
+toast.classList.add("is-visible");
+window.setTimeout(() => toast.classList.add("is-expanded"), 420);
+});
+
+const duration = type === "error" ? 5400 : 4700;
+window.setTimeout(() => {
+toast.classList.remove("is-expanded");
+}, duration - 850);
+
+window.setTimeout(() => {
+toast.classList.add("is-leaving");
+}, duration - 300);
+
+window.setTimeout(() => toast.remove(), duration + 120);
+}
+
+function setSidebarOpen(isOpen) {
+const sidebar = document.getElementById("app-sidebar");
+const menuButton = document.getElementById("mobile-menu-button");
+sidebar.classList.toggle("is-open", isOpen);
+menuButton.setAttribute("aria-expanded", String(isOpen));
+menuButton.setAttribute(
+"aria-label",
+isOpen ? "Fechar menu principal" : "Abrir menu principal"
+);
+}
+
+function navigateToView(viewName, options = {}) {
+if (!["members", "settings"].includes(viewName)) return;
+if (viewName === "settings" && !canCurrentUserEdit()) {
+showToast(
+"As configurações são exclusivas de usuários com acesso total.",
+"warning"
+);
+return;
+}
+
+if (
+!options.force &&
+viewName !== "members" &&
+(appState.editingMembers ||
+appState.removingMembers ||
+appState.addingMember)
+) {
+showToast(
+"Conclua ou cancele a ação atual antes de trocar de página.",
+"warning"
+);
+return;
+}
+
+appState.currentView = viewName;
+document.querySelectorAll(".app-view").forEach((view) => {
+view.hidden = view.dataset.view !== viewName;
+});
+
+document.querySelectorAll("[data-view-target]").forEach((button) => {
+const isActive = button.dataset.viewTarget === viewName;
+button.classList.toggle("is-active", isActive);
+if (isActive) {
+button.setAttribute("aria-current", "page");
+} else {
+button.removeAttribute("aria-current");
+}
+});
+
+const isSettings = viewName === "settings";
+document.getElementById("topbar-page-title").textContent = isSettings
+? "Configurações da RondList"
+: "Controle de membros";
+document.title = isSettings
+? "Configurações · RondList"
+: "RondList";
+
+const page = document.querySelector(".page");
+page.scrollTop = 0;
+setSidebarOpen(false);
+}
+
+window.RondList = Object.freeze({
+config: CONFIG,
+worker: Object.freeze({
+buildUrl: buildWorkerUrl,
+fetch: fetchViaWorker
+}),
+auth: Object.freeze({
+getCurrentUser: () => currentUser,
+refresh: initializeAuthentication
+}),
+sheets: Object.freeze({
+request: requestRondList,
+fetchViaWorker
+})
+});
+
+document
+.getElementById("refresh-members")
+.addEventListener("click", () =>
+loadRondList({ forceSource: true })
+);
+
+document
+.getElementById("refresh-settings")
+.addEventListener("click", () =>
+loadRondList({ forceSource: true })
+);
+
+document
+.getElementById("additional-access-type")
+.addEventListener("change", updateAdditionalAccessField);
+
+document
+.getElementById("additional-access-form")
+.addEventListener("submit", saveAdditionalAccess);
+
+document
+.getElementById("open-requirements")
+.addEventListener("click", openStampDialog);
+
+document
+.getElementById("close-requirements")
+.addEventListener("click", closeRequirementsDialog);
+
+document
+.getElementById("dismiss-requirements")
+.addEventListener("click", closeRequirementsDialog);
+
+document
+.getElementById("post-requirements-stamp")
+.addEventListener("click", postRequirementsStamp);
+
+requirementTagInputs().forEach((input) => {
+input.addEventListener("input", handleRequirementTagInput);
+input.addEventListener("paste", handleRequirementTagPaste);
+input.addEventListener("keydown", handleRequirementTagKeydown);
+});
+
+document
+.getElementById("requirements-dialog")
+.addEventListener("click", (event) => {
+if (event.target === event.currentTarget) closeRequirementsDialog();
+});
+
+document
+.getElementById("requirements-dialog")
+.addEventListener("cancel", (event) => {
+if (appState.requirementsBusy) {
+event.preventDefault();
+}
+});
+
+document
+.getElementById("open-publishing")
+.addEventListener("click", openPublishingDialog);
+
+document
+.getElementById("close-publishing")
+.addEventListener("click", closePublishingDialog);
+
+document
+.getElementById("dismiss-publishing")
+.addEventListener("click", closePublishingDialog);
+
+document
+.getElementById("publish-mode-manual")
+.addEventListener("click", () => setPublishingMode("manual"));
+
+document
+.getElementById("publish-mode-auto")
+.addEventListener("click", () => setPublishingMode("automatic"));
+
+document
+.querySelectorAll("[data-copy-publish]")
+.forEach((button) => {
+button.addEventListener("click", () =>
+copyPublishingText(button.dataset.copyPublish)
+);
+});
+
+document
+.querySelectorAll("[data-publish-action]")
+.forEach((button) => {
+button.addEventListener("click", () =>
+runAutomaticPublishing(button.dataset.publishAction)
+);
+});
+
+document
+.getElementById("publish-all-actions")
+.addEventListener("click", runAutomaticPublishingSequence);
+
+document
+.getElementById("publishing-dialog")
+.addEventListener("click", (event) => {
+if (event.target === event.currentTarget) closePublishingDialog();
+});
+
+document
+.getElementById("publishing-dialog")
+.addEventListener("cancel", (event) => {
+if (appState.publishingBusy) {
+event.preventDefault();
+}
+});
+
+document
+.getElementById("member-search")
+.addEventListener("input", (event) => {
+appState.search = event.target.value;
+renderMembers();
+});
+
+document
+.getElementById("edit-members")
+.addEventListener("click", beginMemberEditing);
+
+document
+.getElementById("organize-members")
+.addEventListener("click", organizeMemberList);
+
+document
+.getElementById("save-members-edit")
+.addEventListener("click", saveMemberList);
+
+document
+.getElementById("cancel-members-edit")
+.addEventListener("click", cancelMemberEditing);
+
+document
+.getElementById("add-member")
+.addEventListener("click", openAddMemberEditor);
+
+document
+.getElementById("add-member-form")
+.addEventListener("submit", saveNewMember);
+
+document
+.getElementById("close-add-member")
+.addEventListener("click", closeAddMemberEditor);
+
+document
+.getElementById("cancel-add-member")
+.addEventListener("click", closeAddMemberEditor);
+
+document
+.getElementById("add-member-editor")
+.addEventListener("click", (event) => {
+if (event.target === event.currentTarget) closeAddMemberEditor();
+});
+
+document
+.getElementById("add-member-editor")
+.addEventListener("cancel", (event) => {
+if (appState.savingMembers) {
+event.preventDefault();
+return;
+}
+appState.addingMember = false;
+updateMemberEditControls();
+});
+
+document
+.getElementById("add-member-editor")
+.addEventListener("close", () => {
+appState.addingMember = false;
+updateMemberEditControls();
+});
+
+document
+.getElementById("remove-members")
+.addEventListener("click", beginMemberRemoval);
+
+document
+.getElementById("confirm-members-remove")
+.addEventListener("click", confirmMemberRemoval);
+
+document
+.getElementById("cancel-members-remove")
+.addEventListener("click", cancelMemberRemoval);
+
+document
+.getElementById("settings-editor-form")
+.addEventListener("submit", saveRoleSettings);
+
+document
+.getElementById("close-settings-editor")
+.addEventListener("click", closeSettingsEditor);
+
+document
+.getElementById("cancel-settings-editor")
+.addEventListener("click", closeSettingsEditor);
+
+document
+.getElementById("settings-editor")
+.addEventListener("click", (event) => {
+if (event.target === event.currentTarget) closeSettingsEditor();
+});
+
+document
+.getElementById("edit-layout")
+.addEventListener("click", openLayoutEditor);
+
+document
+.getElementById("layout-editor-form")
+.addEventListener("submit", saveLayoutSettings);
+
+document
+.getElementById("close-layout-editor")
+.addEventListener("click", closeLayoutEditor);
+
+document
+.getElementById("cancel-layout-editor")
+.addEventListener("click", closeLayoutEditor);
+
+document
+.getElementById("layout-editor")
+.addEventListener("click", (event) => {
+if (event.target === event.currentTarget) closeLayoutEditor();
+});
+
+document
+.getElementById("mobile-menu-button")
+.addEventListener("click", () => {
+const sidebar = document.getElementById("app-sidebar");
+setSidebarOpen(!sidebar.classList.contains("is-open"));
+});
+
+document
+.getElementById("sidebar-overlay")
+.addEventListener("click", () => setSidebarOpen(false));
+
+document.querySelectorAll("[data-view-target]").forEach((navItem) => {
+navItem.addEventListener("click", () => {
+navItem.classList.remove("is-pulsing");
+void navItem.offsetWidth;
+navItem.classList.add("is-pulsing");
+window.setTimeout(
+() => navItem.classList.remove("is-pulsing"),
+440
+);
+navigateToView(navItem.dataset.viewTarget);
+});
+});
+
+document
+.getElementById("sidebar-logo")
+.addEventListener("click", (event) => {
+event.preventDefault();
+navigateToView("members");
+});
+
+document.addEventListener("keydown", (event) => {
+if (event.key === "Escape") {
+setSidebarOpen(false);
+setVisionPanelOpen(false);
+}
+});
+
+window.addEventListener("resize", () => {
+if (window.innerWidth >= 768) setSidebarOpen(false);
+});
+
+initializeTheme();
+initializeVisionTools();
+updateAdditionalAccessField();
+navigateToView("members", { force: true });
+initializeAuthentication();
+})();
