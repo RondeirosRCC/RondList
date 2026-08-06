@@ -1613,6 +1613,7 @@ if (
 row.values = item.values.slice();
 }
 });
+sortMembers();
 appState.editingMembers = false;
 appState.memberDrafts.clear();
 updateDataTimestamp();
@@ -2913,8 +2914,23 @@ document.getElementById("publish-manual-panel").hidden = !manual;
 document.getElementById("publish-auto-panel").hidden = manual;
 }
 
-function openPublishingDialog() {
+async function openPublishingDialog() {
 if (!requireEditAccess()) return;
+
+appState.publishingBusy = true;
+updateMemberEditControls();
+try {
+const response = await requestRondList("publishing", null, {
+forceRefresh: true
+});
+if (response.publishing) appState.publishing = response.publishing;
+} catch (error) {
+showToast(error.message, "error");
+} finally {
+appState.publishingBusy = false;
+updateMemberEditControls();
+}
+
 if (!hasPublishingData()) {
 showToast(
 "Configure os tópicos e os conteúdos de publicação antes de continuar.",
