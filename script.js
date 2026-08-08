@@ -503,9 +503,7 @@ const requestedUsername = cleanCell(
 const isWrite =
 action.startsWith("save") ||
 action === "addAdditionalAccess" ||
-action.startsWith("remove") ||
-action === "organizeData" ||
-action === "addMember";
+action.startsWith("remove");
 if (isWrite && !requireEditAccess({ notify: false })) {
 throw new Error(
 "Seu usuário não possui acesso total para editar."
@@ -649,8 +647,8 @@ function canonicalRoleName(role) {
 const value = String(role || "").trim();
 const normalized = normalizeLookup(value);
 
-if (normalized.startsWith("CONSELHEIRO(A)")) {
-return value.replace(/^Conselheiro\(a\)/i, "Ministro(a)");
+if (normalized.startsWith("MINISTRO(A)")) {
+return value.replace(/^Ministro\(a\)/i, "Ministro(a)");
 }
 return value;
 }
@@ -923,9 +921,19 @@ throw new Error(
 return rows;
 }
 
-async function persistCompactMemberList(members) {
+/**
+* Envia a listagem final (já ordenada e compactada por buildCompactMemberRows)
+* para o backend, que reescreve A:J inteiro na aba de roster — isso vale
+* tanto para editar quanto para adicionar ou remover membros, então toda
+* mutação já sai organizada e uma remoção apaga a linha de verdade. Como o
+* servidor grava na mesma ordem enviada, os números de linha calculados aqui
+* (index + 2) já são os definitivos: não é preciso reler do servidor.
+*/
+async function persistRosterList(members) {
 const rows = buildCompactMemberRows(members);
-await requestRondList("organizeData", { rows });
+await requestRondList("saveRoster", { rows });
+appState.rows = rows;
+appState.selectedMemberRows.clear();
 return rows;
 }
 
@@ -977,9 +985,7 @@ return appState.memberDrafts.get(row.row) || row.values;
 }
 
 function memberEditableValues(row) {
-return row.hasSaved && Array.isArray(row.saved)
-? row.saved
-: row.values;
+return row.values;
 }
 
 function isMemberRowDirty(row) {
@@ -1305,7 +1311,6 @@ const indexes = memberFieldIndexes();
 rows.forEach((row) => {
 const tableRow = document.createElement("tr");
 tableRow.dataset.memberRow = row.row;
-if (row.hasSaved) tableRow.classList.add("is-saved");
 if (isMemberRowDirty(row)) tableRow.classList.add("is-dirty");
 if (appState.selectedMemberRows.has(row.row)) {
 tableRow.classList.add("is-selected");
@@ -1547,13 +1552,12 @@ updateMemberEditControls();
 renderMembers();
 
 try {
-const rows = await persistCompactMemberList(
+const rows = await persistRosterList(
 appState.rows.map((row) => ({
-...row,
+row: row.row,
 values: memberEditableValues(row).slice()
 }))
 );
-appState.selectedMemberRows.clear();
 updateDataTimestamp();
 setWorkspaceState("ready", "Sincronizado");
 showToast(
@@ -1579,20 +1583,18 @@ async function saveMemberList() {
 if (!requireEditAccess()) return;
 if (!appState.editingMembers || appState.savingMembers) return;
 
-const changedRows = appState.rows
-.filter(isMemberRowDirty)
-.map((row) => ({
-row: row.row,
-values: prepareMemberValues(memberDraft(row)).map((value) =>
-String(value ?? "").trim()
-)
-}));
+const dirtyCount = appState.rows.filter(isMemberRowDirty).length;
 
-if (!changedRows.length) {
+if (!dirtyCount) {
 cancelMemberEditing();
 showToast("Nenhuma alteração para salvar.", "info");
 return;
 }
+
+const mergedMembers = appState.rows.map((row) => ({
+row: row.row,
+values: memberDraft(row).slice()
+}));
 
 appState.savingMembers = true;
 setWorkspaceState("", "Salvando");
@@ -1600,28 +1602,15 @@ updateMemberEditControls();
 renderMembers();
 
 try {
-await requestRondList("saveData", { rows: changedRows });
-changedRows.forEach((item) => {
-const row = appState.rows.find((entry) => entry.row === item.row);
-if (!row) return;
-row.saved = item.values.slice();
-row.hasSaved = true;
-if (
-!Array.isArray(row.source) ||
-!row.source.some((value) => String(value ?? "").trim())
-) {
-row.values = item.values.slice();
-}
-});
-sortMembers();
+await persistRosterList(mergedMembers);
 appState.editingMembers = false;
 appState.memberDrafts.clear();
 updateDataTimestamp();
 setWorkspaceState("ready", "Sincronizado");
 showToast(
-`${formatCount(changedRows.length)} registro${
-changedRows.length === 1 ? "" : "s"
-} salvo${changedRows.length === 1 ? "" : "s"}.`,
+`${formatCount(dirtyCount)} registro${
+dirtyCount === 1 ? "" : "s"
+} salvo${dirtyCount === 1 ? "" : "s"}.`,
 "success"
 );
 } catch (error) {
@@ -1875,17 +1864,10 @@ button.textContent = "Adicionando…";
 updateMemberEditControls();
 
 try {
-const response = await requestRondList("addMember", { values });
-const newRowNumber = response.data.row;
-appState.rows.push({
-row: newRowNumber,
-source: Array(appState.headers.length).fill(""),
-saved: values.slice(),
-values: values.slice(),
-hasSaved: true
-});
-appState.maxDataRow = Math.max(appState.maxDataRow, newRowNumber);
-sortMembers();
+const mergedMembers = appState.rows
+.map((row) => ({ row: row.row, values: memberEditableValues(row).slice() }))
+.concat([{ row: null, values }]);
+await persistRosterList(mergedMembers);
 appState.addingMember = false;
 document.getElementById("add-member-editor").close();
 renderMembers();
@@ -1941,27 +1923,24 @@ return;
 }
 
 const selected = new Set(appState.selectedMemberRows);
-const rows = Array.from(selected);
+const removedCount = selected.size;
+const remainingMembers = appState.rows
+.filter((row) => !selected.has(row.row))
+.map((row) => ({ row: row.row, values: memberEditableValues(row).slice() }));
 appState.savingMembers = true;
 setWorkspaceState("", "Removendo");
 updateMemberEditControls();
 renderMembers();
 
 try {
-await requestRondList("removeData", {
-rows: rows.map((row) => ({ row }))
-});
-appState.rows = appState.rows.filter(
-(row) => !selected.has(row.row)
-);
+await persistRosterList(remainingMembers);
 appState.removingMembers = false;
-appState.selectedMemberRows.clear();
 updateDataTimestamp();
 setWorkspaceState("ready", "Sincronizado");
 showToast(
-`${formatCount(rows.length)} membro${
-rows.length === 1 ? "" : "s"
-} removido${rows.length === 1 ? "" : "s"} da RondList.`,
+`${formatCount(removedCount)} membro${
+removedCount === 1 ? "" : "s"
+} removido${removedCount === 1 ? "" : "s"} da RondList.`,
 "success"
 );
 } catch (error) {
@@ -3166,7 +3145,7 @@ finishPublishing();
 }
 
 async function loadRondList(options = {}) {
-const { quiet = false, forceSource = false } = options;
+const { quiet = false, force = false } = options;
 setDataLoading(true);
 setWorkspaceState("", "Sincronizando");
 
@@ -3182,58 +3161,21 @@ try {
 const response = await requestRondList(
 "bootstrap",
 null,
-forceSource ? { forceRefresh: true } : {}
+force ? { forceRefresh: true } : {}
 );
-const responseRows = response.data.rows || [];
-const incomingRows = forceSource
-? responseRows.filter(
-(row) =>
-(Array.isArray(row.source) &&
-row.source.some((value) => String(value ?? "").trim())) ||
-(Array.isArray(row.saved) &&
-row.saved.some((value) => String(value ?? "").trim()))
-)
-: responseRows;
-appState.headers =
-forceSource && Array.isArray(response.data.sourceHeaders)
-? response.data.sourceHeaders.slice()
-: response.data.headers || [];
+const incomingRows = response.data.rows || [];
+appState.headers = response.data.headers || [];
 appState.maxDataRow = incomingRows.reduce(
 (maximum, row) => Math.max(maximum, Number(row.row) || 1),
 1
 );
 const roleIndex = memberFieldIndexes().role;
 appState.rows = incomingRows.map((row) => {
-const normalizedRow = { ...row };
-if (forceSource) {
-const sourceValues = Array.isArray(row.source)
-? row.source.slice()
-: [];
-const savedValues = Array.isArray(row.saved)
-? row.saved.slice()
-: [];
-const hasSource = sourceValues.some((value) =>
-String(value ?? "").trim()
-);
-normalizedRow.source = sourceValues.slice();
-normalizedRow.saved = savedValues.slice();
-normalizedRow.values = hasSource
-? sourceValues.slice()
-: savedValues.slice();
-normalizedRow.hasSaved = savedValues.some((value) =>
-String(value ?? "").trim()
-);
-}
-["source", "saved", "values"].forEach((key) => {
-if (!Array.isArray(row[key])) return;
-normalizedRow[key] = row[key].slice();
+const values = Array.isArray(row.values) ? row.values.slice() : [];
 if (roleIndex >= 0) {
-normalizedRow[key][roleIndex] = canonicalRoleName(
-normalizedRow[key][roleIndex]
-);
+values[roleIndex] = canonicalRoleName(values[roleIndex]);
 }
-});
-return normalizedRow;
+return { row: row.row, values };
 });
 appState.settings = (response.settings.rows || []).map((item) => ({
 ...item,
@@ -3267,7 +3209,7 @@ renderMembers();
 renderSettings();
 renderAdditionalAccess();
 updateAdditionalAccessRoleOptions();
-document.getElementById("data-origin").textContent = forceSource
+document.getElementById("data-origin").textContent = force
 ? "Dados recarregados"
 : "Dados sincronizados";
 updateDataTimestamp(response.meta && response.meta.generatedAt);
@@ -3275,7 +3217,7 @@ setWorkspaceState("ready", "Sincronizado");
 
 if (!quiet) {
 showToast(
-forceSource
+force
 ? `${formatCount(appState.rows.length)} registros recarregados.`
 : `${formatCount(appState.rows.length)} registros atualizados.`,
 "success"
@@ -4012,7 +3954,7 @@ await saveCachedAuthentication(user);
 scheduleAuthenticationRevalidation();
 
 if (options.reloadData) {
-await loadRondList({ quiet: true, forceSource: true });
+await loadRondList({ quiet: true, force: true });
 }
 if (
 options.honorInitialHash &&
@@ -4059,7 +4001,7 @@ allowAccess(
 { ...cached.user, canEdit: false, canManageAccess: false },
 { pendingValidation: true }
 );
-loadRondList({ quiet: true, forceSource: true }).catch(() => {});
+loadRondList({ quiet: true, force: true }).catch(() => {});
 revalidateAuthentication({
 reloadData: true,
 honorInitialHash: true
@@ -4240,13 +4182,13 @@ fetchViaWorker
 document
 .getElementById("refresh-members")
 .addEventListener("click", () =>
-loadRondList({ forceSource: true })
+loadRondList({ force: true })
 );
 
 document
 .getElementById("refresh-settings")
 .addEventListener("click", () =>
-loadRondList({ forceSource: true })
+loadRondList({ force: true })
 );
 
 document
