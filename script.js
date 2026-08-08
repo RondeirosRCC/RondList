@@ -1,4 +1,3 @@
-
 (() => {
 "use strict";
 
@@ -505,7 +504,8 @@ const isWrite =
 action.startsWith("save") ||
 action === "addAdditionalAccess" ||
 action.startsWith("remove") ||
-action === "organizeData";
+action === "organizeData" ||
+action === "addMember";
 if (isWrite && !requireEditAccess({ notify: false })) {
 throw new Error(
 "Seu usuário não possui acesso total para editar."
@@ -1649,7 +1649,7 @@ button.id = buttonId;
 button.className = "boolean-toggle";
 button.type = "button";
 button.dataset.addBooleanIndex = String(index);
-updateBooleanToggle(button, "empty", index);
+updateBooleanToggle(button, "false", index);
 button.addEventListener("click", () => {
 const nextState =
 button.dataset.state === "true" ? "false" : "true";
@@ -1849,9 +1849,7 @@ if (appState.booleanColumns.has(index)) {
 const button = document.getElementById(
 `add-member-boolean-${index}`
 );
-return button.dataset.state === "empty"
-? ""
-: button.dataset.state.toUpperCase();
+return button.dataset.state.toUpperCase();
 }
 if (isDateColumn(index)) {
 return document
@@ -1865,12 +1863,11 @@ return document
 })
 );
 
-if (!values.some(Boolean)) {
+if (!values.some((value, index) => value && !appState.booleanColumns.has(index))) {
 showToast("Preencha ao menos um campo para adicionar.", "warning");
 return;
 }
 
-const newRowNumber = Math.max(appState.maxDataRow, 1) + 1;
 const button = document.getElementById("save-new-member");
 appState.savingMembers = true;
 button.disabled = true;
@@ -1878,9 +1875,8 @@ button.textContent = "Adicionando…";
 updateMemberEditControls();
 
 try {
-await requestRondList("saveData", {
-rows: [{ row: newRowNumber, values }]
-});
+const response = await requestRondList("addMember", { values });
+const newRowNumber = response.data.row;
 appState.rows.push({
 row: newRowNumber,
 source: Array(appState.headers.length).fill(""),
