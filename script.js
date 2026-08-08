@@ -168,7 +168,7 @@ sheets: Object.freeze({
 rondListApi: "https://script.google.com/macros/s/AKfycbyDwewHsL1JjfcnOUH_h6R9Ouz68uSjypEQQd9FvHbg3U0_L1vgLXxI38OZJibUE3w/exec"
 }),
 forum: Object.freeze({
-origin: "https://brendonrcc.forumeiros.com",
+origin: "https://www.policiarcc.com",
 automaticDelayMs: 13000,
 bridgeTimeoutMs: 25000
 })
